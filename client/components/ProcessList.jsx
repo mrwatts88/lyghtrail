@@ -3,10 +3,10 @@ import { fetcher } from "../api/fetcher";
 import { useSWRConfig } from "swr";
 export const ProcessList = () => {
   const {
-    data: processes,
+    data: task,
     error,
     isLoading,
-  } = useSWR("http://localhost:3001/processes", fetcher);
+  } = useSWR("http://localhost:3001/tasks", fetcher);
 
   const { mutate } = useSWRConfig();
 
@@ -15,11 +15,11 @@ export const ProcessList = () => {
 
   const handleDelete = async (title) => {
     try {
-      await fetch(`http://localhost:3001/processes/${title}`, {
+      await fetch(`http://localhost:3001/tasks/${title}`, {
         method: "DELETE",
       });
 
-      mutate("http://localhost:3001/processes");
+      mutate("http://localhost:3001/tasks");
     } catch (err) {
       console.log(err);
     }
@@ -40,16 +40,24 @@ export const ProcessList = () => {
           >
             Title
           </div>
-          <div>Frequency</div>
           <div style={{
-            width: "100px"
+            flex: "1",
+            textAlign: "center",
+          }}>Frequency</div>
+          <div style={{
+             textAlign: "right",
+          }}>Due Date</div>
+          <div style={{
+                padding: "5px",
+                margin: "0 5px",
+                width: "100px",
           }} />
         </div>
 
 
-      {processes.map((process) => (
+      {task.map((tasks) => (
         <div
-          key={process.title}
+          key={tasks.title}
           style={{
             display: "flex",
             justifyContent: "space-between",
@@ -59,18 +67,26 @@ export const ProcessList = () => {
           <div
             style={{
               width: "100px",
+
             }}
           >
-            {process.title}
+            {tasks.title}
           </div>
-          <div>{process.frequency}</div>
+          <div style={{
+                  flex: "1",
+                  textAlign: "center",
+          }}>{tasks.frequency}</div>
+          <div style={{
+            textAlign: "right",
+      
+          }}>{tasks.due_date}</div>
           <button
             style={{
               padding: "5px",
               margin: "0 5px",
               width: "100px",
             }}
-            onClick={() => handleDelete(process.title)}
+            onClick={() => handleDelete(tasks.id)}
           >
             Delete
           </button>

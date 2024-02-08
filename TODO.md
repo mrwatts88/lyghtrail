@@ -2,24 +2,25 @@
 
 #### APIs
 
-- [ ] update process
-    - when updating frequency, update due_next to be sooner if needed
-- [ ] Get all due tasks
-- [ ] update due task
-    - when updating, update process.due_next
 - [ ] validate inputs
+- [x] update task
+    - when completing, move due_next forward by frequency (possible into future by n frequency increments)
+- [x] refactor to use one table
+    - only need title, frequency, and due_next
+    - when fetching get all now >= due_next
+- [x] use auto-incremented ids instead of using title
 - [x] add process
 - [x] get all processes
 - [x] delete process
+- [x] Get all due tasks
 
 
 #### Client
 
-- [ ] update process
-- [ ] Get all due tasks
-- [ ] update due task (complete task)
-- [ ] nav between due tasks and settings
 - [ ] nav between settings and about
+- [x] Get all due tasks
+- [x] update due task (complete task)
+- [x] nav between due tasks and settings
 - [x] Delete process
 - [x] Get all processes
 - [x] Add process

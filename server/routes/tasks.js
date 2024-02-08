@@ -6,10 +6,10 @@ const { Client } = pkg;
 const router = express.Router();
 
 /*
-CREATE TABLE processes (
+CREATE TABLE tasks (
     title VARCHAR(255) PRIMARY KEY,
     frequency VARCHAR(50) NOT NULL,
-    due_next DATE NOT NULL
+    due_date DATE NOT NULL
 );
 */
 router
@@ -19,7 +19,7 @@ router
 
     let result = [];
     try {
-      const res = await client.query("SELECT * from processes");
+      const res = await client.query("SELECT * from tasks");
       result = res.rows;
     } catch (err) {
       console.error(err);
@@ -35,7 +35,7 @@ router
 
     try {
       await client.query(
-        "INSERT into processes (title, frequency, due_next) VALUES ($1, $2, $3)",
+        "INSERT into tasks (title, frequency, due_date) VALUES ($1, $2, $3)",
         [req.body.title, req.body.frequency, req.body.dueNext]
       );
     } catch (err) {
@@ -55,7 +55,7 @@ router
     await client.connect();
 
     try {
-      await client.query("DELETE FROM processes WHERE title = $1", [
+      await client.query("DELETE FROM tasks WHERE id = $1", [
         req.params.id,
       ]);
     } catch (err) {

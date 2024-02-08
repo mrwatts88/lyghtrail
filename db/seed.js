@@ -2,29 +2,31 @@
 
 import "dotenv/config";
 import pkg from "pg";
-const { Client } = pkg;
 
+const { Client } = pkg;
 const client = new Client();
+
 await client.connect();
 
 try {
-  await client.query("DROP TABLE IF EXISTS processes");
+  await client.query("DROP TABLE IF EXISTS tasks");
 
   await client.query(`
-        CREATE TABLE processes (
-          title VARCHAR(255) PRIMARY KEY,
+        CREATE TABLE tasks (
+          id SERIAL PRIMARY KEY,
+          title VARCHAR(255) UNIQUE NOT NULL,
           frequency VARCHAR(50) NOT NULL,
-          due_next VARCHAR(10) NOT NULL
+          due_date VARCHAR(10) NOT NULL
         )
     `);
 
   await client.query(`
-        INSERT INTO processes (title, frequency, due_next) VALUES
+        INSERT INTO tasks (title, frequency, due_date) VALUES
           ('clean house', '1D', '2024-02-04'),
           ('water plants', '3D', '2024-02-04'),
           ('do laundry', '7D', '2024-02-04'),
-          ('buy groceries', '14D', '2024-02-04'),
-          ('pay bills', '30D', '2024-02-04')
+          ('buy groceries', '14D', '2024-02-08'),
+          ('pay bills', '30D', '2024-02-07')
     `);
 } catch (err) {
   console.error(err);

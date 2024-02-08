@@ -1084,7 +1084,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState2(initialState) {
+          function useState3(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1886,7 +1886,7 @@
           exports.useMemo = useMemo3;
           exports.useReducer = useReducer;
           exports.useRef = useRef3;
-          exports.useState = useState2;
+          exports.useState = useState3;
           exports.useSyncExternalStore = useSyncExternalStore2;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -2433,7 +2433,7 @@
           var HostPortal = 4;
           var HostComponent = 5;
           var HostText = 6;
-          var Fragment2 = 7;
+          var Fragment3 = 7;
           var Mode = 8;
           var ContextConsumer = 9;
           var ContextProvider = 10;
@@ -3589,7 +3589,7 @@
                 return "DehydratedFragment";
               case ForwardRef:
                 return getWrappedName$1(type, type.render, "ForwardRef");
-              case Fragment2:
+              case Fragment3:
                 return "Fragment";
               case HostComponent:
                 return type;
@@ -13260,7 +13260,7 @@
               }
             }
             function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-              if (current2 === null || current2.tag !== Fragment2) {
+              if (current2 === null || current2.tag !== Fragment3) {
                 var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
                 created.return = returnFiber;
                 return created;
@@ -13663,7 +13663,7 @@
                 if (child.key === key) {
                   var elementType = element.type;
                   if (elementType === REACT_FRAGMENT_TYPE) {
-                    if (child.tag === Fragment2) {
+                    if (child.tag === Fragment3) {
                       deleteRemainingChildren(returnFiber, child.sibling);
                       var existing = useFiber(child, element.props.children);
                       existing.return = returnFiber;
@@ -17838,7 +17838,7 @@
                 var _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
                 return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
               }
-              case Fragment2:
+              case Fragment3:
                 return updateFragment(current2, workInProgress2, renderLanes2);
               case Mode:
                 return updateMode(current2, workInProgress2, renderLanes2);
@@ -18111,7 +18111,7 @@
               case SimpleMemoComponent:
               case FunctionComponent:
               case ForwardRef:
-              case Fragment2:
+              case Fragment3:
               case Mode:
               case Profiler:
               case ContextConsumer:
@@ -22370,7 +22370,7 @@
             return fiber;
           }
           function createFiberFromFragment(elements, mode, lanes, key) {
-            var fiber = createFiber(Fragment2, elements, key, mode);
+            var fiber = createFiber(Fragment3, elements, key, mode);
             fiber.lanes = lanes;
             return fiber;
           }
@@ -23548,7 +23548,7 @@
             return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y;
           }
           var objectIs = typeof Object.is === "function" ? Object.is : is;
-          var useState2 = React2.useState, useEffect2 = React2.useEffect, useLayoutEffect2 = React2.useLayoutEffect, useDebugValue2 = React2.useDebugValue;
+          var useState3 = React2.useState, useEffect2 = React2.useEffect, useLayoutEffect2 = React2.useLayoutEffect, useDebugValue2 = React2.useDebugValue;
           var didWarnOld18Alpha = false;
           var didWarnUncachedGetSnapshot = false;
           function useSyncExternalStore2(subscribe, getSnapshot, getServerSnapshot) {
@@ -23570,7 +23570,7 @@
                 }
               }
             }
-            var _useState = useState2({
+            var _useState = useState3({
               inst: {
                 value,
                 getSnapshot
@@ -24509,11 +24509,11 @@
               return jsxWithValidation(type, props, key, false);
             }
           }
-          var jsx5 = jsxWithValidationDynamic;
-          var jsxs4 = jsxWithValidationStatic;
+          var jsx6 = jsxWithValidationDynamic;
+          var jsxs5 = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
-          exports.jsx = jsx5;
-          exports.jsxs = jsxs4;
+          exports.jsx = jsx6;
+          exports.jsxs = jsxs5;
         })();
       }
     }
@@ -24533,6 +24533,9 @@
 
   // index.jsx
   var import_client = __toESM(require_client());
+
+  // components/App.jsx
+  var import_react4 = __toESM(require_react());
 
   // components/AddProcess.jsx
   var import_react3 = __toESM(require_react());
@@ -25479,7 +25482,7 @@
         return;
       }
       try {
-        await fetch("http://localhost:3001/processes", {
+        await fetch("http://localhost:3001/tasks", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -25494,7 +25497,7 @@
         setFrequencyNumber("");
         setFrequencyUnit("");
         setDueNext("");
-        mutate2("http://localhost:3001/processes");
+        mutate2("http://localhost:3001/tasks");
       } catch (err) {
         console.log(err);
       }
@@ -25634,10 +25637,10 @@
   var import_jsx_runtime2 = __toESM(require_jsx_runtime());
   var ProcessList = () => {
     const {
-      data: processes,
+      data: task,
       error,
       isLoading
-    } = useSWR("http://localhost:3001/processes", fetcher);
+    } = useSWR("http://localhost:3001/tasks", fetcher);
     const { mutate: mutate2 } = useSWRConfig();
     if (error)
       return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { children: "failed to load" });
@@ -25645,10 +25648,10 @@
       return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { children: "loading..." });
     const handleDelete = async (title) => {
       try {
-        await fetch(`http://localhost:3001/processes/${title}`, {
+        await fetch(`http://localhost:3001/tasks/${title}`, {
           method: "DELETE"
         });
-        mutate2("http://localhost:3001/processes");
+        mutate2("http://localhost:3001/tasks");
       } catch (err) {
         console.log(err);
       }
@@ -25671,14 +25674,22 @@
                 children: "Title"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { children: "Frequency" }),
             /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: {
+              flex: "1",
+              textAlign: "center"
+            }, children: "Frequency" }),
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: {
+              textAlign: "right"
+            }, children: "Due Date" }),
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: {
+              padding: "5px",
+              margin: "0 5px",
               width: "100px"
             } })
           ]
         }
       ),
-      processes.map((process2) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+      task.map((tasks) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
         "div",
         {
           style: {
@@ -25693,10 +25704,16 @@
                 style: {
                   width: "100px"
                 },
-                children: process2.title
+                children: tasks.title
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { children: process2.frequency }),
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: {
+              flex: "1",
+              textAlign: "center"
+            }, children: tasks.frequency }),
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: {
+              textAlign: "right"
+            }, children: tasks.due_date }),
             /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
               "button",
               {
@@ -25705,42 +25722,198 @@
                   margin: "0 5px",
                   width: "100px"
                 },
-                onClick: () => handleDelete(process2.title),
+                onClick: () => handleDelete(tasks.id),
                 children: "Delete"
               }
             )
           ]
         },
-        process2.title
+        tasks.title
+      ))
+    ] });
+  };
+
+  // components/DueTaskList.jsx
+  var import_jsx_runtime3 = __toESM(require_jsx_runtime());
+  var DueTaskList = () => {
+    let d = /* @__PURE__ */ new Date();
+    d = new Date(d.getTime() - d.getTimezoneOffset() * 6e4);
+    const yyyymmdd = d.toISOString().slice(0, 10);
+    const {
+      data: tasks,
+      error,
+      isLoading
+    } = useSWR(
+      `http://localhost:3001/due-tasks?${new URLSearchParams({
+        localDate: yyyymmdd
+      })}`,
+      fetcher
+    );
+    const { mutate: mutate2 } = useSWRConfig();
+    if (error)
+      return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { children: "failed to load" });
+    if (isLoading)
+      return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { children: "loading..." });
+    const handleComplete = async (id) => {
+      try {
+        await fetch(`http://localhost:3001/due-tasks/${id}`, {
+          method: "PUT"
+        });
+        mutate2(`http://localhost:3001/due-tasks?${new URLSearchParams({
+          localDate: yyyymmdd
+        })}`);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(import_jsx_runtime3.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+        "div",
+        {
+          style: {
+            display: "flex",
+            justifyContent: "space-between"
+          },
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              "div",
+              {
+                style: {
+                  width: "100px"
+                },
+                children: "Title"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              "div",
+              {
+                style: {
+                  padding: "5px",
+                  margin: "0 5px",
+                  width: "100px"
+                }
+              }
+            )
+          ]
+        }
+      ),
+      tasks.map((task) => /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+        "div",
+        {
+          style: {
+            display: "flex",
+            justifyContent: "space-between",
+            margin: "10px auto"
+          },
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              "div",
+              {
+                style: {
+                  width: "100px"
+                },
+                children: task.title
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              "button",
+              {
+                style: {
+                  padding: "5px",
+                  margin: "0 5px",
+                  width: "100px"
+                },
+                onClick: () => handleComplete(task.id),
+                children: "Complete"
+              }
+            )
+          ]
+        },
+        task.title
       ))
     ] });
   };
 
   // components/App.jsx
-  var import_jsx_runtime3 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime4 = __toESM(require_jsx_runtime());
   var App = () => {
-    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+    const [page, setPage] = (0, import_react4.useState)(1);
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
       "div",
       {
         style: {
-          width: "500px",
-          margin: "0 auto",
-          padding: "20px",
-          border: "1px solid #ddd",
-          borderRadius: "5px"
+          width: "100%",
+          height: "100vh"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ProcessList, {}),
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(AddProcess, {})
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              "button",
+              {
+                style: {
+                  padding: "10px",
+                  margin: "10px",
+                  border: "none",
+                  backgroundColor: page === 1 ? "#ddd" : "#fff",
+                  cursor: "pointer"
+                },
+                onClick: () => setPage(1),
+                children: "Settings"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              "button",
+              {
+                style: {
+                  padding: "10px",
+                  margin: "10px",
+                  border: "none",
+                  backgroundColor: page === 2 ? "#ddd" : "#fff",
+                  cursor: "pointer"
+                },
+                onClick: () => setPage(2),
+                children: "Due Tasks"
+              }
+            )
+          ] }),
+          page === 1 && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+            "div",
+            {
+              style: {
+                width: "500px",
+                margin: "0 auto",
+                padding: "20px",
+                border: "1px solid #ddd",
+                borderRadius: "5px"
+              },
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ProcessList, {}),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(AddProcess, {})
+              ]
+            }
+          ),
+          page === 2 && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+            "div",
+            {
+              style: {
+                width: "500px",
+                margin: "0 auto",
+                padding: "20px",
+                border: "1px solid #ddd",
+                borderRadius: "5px"
+              },
+              children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(DueTaskList, {})
+            }
+          )
         ]
       }
     );
   };
 
   // index.jsx
-  var import_jsx_runtime4 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime5 = __toESM(require_jsx_runtime());
   var root = (0, import_client.createRoot)(document.getElementById("app"));
-  root.render(/* @__PURE__ */ (0, import_jsx_runtime4.jsx)(App, {}));
+  root.render(/* @__PURE__ */ (0, import_jsx_runtime5.jsx)(App, {}));
 })();
 /*! Bundled license information:
 
