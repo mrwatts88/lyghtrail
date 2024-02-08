@@ -5,6 +5,11 @@ const { Client } = pkg;
 
 const router = express.Router();
 
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
+});
+
 /*
 CREATE TABLE tasks (
     title VARCHAR(255) PRIMARY KEY,
@@ -14,7 +19,10 @@ CREATE TABLE tasks (
 */
 router
   .get("/", async function (req, res, next) {
-    const client = new Client();
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+    });
     await client.connect();
 
     let result = [];
@@ -30,7 +38,10 @@ router
     }
   })
   .post("/", async function (req, res, next) {
-    const client = new Client();
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+    });
     await client.connect();
 
     try {
@@ -51,13 +62,14 @@ router
     return res.json({ success: true });
   })
   .delete("/:id", async function (req, res, next) {
-    const client = new Client();
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+    });
     await client.connect();
 
     try {
-      await client.query("DELETE FROM tasks WHERE id = $1", [
-        req.params.id,
-      ]);
+      await client.query("DELETE FROM tasks WHERE id = $1", [req.params.id]);
     } catch (err) {
       console.error(err);
       await client.end();
