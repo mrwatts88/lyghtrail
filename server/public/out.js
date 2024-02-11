@@ -25837,7 +25837,7 @@
   // components/App.jsx
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
   var App = () => {
-    const [page, setPage] = (0, import_react4.useState)(1);
+    const [page, setPage] = (0, import_react4.useState)(2);
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
       "div",
       {
@@ -25854,11 +25854,11 @@
                   padding: "10px",
                   margin: "10px",
                   border: "none",
-                  backgroundColor: page === 1 ? "#ddd" : "#fff",
+                  backgroundColor: page === 2 ? "#ddd" : "#fff",
                   cursor: "pointer"
                 },
-                onClick: () => setPage(1),
-                children: "Settings"
+                onClick: () => setPage(2),
+                children: "Due Tasks"
               }
             ),
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
@@ -25868,11 +25868,11 @@
                   padding: "10px",
                   margin: "10px",
                   border: "none",
-                  backgroundColor: page === 2 ? "#ddd" : "#fff",
+                  backgroundColor: page === 1 ? "#ddd" : "#fff",
                   cursor: "pointer"
                 },
-                onClick: () => setPage(2),
-                children: "Due Tasks"
+                onClick: () => setPage(1),
+                children: "Settings"
               }
             )
           ] }),
