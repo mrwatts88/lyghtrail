@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import pkg from "pg";
+import { userId } from "../global.js";
 const { Client } = pkg;
 
 const router = express.Router();
@@ -10,13 +11,6 @@ const client = new Client({
   ssl: { rejectUnauthorized: false },
 });
 
-/*
-CREATE TABLE tasks (
-    title VARCHAR(255) PRIMARY KEY,
-    frequency VARCHAR(50) NOT NULL,
-    due_date DATE NOT NULL
-);
-*/
 router
   .get("/", async function (req, res, next) {
     const client = new Client({
@@ -27,7 +21,9 @@ router
 
     let result = [];
     try {
-      const res = await client.query("SELECT * from tasks");
+      const res = await client.query("SELECT * from tasks where user_id = $1 order by title ASC", [
+        userId,
+      ]);
       result = res.rows;
     } catch (err) {
       console.error(err);
@@ -37,7 +33,7 @@ router
       return res.json(result);
     }
   })
-  .post("/", async function (req, res, next) {
+  .post("/", async function (req, res) {
     const client = new Client({
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
@@ -46,8 +42,8 @@ router
 
     try {
       await client.query(
-        "INSERT into tasks (title, frequency, due_date) VALUES ($1, $2, $3)",
-        [req.body.title, req.body.frequency, req.body.dueNext]
+        "INSERT into tasks (title, frequency, due_date, user_id) VALUES ($1, $2, $3, $4)",
+        [req.body.title, req.body.frequency, req.body.dueNext, userId]
       );
     } catch (err) {
       console.log(err);

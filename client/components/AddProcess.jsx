@@ -22,7 +22,7 @@ export const AddProcess = () => {
     }
 
     try {
-      await fetch("http://localhost:3001/tasks", {
+      await fetch("/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export const AddProcess = () => {
       setFrequencyUnit("");
       setDueNext("");
 
-      mutate("http://localhost:3001/tasks");
+      mutate("/tasks");
     } catch (err) {
       console.log(err);
     }

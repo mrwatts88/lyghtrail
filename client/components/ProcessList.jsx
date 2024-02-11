@@ -6,7 +6,7 @@ export const ProcessList = () => {
     data: task,
     error,
     isLoading,
-  } = useSWR("http://localhost:3001/tasks", fetcher);
+  } = useSWR("/tasks", fetcher);
 
   const { mutate } = useSWRConfig();
 
@@ -15,11 +15,11 @@ export const ProcessList = () => {
 
   const handleDelete = async (title) => {
     try {
-      await fetch(`http://localhost:3001/tasks/${title}`, {
+      await fetch(`/tasks/${title}`, {
         method: "DELETE",
       });
 
-      mutate("http://localhost:3001/tasks");
+      mutate("/tasks");
     } catch (err) {
       console.log(err);
     }

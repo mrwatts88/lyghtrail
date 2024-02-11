@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "esbuild --watch index.jsx --jsx=automatic --bundle --outfile=dist/out.js"
+    "dev": "esbuild --watch index.jsx --jsx=automatic --bundle --outfile=../server/public/out.js",
+    "build": "esbuild index.jsx --jsx=automatic --bundle --outfile=../server/public/out.js"
   },
   "keywords": [],
   "author": "",

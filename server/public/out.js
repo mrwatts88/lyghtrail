@@ -25482,7 +25482,7 @@
         return;
       }
       try {
-        await fetch("http://localhost:3001/tasks", {
+        await fetch("/tasks", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -25497,7 +25497,7 @@
         setFrequencyNumber("");
         setFrequencyUnit("");
         setDueNext("");
-        mutate2("http://localhost:3001/tasks");
+        mutate2("/tasks");
       } catch (err) {
         console.log(err);
       }
@@ -25640,7 +25640,7 @@
       data: task,
       error,
       isLoading
-    } = useSWR("http://localhost:3001/tasks", fetcher);
+    } = useSWR("/tasks", fetcher);
     const { mutate: mutate2 } = useSWRConfig();
     if (error)
       return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { children: "failed to load" });
@@ -25648,10 +25648,10 @@
       return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { children: "loading..." });
     const handleDelete = async (title) => {
       try {
-        await fetch(`http://localhost:3001/tasks/${title}`, {
+        await fetch(`/tasks/${title}`, {
           method: "DELETE"
         });
-        mutate2("http://localhost:3001/tasks");
+        mutate2("/tasks");
       } catch (err) {
         console.log(err);
       }
@@ -25744,7 +25744,7 @@
       error,
       isLoading
     } = useSWR(
-      `http://localhost:3001/due-tasks?${new URLSearchParams({
+      `/due-tasks?${new URLSearchParams({
         localDate: yyyymmdd
       })}`,
       fetcher
@@ -25756,10 +25756,10 @@
       return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { children: "loading..." });
     const handleComplete = async (id) => {
       try {
-        await fetch(`http://localhost:3001/due-tasks/${id}`, {
+        await fetch(`/due-tasks/${id}`, {
           method: "PUT"
         });
-        mutate2(`http://localhost:3001/due-tasks?${new URLSearchParams({
+        mutate2(`/due-tasks?${new URLSearchParams({
           localDate: yyyymmdd
         })}`);
       } catch (err) {

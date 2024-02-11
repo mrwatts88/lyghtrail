@@ -12,7 +12,7 @@ export const DueTaskList = () => {
     error,
     isLoading,
   } = useSWR(
-    `http://localhost:3001/due-tasks?${new URLSearchParams({
+    `/due-tasks?${new URLSearchParams({
       localDate: yyyymmdd,
     })}`,
     fetcher
@@ -25,11 +25,11 @@ export const DueTaskList = () => {
 
   const handleComplete = async (id) => {
     try {
-      await fetch(`http://localhost:3001/due-tasks/${id}`, {
+      await fetch(`/due-tasks/${id}`, {
         method: "PUT",
       });
 
-      mutate(`http://localhost:3001/due-tasks?${new URLSearchParams({
+      mutate(`/due-tasks?${new URLSearchParams({
         localDate: yyyymmdd,
       })}`);
     } catch (err) {

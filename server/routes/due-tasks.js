@@ -1,7 +1,8 @@
+import dayjs from "dayjs";
 import "dotenv/config";
 import express from "express";
 import pkg from "pg";
-import dayjs from "dayjs";
+import { userId } from "../global.js";
 
 const { Client } = pkg;
 
@@ -28,7 +29,7 @@ router
     let dueTasks = [];
     try {
       const { rows } = await client.query(
-        `SELECT * from tasks where due_date::date <= '${localDate}'::date`
+        `SELECT * from tasks where due_date::date <= '${localDate}'::date and user_id = ${userId} order by title ASC`
       );
 
       dueTasks = rows;
