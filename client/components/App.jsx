@@ -4,7 +4,7 @@ import { ProcessList } from "./ProcessList";
 import { DueTaskList } from "./DueTaskList";
 
 export const App = () => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
 
   return (
     <div
@@ -19,24 +19,24 @@ export const App = () => {
             padding: "10px",
             margin: "10px",
             border: "none",
-            backgroundColor: page === 1 ? "#ddd" : "#fff",
-            cursor: "pointer",
-          }}
-          onClick={() => setPage(1)}
-        >
-          Settings
-        </button>
-        <button
-          style={{
-            padding: "10px",
-            margin: "10px",
-            border: "none",
             backgroundColor: page === 2 ? "#ddd" : "#fff",
             cursor: "pointer",
           }}
           onClick={() => setPage(2)}
         >
           Due Tasks
+        </button>
+        <button
+          style={{
+            padding: "10px",
+            margin: "10px",
+            border: "none",
+            backgroundColor: page === 1 ? "#ddd" : "#fff",
+            cursor: "pointer",
+          }}
+          onClick={() => setPage(1)}
+        >
+          Settings
         </button>
       </div>
       {page === 1 && (
