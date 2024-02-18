@@ -8,6 +8,10 @@
   var __commonJS = (cb, mod) => function __require() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
+  var __export = (target, all) => {
+    for (var name in all)
+      __defProp(target, name, { get: all[name], enumerable: true });
+  };
   var __copyProps = (to, from, except, desc) => {
     if (from && typeof from === "object" || typeof from === "function") {
       for (let key of __getOwnPropNames(from))
@@ -510,7 +514,7 @@
             }
             return element;
           };
-          function createElement2(type, config, children) {
+          function createElement3(type, config, children) {
             var propName;
             var props = {};
             var key = null;
@@ -784,7 +788,7 @@
             }
             return children;
           }
-          function createContext2(defaultValue) {
+          function createContext3(defaultValue) {
             var context = {
               $$typeof: REACT_CONTEXT_TYPE,
               // As a workaround to support multiple concurrent renderers, we categorize
@@ -1032,7 +1036,7 @@
             }
             return false;
           }
-          function memo(type, compare2) {
+          function memo(type, compare3) {
             {
               if (!isValidElementType(type)) {
                 error("memo: The first argument must be a component. Instead received: %s", type === null ? "null" : typeof type);
@@ -1041,7 +1045,7 @@
             var elementType = {
               $$typeof: REACT_MEMO_TYPE,
               type,
-              compare: compare2 === void 0 ? null : compare2
+              compare: compare3 === void 0 ? null : compare3
             };
             {
               var ownName;
@@ -1070,7 +1074,7 @@
             }
             return dispatcher;
           }
-          function useContext2(Context) {
+          function useContext3(Context) {
             var dispatcher = resolveDispatcher();
             {
               if (Context._context !== void 0) {
@@ -1084,7 +1088,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState3(initialState) {
+          function useState5(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1092,11 +1096,11 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer, initialArg, init);
           }
-          function useRef3(initialValue) {
+          function useRef7(initialValue) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect2(create, deps) {
+          function useEffect3(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1104,15 +1108,15 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useInsertionEffect(create, deps);
           }
-          function useLayoutEffect2(create, deps) {
+          function useLayoutEffect3(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useLayoutEffect(create, deps);
           }
-          function useCallback2(callback, deps) {
+          function useCallback6(callback, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
-          function useMemo3(create, deps) {
+          function useMemo6(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useMemo(create, deps);
           }
@@ -1120,7 +1124,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useImperativeHandle(ref, create, deps);
           }
-          function useDebugValue2(value, formatterFn) {
+          function useDebugValue3(value, formatterFn) {
             {
               var dispatcher = resolveDispatcher();
               return dispatcher.useDebugValue(value, formatterFn);
@@ -1138,7 +1142,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useId();
           }
-          function useSyncExternalStore2(subscribe, getSnapshot, getServerSnapshot) {
+          function useSyncExternalStore4(subscribe, getSnapshot, getServerSnapshot) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
           }
@@ -1609,7 +1613,7 @@
                 error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
               }
             }
-            var element = createElement2.apply(this, arguments);
+            var element = createElement3.apply(this, arguments);
             if (element == null) {
               return element;
             }
@@ -1864,7 +1868,7 @@
           exports.Suspense = REACT_SUSPENSE_TYPE;
           exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals;
           exports.cloneElement = cloneElement$1;
-          exports.createContext = createContext2;
+          exports.createContext = createContext3;
           exports.createElement = createElement$1;
           exports.createFactory = createFactory;
           exports.createRef = createRef;
@@ -1874,20 +1878,20 @@
           exports.memo = memo;
           exports.startTransition = startTransition;
           exports.unstable_act = act;
-          exports.useCallback = useCallback2;
-          exports.useContext = useContext2;
-          exports.useDebugValue = useDebugValue2;
+          exports.useCallback = useCallback6;
+          exports.useContext = useContext3;
+          exports.useDebugValue = useDebugValue3;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect2;
+          exports.useEffect = useEffect3;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
-          exports.useLayoutEffect = useLayoutEffect2;
-          exports.useMemo = useMemo3;
+          exports.useLayoutEffect = useLayoutEffect3;
+          exports.useMemo = useMemo6;
           exports.useReducer = useReducer;
-          exports.useRef = useRef3;
-          exports.useState = useState3;
-          exports.useSyncExternalStore = useSyncExternalStore2;
+          exports.useRef = useRef7;
+          exports.useState = useState5;
+          exports.useSyncExternalStore = useSyncExternalStore4;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") {
@@ -1948,7 +1952,7 @@
             while (index > 0) {
               var parentIndex = index - 1 >>> 1;
               var parent = heap[parentIndex];
-              if (compare2(parent, node) > 0) {
+              if (compare3(parent, node) > 0) {
                 heap[parentIndex] = node;
                 heap[index] = parent;
                 index = parentIndex;
@@ -1966,8 +1970,8 @@
               var left = heap[leftIndex];
               var rightIndex = leftIndex + 1;
               var right = heap[rightIndex];
-              if (compare2(left, node) < 0) {
-                if (rightIndex < length && compare2(right, left) < 0) {
+              if (compare3(left, node) < 0) {
+                if (rightIndex < length && compare3(right, left) < 0) {
                   heap[index] = right;
                   heap[rightIndex] = node;
                   index = rightIndex;
@@ -1976,7 +1980,7 @@
                   heap[leftIndex] = node;
                   index = leftIndex;
                 }
-              } else if (rightIndex < length && compare2(right, node) < 0) {
+              } else if (rightIndex < length && compare3(right, node) < 0) {
                 heap[index] = right;
                 heap[rightIndex] = node;
                 index = rightIndex;
@@ -1985,7 +1989,7 @@
               }
             }
           }
-          function compare2(a, b) {
+          function compare3(a, b) {
             var diff = a.sortIndex - b.sortIndex;
             return diff !== 0 ? diff : a.id - b.id;
           }
@@ -2382,9 +2386,9 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React2 = require_react();
+          var React14 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React14.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -3989,7 +3993,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React2.Children.forEach(props.children, function(child) {
+                  React14.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -7638,9 +7642,9 @@
                 if (!Interface.hasOwnProperty(_propName)) {
                   continue;
                 }
-                var normalize2 = Interface[_propName];
-                if (normalize2) {
-                  this[_propName] = normalize2(nativeEvent);
+                var normalize3 = Interface[_propName];
+                if (normalize3) {
+                  this[_propName] = normalize3(nativeEvent);
                 } else {
                   this[_propName] = nativeEvent[_propName];
                 }
@@ -8934,12 +8938,12 @@
               }
             } else {
               for (var _i = 0; _i < dispatchListeners.length; _i++) {
-                var _dispatchListeners$_i = dispatchListeners[_i], _instance = _dispatchListeners$_i.instance, _currentTarget = _dispatchListeners$_i.currentTarget, _listener = _dispatchListeners$_i.listener;
-                if (_instance !== previousInstance && event.isPropagationStopped()) {
+                var _dispatchListeners$_i = dispatchListeners[_i], _instance2 = _dispatchListeners$_i.instance, _currentTarget = _dispatchListeners$_i.currentTarget, _listener = _dispatchListeners$_i.listener;
+                if (_instance2 !== previousInstance && event.isPropagationStopped()) {
                   return;
                 }
                 executeDispatch(event, _listener, _currentTarget);
-                previousInstance = _instance;
+                previousInstance = _instance2;
               }
             }
           }
@@ -9323,10 +9327,10 @@
           function getOwnerDocumentFromRootContainer(rootContainerElement) {
             return rootContainerElement.nodeType === DOCUMENT_NODE ? rootContainerElement : rootContainerElement.ownerDocument;
           }
-          function noop2() {
+          function noop3() {
           }
           function trapClickOnNonInteractiveElement(node) {
-            node.onclick = noop2;
+            node.onclick = noop3;
           }
           function setInitialDOMProperties(tag, domElement, rootContainerElement, nextProps, isCustomComponentTag) {
             for (var propKey in nextProps) {
@@ -9388,7 +9392,7 @@
               }
             }
           }
-          function createElement2(type, props, rootContainerElement, parentNamespace) {
+          function createElement3(type, props, rootContainerElement, parentNamespace) {
             var isCustomComponentTag;
             var ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement);
             var domElement;
@@ -10249,7 +10253,7 @@
               }
               parentNamespace = hostContextDev.namespace;
             }
-            var domElement = createElement2(type, props, rootContainerInstance, parentNamespace);
+            var domElement = createElement3(type, props, rootContainerInstance, parentNamespace);
             precacheFiberNode(internalInstanceHandle, domElement);
             updateFiberProps(domElement, props);
             return domElement;
@@ -12436,7 +12440,7 @@
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React2.Component().refs;
+          var emptyRefsObject = new React14.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -14008,7 +14012,7 @@
               if (!didWarnAboutMismatchedHooksForComponent.has(componentName)) {
                 didWarnAboutMismatchedHooksForComponent.add(componentName);
                 if (hookTypesDev !== null) {
-                  var table2 = "";
+                  var table3 = "";
                   var secondColumnStart = 30;
                   for (var i = 0; i <= hookTypesUpdateIndexDev; i++) {
                     var oldHookName = hookTypesDev[i];
@@ -14018,9 +14022,9 @@
                       row += " ";
                     }
                     row += newHookName + "\n";
-                    table2 += row;
+                    table3 += row;
                   }
-                  error("React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks\n\n   Previous render            Next render\n   ------------------------------------------------------\n%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n", componentName, table2);
+                  error("React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks\n\n   Previous render            Next render\n   ------------------------------------------------------\n%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n", componentName, table3);
                 }
               }
             }
@@ -16307,9 +16311,9 @@
             var hasScheduledUpdateOrContext = checkScheduledUpdateOrContext(current2, renderLanes2);
             if (!hasScheduledUpdateOrContext) {
               var prevProps = currentChild.memoizedProps;
-              var compare2 = Component.compare;
-              compare2 = compare2 !== null ? compare2 : shallowEqual;
-              if (compare2(prevProps, nextProps) && current2.ref === workInProgress2.ref) {
+              var compare3 = Component.compare;
+              compare3 = compare3 !== null ? compare3 : shallowEqual;
+              if (compare3(prevProps, nextProps) && current2.ref === workInProgress2.ref) {
                 return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2);
               }
             }
@@ -16510,11 +16514,11 @@
             {
               switch (shouldError(workInProgress2)) {
                 case false: {
-                  var _instance = workInProgress2.stateNode;
+                  var _instance2 = workInProgress2.stateNode;
                   var ctor = workInProgress2.type;
-                  var tempInstance = new ctor(workInProgress2.memoizedProps, _instance.context);
+                  var tempInstance = new ctor(workInProgress2.memoizedProps, _instance2.context);
                   var state = tempInstance.state;
-                  _instance.updater.enqueueSetState(_instance, state, null);
+                  _instance2.updater.enqueueSetState(_instance2, state, null);
                   break;
                 }
                 case true: {
@@ -18974,27 +18978,27 @@
                 case HostRoot: {
                   var _updateQueue = finishedWork.updateQueue;
                   if (_updateQueue !== null) {
-                    var _instance = null;
+                    var _instance2 = null;
                     if (finishedWork.child !== null) {
                       switch (finishedWork.child.tag) {
                         case HostComponent:
-                          _instance = getPublicInstance(finishedWork.child.stateNode);
+                          _instance2 = getPublicInstance(finishedWork.child.stateNode);
                           break;
                         case ClassComponent:
-                          _instance = finishedWork.child.stateNode;
+                          _instance2 = finishedWork.child.stateNode;
                           break;
                       }
                     }
-                    commitUpdateQueue(finishedWork, _updateQueue, _instance);
+                    commitUpdateQueue(finishedWork, _updateQueue, _instance2);
                   }
                   break;
                 }
                 case HostComponent: {
-                  var _instance2 = finishedWork.stateNode;
+                  var _instance22 = finishedWork.stateNode;
                   if (current2 === null && finishedWork.flags & Update) {
                     var type = finishedWork.type;
                     var props = finishedWork.memoizedProps;
-                    commitMount(_instance2, type, props);
+                    commitMount(_instance22, type, props);
                   }
                   break;
                 }
@@ -23476,6 +23480,140 @@
     }
   });
 
+  // node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.development.js
+  var require_use_sync_external_store_shim_development = __commonJS({
+    "node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.development.js"(exports) {
+      "use strict";
+      if (true) {
+        (function() {
+          "use strict";
+          if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
+            __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
+          }
+          var React14 = require_react();
+          var ReactSharedInternals = React14.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          function error(format) {
+            {
+              {
+                for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+                  args[_key2 - 1] = arguments[_key2];
+                }
+                printWarning("error", format, args);
+              }
+            }
+          }
+          function printWarning(level, format, args) {
+            {
+              var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+              var stack = ReactDebugCurrentFrame.getStackAddendum();
+              if (stack !== "") {
+                format += "%s";
+                args = args.concat([stack]);
+              }
+              var argsWithFormat = args.map(function(item) {
+                return String(item);
+              });
+              argsWithFormat.unshift("Warning: " + format);
+              Function.prototype.apply.call(console[level], console, argsWithFormat);
+            }
+          }
+          function is(x, y) {
+            return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y;
+          }
+          var objectIs = typeof Object.is === "function" ? Object.is : is;
+          var useState5 = React14.useState, useEffect3 = React14.useEffect, useLayoutEffect3 = React14.useLayoutEffect, useDebugValue3 = React14.useDebugValue;
+          var didWarnOld18Alpha = false;
+          var didWarnUncachedGetSnapshot = false;
+          function useSyncExternalStore4(subscribe, getSnapshot, getServerSnapshot) {
+            {
+              if (!didWarnOld18Alpha) {
+                if (React14.startTransition !== void 0) {
+                  didWarnOld18Alpha = true;
+                  error("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release.");
+                }
+              }
+            }
+            var value = getSnapshot();
+            {
+              if (!didWarnUncachedGetSnapshot) {
+                var cachedValue = getSnapshot();
+                if (!objectIs(value, cachedValue)) {
+                  error("The result of getSnapshot should be cached to avoid an infinite loop");
+                  didWarnUncachedGetSnapshot = true;
+                }
+              }
+            }
+            var _useState = useState5({
+              inst: {
+                value,
+                getSnapshot
+              }
+            }), inst = _useState[0].inst, forceUpdate = _useState[1];
+            useLayoutEffect3(function() {
+              inst.value = value;
+              inst.getSnapshot = getSnapshot;
+              if (checkIfSnapshotChanged(inst)) {
+                forceUpdate({
+                  inst
+                });
+              }
+            }, [subscribe, value, getSnapshot]);
+            useEffect3(function() {
+              if (checkIfSnapshotChanged(inst)) {
+                forceUpdate({
+                  inst
+                });
+              }
+              var handleStoreChange = function() {
+                if (checkIfSnapshotChanged(inst)) {
+                  forceUpdate({
+                    inst
+                  });
+                }
+              };
+              return subscribe(handleStoreChange);
+            }, [subscribe]);
+            useDebugValue3(value);
+            return value;
+          }
+          function checkIfSnapshotChanged(inst) {
+            var latestGetSnapshot = inst.getSnapshot;
+            var prevValue = inst.value;
+            try {
+              var nextValue = latestGetSnapshot();
+              return !objectIs(prevValue, nextValue);
+            } catch (error2) {
+              return true;
+            }
+          }
+          function useSyncExternalStore$1(subscribe, getSnapshot, getServerSnapshot) {
+            return getSnapshot();
+          }
+          var canUseDOM = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
+          var isServerEnvironment = !canUseDOM;
+          var shim = isServerEnvironment ? useSyncExternalStore$1 : useSyncExternalStore4;
+          var useSyncExternalStore$2 = React14.useSyncExternalStore !== void 0 ? React14.useSyncExternalStore : shim;
+          exports.useSyncExternalStore = useSyncExternalStore$2;
+          if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") {
+            __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
+          }
+        })();
+      }
+    }
+  });
+
+  // node_modules/use-sync-external-store/shim/index.js
+  var require_shim = __commonJS({
+    "node_modules/use-sync-external-store/shim/index.js"(exports, module) {
+      "use strict";
+      if (false) {
+        module.exports = null;
+      } else {
+        module.exports = require_use_sync_external_store_shim_development();
+      }
+    }
+  });
+
   // node_modules/react-dom/client.js
   var require_client = __commonJS({
     "node_modules/react-dom/client.js"(exports) {
@@ -23507,140 +23645,6 @@
     }
   });
 
-  // node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.development.js
-  var require_use_sync_external_store_shim_development = __commonJS({
-    "node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.development.js"(exports) {
-      "use strict";
-      if (true) {
-        (function() {
-          "use strict";
-          if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
-            __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-          }
-          var React2 = require_react();
-          var ReactSharedInternals = React2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-          function error(format) {
-            {
-              {
-                for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-                  args[_key2 - 1] = arguments[_key2];
-                }
-                printWarning("error", format, args);
-              }
-            }
-          }
-          function printWarning(level, format, args) {
-            {
-              var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-              var stack = ReactDebugCurrentFrame.getStackAddendum();
-              if (stack !== "") {
-                format += "%s";
-                args = args.concat([stack]);
-              }
-              var argsWithFormat = args.map(function(item) {
-                return String(item);
-              });
-              argsWithFormat.unshift("Warning: " + format);
-              Function.prototype.apply.call(console[level], console, argsWithFormat);
-            }
-          }
-          function is(x, y) {
-            return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y;
-          }
-          var objectIs = typeof Object.is === "function" ? Object.is : is;
-          var useState3 = React2.useState, useEffect2 = React2.useEffect, useLayoutEffect2 = React2.useLayoutEffect, useDebugValue2 = React2.useDebugValue;
-          var didWarnOld18Alpha = false;
-          var didWarnUncachedGetSnapshot = false;
-          function useSyncExternalStore2(subscribe, getSnapshot, getServerSnapshot) {
-            {
-              if (!didWarnOld18Alpha) {
-                if (React2.startTransition !== void 0) {
-                  didWarnOld18Alpha = true;
-                  error("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release.");
-                }
-              }
-            }
-            var value = getSnapshot();
-            {
-              if (!didWarnUncachedGetSnapshot) {
-                var cachedValue = getSnapshot();
-                if (!objectIs(value, cachedValue)) {
-                  error("The result of getSnapshot should be cached to avoid an infinite loop");
-                  didWarnUncachedGetSnapshot = true;
-                }
-              }
-            }
-            var _useState = useState3({
-              inst: {
-                value,
-                getSnapshot
-              }
-            }), inst = _useState[0].inst, forceUpdate = _useState[1];
-            useLayoutEffect2(function() {
-              inst.value = value;
-              inst.getSnapshot = getSnapshot;
-              if (checkIfSnapshotChanged(inst)) {
-                forceUpdate({
-                  inst
-                });
-              }
-            }, [subscribe, value, getSnapshot]);
-            useEffect2(function() {
-              if (checkIfSnapshotChanged(inst)) {
-                forceUpdate({
-                  inst
-                });
-              }
-              var handleStoreChange = function() {
-                if (checkIfSnapshotChanged(inst)) {
-                  forceUpdate({
-                    inst
-                  });
-                }
-              };
-              return subscribe(handleStoreChange);
-            }, [subscribe]);
-            useDebugValue2(value);
-            return value;
-          }
-          function checkIfSnapshotChanged(inst) {
-            var latestGetSnapshot = inst.getSnapshot;
-            var prevValue = inst.value;
-            try {
-              var nextValue = latestGetSnapshot();
-              return !objectIs(prevValue, nextValue);
-            } catch (error2) {
-              return true;
-            }
-          }
-          function useSyncExternalStore$1(subscribe, getSnapshot, getServerSnapshot) {
-            return getSnapshot();
-          }
-          var canUseDOM = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
-          var isServerEnvironment = !canUseDOM;
-          var shim = isServerEnvironment ? useSyncExternalStore$1 : useSyncExternalStore2;
-          var useSyncExternalStore$2 = React2.useSyncExternalStore !== void 0 ? React2.useSyncExternalStore : shim;
-          exports.useSyncExternalStore = useSyncExternalStore$2;
-          if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") {
-            __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
-          }
-        })();
-      }
-    }
-  });
-
-  // node_modules/use-sync-external-store/shim/index.js
-  var require_shim = __commonJS({
-    "node_modules/use-sync-external-store/shim/index.js"(exports, module) {
-      "use strict";
-      if (false) {
-        module.exports = null;
-      } else {
-        module.exports = require_use_sync_external_store_shim_development();
-      }
-    }
-  });
-
   // node_modules/react/cjs/react-jsx-runtime.development.js
   var require_react_jsx_runtime_development = __commonJS({
     "node_modules/react/cjs/react-jsx-runtime.development.js"(exports) {
@@ -23648,7 +23652,7 @@
       if (true) {
         (function() {
           "use strict";
-          var React2 = require_react();
+          var React14 = require_react();
           var REACT_ELEMENT_TYPE = Symbol.for("react.element");
           var REACT_PORTAL_TYPE = Symbol.for("react.portal");
           var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
@@ -23674,7 +23678,7 @@
             }
             return null;
           }
-          var ReactSharedInternals = React2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React14.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function error(format) {
             {
               {
@@ -24509,11 +24513,11 @@
               return jsxWithValidation(type, props, key, false);
             }
           }
-          var jsx6 = jsxWithValidationDynamic;
-          var jsxs5 = jsxWithValidationStatic;
+          var jsx7 = jsxWithValidationDynamic;
+          var jsxs6 = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
-          exports.jsx = jsx6;
-          exports.jsxs = jsxs5;
+          exports.jsx = jsx7;
+          exports.jsxs = jsxs6;
         })();
       }
     }
@@ -24531,21 +24535,482 @@
     }
   });
 
-  // index.jsx
-  var import_client = __toESM(require_client());
+  // node_modules/@clerk/clerk-react/dist/esm/chunk-3W5G4CYI.js
+  var __accessCheck = (obj, member, msg) => {
+    if (!member.has(obj))
+      throw TypeError("Cannot " + msg);
+  };
+  var __privateGet = (obj, member, getter) => {
+    __accessCheck(obj, member, "read from private field");
+    return getter ? getter.call(obj) : member.get(obj);
+  };
+  var __privateAdd = (obj, member, value) => {
+    if (member.has(obj))
+      throw TypeError("Cannot add the same private member more than once");
+    member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+  };
+  var __privateSet = (obj, member, value, setter) => {
+    __accessCheck(obj, member, "write to private field");
+    setter ? setter.call(obj, value) : member.set(obj, value);
+    return value;
+  };
 
-  // components/App.jsx
-  var import_react4 = __toESM(require_react());
+  // node_modules/@clerk/clerk-react/dist/esm/polyfills.js
+  if (typeof window !== "undefined" && !window.global) {
+    window.global = typeof global === "undefined" ? window : global;
+  }
 
-  // components/AddProcess.jsx
-  var import_react3 = __toESM(require_react());
+  // node_modules/@clerk/shared/dist/chunk-TETGTEI2.mjs
+  var isomorphicAtob = (data) => {
+    if (typeof atob !== "undefined" && typeof atob === "function") {
+      return atob(data);
+    } else if (typeof global !== "undefined" && global.Buffer) {
+      return new global.Buffer(data, "base64").toString();
+    }
+    return data;
+  };
 
-  // node_modules/swr/core/dist/index.mjs
-  var import_react2 = __toESM(require_react(), 1);
+  // node_modules/@clerk/shared/dist/chunk-IAZRYRAH.mjs
+  var PUBLISHABLE_KEY_LIVE_PREFIX = "pk_live_";
+  var PUBLISHABLE_KEY_TEST_PREFIX = "pk_test_";
+  function parsePublishableKey(key) {
+    key = key || "";
+    if (!isPublishableKey(key)) {
+      return null;
+    }
+    const instanceType = key.startsWith(PUBLISHABLE_KEY_LIVE_PREFIX) ? "production" : "development";
+    let frontendApi = isomorphicAtob(key.split("_")[2]);
+    if (!frontendApi.endsWith("$")) {
+      return null;
+    }
+    frontendApi = frontendApi.slice(0, -1);
+    return {
+      instanceType,
+      frontendApi
+    };
+  }
+  function isPublishableKey(key) {
+    key = key || "";
+    const hasValidPrefix = key.startsWith(PUBLISHABLE_KEY_LIVE_PREFIX) || key.startsWith(PUBLISHABLE_KEY_TEST_PREFIX);
+    const hasValidFrontendApiPostfix = isomorphicAtob(key.split("_")[2] || "").endsWith("$");
+    return hasValidPrefix && hasValidFrontendApiPostfix;
+  }
+  function isLegacyFrontendApiKey(key) {
+    key = key || "";
+    return key.startsWith("clerk.");
+  }
+  function createDevOrStagingUrlCache() {
+    const DEV_OR_STAGING_SUFFIXES = [
+      ".lcl.dev",
+      ".stg.dev",
+      ".lclstage.dev",
+      ".stgstage.dev",
+      ".dev.lclclerk.com",
+      ".stg.lclclerk.com",
+      ".accounts.lclclerk.com",
+      "accountsstage.dev",
+      "accounts.dev"
+    ];
+    const devOrStagingUrlCache = /* @__PURE__ */ new Map();
+    return {
+      isDevOrStagingUrl: (url) => {
+        if (!url) {
+          return false;
+        }
+        const hostname = typeof url === "string" ? url : url.hostname;
+        let res = devOrStagingUrlCache.get(hostname);
+        if (res === void 0) {
+          res = DEV_OR_STAGING_SUFFIXES.some((s) => hostname.endsWith(s));
+          devOrStagingUrlCache.set(hostname, res);
+        }
+        return res;
+      }
+    };
+  }
+
+  // node_modules/@clerk/shared/dist/chunk-NDCDZYN6.mjs
+  var __defProp2 = Object.defineProperty;
+  var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
+  var __getOwnPropNames2 = Object.getOwnPropertyNames;
+  var __hasOwnProp2 = Object.prototype.hasOwnProperty;
+  var __export2 = (target, all) => {
+    for (var name in all)
+      __defProp2(target, name, { get: all[name], enumerable: true });
+  };
+  var __copyProps2 = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames2(from))
+        if (!__hasOwnProp2.call(to, key) && key !== except)
+          __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
+    }
+    return to;
+  };
+  var __reExport = (target, mod, secondTarget) => (__copyProps2(target, mod, "default"), secondTarget && __copyProps2(secondTarget, mod, "default"));
+
+  // node_modules/@clerk/clerk-react/dist/esm/contexts/ClerkProvider.js
+  var import_react19 = __toESM(require_react());
+
+  // node_modules/@clerk/shared/dist/chunk-KJVJ4CFF.mjs
+  var isTestEnvironment = () => {
+    try {
+      return false;
+    } catch (err) {
+    }
+    return false;
+  };
+  var isProductionEnvironment = () => {
+    try {
+      return false;
+    } catch (err) {
+    }
+    return false;
+  };
+  var displayedWarnings = /* @__PURE__ */ new Set();
+  var deprecated = (fnName, warning, key) => {
+    const hideWarning = isTestEnvironment() || isProductionEnvironment();
+    const messageId = key ?? fnName;
+    if (displayedWarnings.has(messageId) || hideWarning) {
+      return;
+    }
+    displayedWarnings.add(messageId);
+    console.warn(
+      `Clerk - DEPRECATION WARNING: "${fnName}" is deprecated and will be removed in the next major release.
+${warning}`
+    );
+  };
+
+  // node_modules/@clerk/shared/dist/chunk-5DRMPUGE.mjs
+  var _MagicLinkErrorCode = {
+    Expired: "expired",
+    Failed: "failed"
+  };
+  var MagicLinkErrorCode = new Proxy(_MagicLinkErrorCode, {
+    get(target, prop, receiver) {
+      deprecated("MagicLinkErrorCode", "Use `EmailLinkErrorCode` instead.");
+      return Reflect.get(target, prop, receiver);
+    }
+  });
+  var DefaultMessages = Object.freeze({
+    InvalidFrontendApiErrorMessage: `The frontendApi passed to Clerk is invalid. You can get your Frontend API key at https://dashboard.clerk.com/last-active?path=api-keys. (key={{key}})`,
+    InvalidProxyUrlErrorMessage: `The proxyUrl passed to Clerk is invalid. The expected value for proxyUrl is an absolute URL or a relative path with a leading '/'. (key={{url}})`,
+    InvalidPublishableKeyErrorMessage: `The publishableKey passed to Clerk is invalid. You can get your Publishable key at https://dashboard.clerk.com/last-active?path=api-keys. (key={{key}})`,
+    MissingPublishableKeyErrorMessage: `Missing publishableKey. You can get your key at https://dashboard.clerk.com/last-active?path=api-keys.`
+  });
+  function buildErrorThrower({ packageName, customMessages }) {
+    let pkg = packageName;
+    const messages = {
+      ...DefaultMessages,
+      ...customMessages
+    };
+    function buildMessage(rawMessage, replacements) {
+      if (!replacements) {
+        return `${pkg}: ${rawMessage}`;
+      }
+      let msg = rawMessage;
+      const matches = rawMessage.matchAll(/{{([a-zA-Z0-9-_]+)}}/g);
+      for (const match of matches) {
+        const replacement = (replacements[match[1]] || "").toString();
+        msg = msg.replace(`{{${match[1]}}}`, replacement);
+      }
+      return `${pkg}: ${msg}`;
+    }
+    return {
+      setPackageName({ packageName: packageName2 }) {
+        if (typeof packageName2 === "string") {
+          pkg = packageName2;
+        }
+        return this;
+      },
+      setMessages({ customMessages: customMessages2 }) {
+        Object.assign(messages, customMessages2 || {});
+        return this;
+      },
+      throwInvalidPublishableKeyError(params) {
+        throw new Error(buildMessage(messages.InvalidPublishableKeyErrorMessage, params));
+      },
+      throwInvalidFrontendApiError(params) {
+        throw new Error(buildMessage(messages.InvalidFrontendApiErrorMessage, params));
+      },
+      throwInvalidProxyUrl(params) {
+        throw new Error(buildMessage(messages.InvalidProxyUrlErrorMessage, params));
+      },
+      throwMissingPublishableKeyError() {
+        throw new Error(buildMessage(messages.MissingPublishableKeyErrorMessage));
+      }
+    };
+  }
+
+  // node_modules/@clerk/clerk-react/dist/esm/errors.js
+  var noClerkProviderError = "Clerk: You must wrap your application in a <ClerkProvider> component.";
+  var multipleClerkProvidersError = "Clerk: You've added multiple <ClerkProvider> components in your React component tree. Wrap your components in a single <ClerkProvider>.";
+  var multipleChildrenInButtonComponent = (name) => `Clerk: You've passed multiple children components to <${name}/>. You can only pass a single child component or text.`;
+  var unsupportedNonBrowserDomainOrProxyUrlFunction = "Clerk: Unsupported usage of isSatellite, domain or proxyUrl. The usage of isSatellite, domain or proxyUrl as function is not supported in non-browser environments.";
+
+  // node_modules/@clerk/clerk-react/dist/esm/utils/childrenUtils.js
+  var import_react = __toESM(require_react());
+  var assertSingleChild = (children) => (name) => {
+    try {
+      return import_react.default.Children.only(children);
+    } catch (e) {
+      throw new Error(multipleChildrenInButtonComponent(name));
+    }
+  };
+  var normalizeWithDefaultValue = (children, defaultText) => {
+    if (!children) {
+      children = defaultText;
+    }
+    if (typeof children === "string") {
+      children = /* @__PURE__ */ import_react.default.createElement("button", null, children);
+    }
+    return children;
+  };
+  var safeExecute = (cb) => (...args) => {
+    if (cb && typeof cb === "function") {
+      return cb(...args);
+    }
+  };
+
+  // node_modules/@clerk/clerk-react/dist/esm/utils/errorThrower.js
+  var errorThrower = buildErrorThrower({ packageName: "@clerk/react" });
+  function __internal__setErrorThrowerOptions(options) {
+    errorThrower.setMessages(options).setPackageName(options);
+  }
+
+  // node_modules/@clerk/clerk-react/dist/esm/utils/isConstructor.js
+  function isConstructor(f) {
+    return typeof f === "function";
+  }
+
+  // node_modules/@clerk/shared/dist/chunk-JUQXCWMV.mjs
+  var NO_DOCUMENT_ERROR = "loadScript cannot be called when document does not exist";
+  var NO_SRC_ERROR = "loadScript cannot be called without a src";
+  async function loadScript(src = "", opts) {
+    const { async, defer, beforeLoad, crossOrigin } = opts || {};
+    return new Promise((resolve, reject) => {
+      if (!src) {
+        reject(NO_SRC_ERROR);
+      }
+      if (!document || !document.body) {
+        reject(NO_DOCUMENT_ERROR);
+      }
+      const script = document.createElement("script");
+      crossOrigin && script.setAttribute("crossorigin", crossOrigin);
+      script.async = async || false;
+      script.defer = defer || false;
+      script.addEventListener("load", () => {
+        script.remove();
+        resolve(script);
+      });
+      script.addEventListener("error", () => {
+        script.remove();
+        reject();
+      });
+      script.src = src;
+      beforeLoad?.(script);
+      document.body.appendChild(script);
+    });
+  }
+
+  // node_modules/@clerk/shared/dist/chunk-GVKVD773.mjs
+  function isValidProxyUrl(key) {
+    if (!key) {
+      return true;
+    }
+    return isHttpOrHttps(key) || isProxyUrlRelative(key);
+  }
+  function isHttpOrHttps(key) {
+    return /^http(s)?:\/\//.test(key || "");
+  }
+  function isProxyUrlRelative(key) {
+    return key.startsWith("/");
+  }
+  function proxyUrlToAbsoluteURL(url) {
+    if (!url) {
+      return "";
+    }
+    return isProxyUrlRelative(url) ? new URL(url, window.location.origin).toString() : url;
+  }
+
+  // node_modules/@clerk/shared/dist/chunk-5E5NNJ3O.mjs
+  function addClerkPrefix(str) {
+    if (!str) {
+      return "";
+    }
+    let regex;
+    if (str.match(/^(clerk\.)+\w*$/)) {
+      regex = /(clerk\.)*(?=clerk\.)/;
+    } else if (str.match(/\.clerk.accounts/)) {
+      return str;
+    } else {
+      regex = /^(clerk\.)*/gi;
+    }
+    const stripped = str.replace(regex, "");
+    return `clerk.${stripped}`;
+  }
+
+  // node_modules/@clerk/clerk-react/dist/esm/utils/isDevOrStageUrl.js
+  var { isDevOrStagingUrl } = createDevOrStagingUrlCache();
+
+  // node_modules/@clerk/clerk-react/dist/esm/utils/versionSelector.js
+  var versionSelector = (clerkJSVersion) => {
+    if (clerkJSVersion) {
+      return clerkJSVersion;
+    }
+    const prereleaseTag = getPrereleaseTag("4.30.5");
+    if (prereleaseTag) {
+      if (prereleaseTag === "snapshot") {
+        return "4.70.0";
+      }
+      return prereleaseTag;
+    }
+    return getMajorVersion("4.30.5");
+  };
+  var getPrereleaseTag = (packageVersion) => packageVersion.match(/-(.*)\./)?.[1];
+  var getMajorVersion = (packageVersion) => packageVersion.split(".")[0];
+
+  // node_modules/@clerk/clerk-react/dist/esm/utils/loadClerkJsScript.js
+  var FAILED_TO_LOAD_ERROR = "Clerk: Failed to load Clerk";
+  var loadClerkJsScript = (opts) => {
+    const { frontendApi, publishableKey } = opts;
+    if (!publishableKey && !frontendApi) {
+      errorThrower.throwMissingPublishableKeyError();
+    }
+    return loadScript(clerkJsScriptUrl(opts), {
+      async: true,
+      crossOrigin: "anonymous",
+      beforeLoad: applyClerkJsScriptAttributes(opts)
+    }).catch(() => {
+      throw new Error(FAILED_TO_LOAD_ERROR);
+    });
+  };
+  var clerkJsScriptUrl = (opts) => {
+    const { clerkJSUrl, clerkJSVariant, clerkJSVersion, proxyUrl, domain, publishableKey, frontendApi } = opts;
+    if (clerkJSUrl) {
+      return clerkJSUrl;
+    }
+    let scriptHost = "";
+    if (!!proxyUrl && isValidProxyUrl(proxyUrl)) {
+      scriptHost = proxyUrlToAbsoluteURL(proxyUrl).replace(/http(s)?:\/\//, "");
+    } else if (domain && !isDevOrStagingUrl(parsePublishableKey(publishableKey)?.frontendApi || frontendApi || "")) {
+      scriptHost = addClerkPrefix(domain);
+    } else {
+      scriptHost = parsePublishableKey(publishableKey)?.frontendApi || frontendApi || "";
+    }
+    const variant = clerkJSVariant ? `${clerkJSVariant.replace(/\.+$/, "")}.` : "";
+    const version = versionSelector(clerkJSVersion);
+    return `https://${scriptHost}/npm/@clerk/clerk-js@${version}/dist/clerk.${variant}browser.js`;
+  };
+  var applyClerkJsScriptAttributes = (options) => (script) => {
+    const { publishableKey, frontendApi, proxyUrl, domain } = options;
+    if (publishableKey) {
+      script.setAttribute("data-clerk-publishable-key", publishableKey);
+    } else if (frontendApi) {
+      script.setAttribute("data-clerk-frontend-api", frontendApi);
+    }
+    if (proxyUrl) {
+      script.setAttribute("data-clerk-proxy-url", proxyUrl);
+    }
+    if (domain) {
+      script.setAttribute("data-clerk-domain", domain);
+    }
+  };
+
+  // node_modules/@clerk/clerk-react/dist/esm/utils/useMaxAllowedInstancesGuard.js
+  var import_react2 = __toESM(require_react());
+  var counts = /* @__PURE__ */ new Map();
+  function useMaxAllowedInstancesGuard(name, error, maxCount = 1) {
+    import_react2.default.useEffect(() => {
+      const count = counts.get(name) || 0;
+      if (count == maxCount) {
+        throw new Error(error);
+      }
+      counts.set(name, count + 1);
+      return () => {
+        counts.set(name, (counts.get(name) || 1) - 1);
+      };
+    }, []);
+  }
+  function withMaxAllowedInstancesGuard(WrappedComponent, name, error) {
+    const displayName = WrappedComponent.displayName || WrappedComponent.name || name || "Component";
+    const Hoc = (props) => {
+      useMaxAllowedInstancesGuard(name, error);
+      return /* @__PURE__ */ import_react2.default.createElement(WrappedComponent, { ...props });
+    };
+    Hoc.displayName = `withMaxAllowedInstancesGuard(${displayName})`;
+    return Hoc;
+  }
+
+  // node_modules/@clerk/shared/dist/chunk-TRWMHODU.mjs
+  function handleValueOrFn(value, url, defaultValue) {
+    if (typeof value === "function") {
+      return value(url);
+    }
+    if (typeof value !== "undefined") {
+      return value;
+    }
+    if (typeof defaultValue !== "undefined") {
+      return defaultValue;
+    }
+    return void 0;
+  }
+
+  // node_modules/@clerk/shared/dist/chunk-XKTTPTOL.mjs
+  function inBrowser() {
+    return typeof window !== "undefined";
+  }
+  var botAgents = [
+    "bot",
+    "spider",
+    "crawl",
+    "APIs-Google",
+    "AdsBot",
+    "Googlebot",
+    "mediapartners",
+    "Google Favicon",
+    "FeedFetcher",
+    "Google-Read-Aloud",
+    "DuplexWeb-Google",
+    "googleweblight",
+    "bing",
+    "yandex",
+    "baidu",
+    "duckduck",
+    "yahoo",
+    "ecosia",
+    "ia_archiver",
+    "facebook",
+    "instagram",
+    "pinterest",
+    "reddit",
+    "slack",
+    "twitter",
+    "whatsapp",
+    "youtube",
+    "semrush"
+  ];
+  var botAgentRegex = new RegExp(botAgents.join("|"), "i");
+
+  // node_modules/@clerk/clerk-react/dist/esm/components/withClerk.js
+  var import_react12 = __toESM(require_react());
+
+  // node_modules/@clerk/shared/dist/react/index.mjs
+  var import_react6 = __toESM(require_react(), 1);
+
+  // node_modules/@clerk/shared/node_modules/swr/core/dist/index.mjs
+  var dist_exports = {};
+  __export(dist_exports, {
+    SWRConfig: () => SWRConfig2,
+    default: () => useSWR,
+    mutate: () => mutate,
+    preload: () => preload,
+    unstable_serialize: () => unstable_serialize,
+    useSWRConfig: () => useSWRConfig
+  });
+  var import_react4 = __toESM(require_react(), 1);
   var import_shim = __toESM(require_shim(), 1);
 
-  // node_modules/swr/_internal/dist/index.mjs
-  var import_react = __toESM(require_react(), 1);
+  // node_modules/@clerk/shared/node_modules/swr/_internal/dist/index.mjs
+  var import_react3 = __toESM(require_react(), 1);
   var noop = () => {
   };
   var UNDEFINED = (
@@ -24603,15 +25068,15 @@
   var isWindowDefined = typeof window != STR_UNDEFINED;
   var isDocumentDefined = typeof document != STR_UNDEFINED;
   var hasRequestAnimationFrame = () => isWindowDefined && typeof window["requestAnimationFrame"] != STR_UNDEFINED;
-  var createCacheHelper = (cache2, key) => {
-    const state = SWRGlobalState.get(cache2);
+  var createCacheHelper = (cache3, key) => {
+    const state = SWRGlobalState.get(cache3);
     return [
       // Getter
-      () => !isUndefined(key) && cache2.get(key) || EMPTY_CACHE,
+      () => !isUndefined(key) && cache3.get(key) || EMPTY_CACHE,
       // Setter
       (info) => {
         if (!isUndefined(key)) {
-          const prev = cache2.get(key);
+          const prev = cache3.get(key);
           if (!(key in INITIAL_CACHE)) {
             INITIAL_CACHE[key] = prev;
           }
@@ -24626,7 +25091,7 @@
           if (key in INITIAL_CACHE)
             return INITIAL_CACHE[key];
         }
-        return !isUndefined(key) && cache2.get(key) || EMPTY_CACHE;
+        return !isUndefined(key) && cache3.get(key) || EMPTY_CACHE;
       }
     ];
   };
@@ -24678,10 +25143,10 @@
     initFocus,
     initReconnect
   };
-  var IS_REACT_LEGACY = !import_react.default.useId;
+  var IS_REACT_LEGACY = !import_react3.default.useId;
   var IS_SERVER = !isWindowDefined || "Deno" in window;
   var rAF = (f) => hasRequestAnimationFrame() ? window["requestAnimationFrame"](f) : setTimeout(f, 1);
-  var useIsomorphicLayoutEffect = IS_SERVER ? import_react.useEffect : import_react.useLayoutEffect;
+  var useIsomorphicLayoutEffect = IS_SERVER ? import_react3.useEffect : import_react3.useLayoutEffect;
   var navigatorConnection = typeof navigator !== "undefined" && navigator.connection;
   var slowConnection = !IS_SERVER && navigatorConnection && ([
     "slow-2g",
@@ -24708,7 +25173,7 @@
   var RECONNECT_EVENT = 1;
   var MUTATE_EVENT = 2;
   var ERROR_REVALIDATE_EVENT = 3;
-  var events = {
+  var constants = {
     __proto__: null,
     ERROR_REVALIDATE_EVENT,
     FOCUS_EVENT,
@@ -24716,7 +25181,7 @@
     RECONNECT_EVENT
   };
   async function internalMutate(...args) {
-    const [cache2, _key, _data, _opts] = args;
+    const [cache3, _key, _data, _opts] = args;
     const options = mergeObjects({
       populateCache: true,
       throwOnError: true
@@ -24734,11 +25199,11 @@
     if (isFunction(_key)) {
       const keyFilter = _key;
       const matchedKeys = [];
-      const it = cache2.keys();
+      const it = cache3.keys();
       for (const key of it) {
         if (
           // Skip the special useSWRInfinite and useSWRSubscription keys.
-          !/^\$(inf|sub)\$/.test(key) && keyFilter(cache2.get(key)._k)
+          !/^\$(inf|sub)\$/.test(key) && keyFilter(cache3.get(key)._k)
         ) {
           matchedKeys.push(key);
         }
@@ -24750,10 +25215,10 @@
       const [key] = serialize(_k);
       if (!key)
         return;
-      const [get, set] = createCacheHelper(cache2, key);
-      const [EVENT_REVALIDATORS, MUTATION, FETCH, PRELOAD] = SWRGlobalState.get(cache2);
+      const [get, set] = createCacheHelper(cache3, key);
+      const [EVENT_REVALIDATORS, MUTATION, FETCH, PRELOAD] = SWRGlobalState.get(cache3);
+      const revalidators = EVENT_REVALIDATORS[key];
       const startRevalidate = () => {
-        const revalidators = EVENT_REVALIDATORS[key];
         if (revalidate) {
           delete FETCH[key];
           delete PRELOAD[key];
@@ -24802,8 +25267,9 @@
           return data;
         } else if (error && hasOptimisticData && rollbackOnError(error)) {
           populateCache = true;
+          data = committedData;
           set({
-            data: committedData,
+            data,
             _c: UNDEFINED
           });
         }
@@ -24811,33 +25277,26 @@
       if (populateCache) {
         if (!error) {
           if (isFunction(populateCache)) {
-            const populateCachedData = populateCache(data, committedData);
-            set({
-              data: populateCachedData,
-              error: UNDEFINED,
-              _c: UNDEFINED
-            });
-          } else {
-            set({
-              data,
-              error: UNDEFINED,
-              _c: UNDEFINED
-            });
+            data = populateCache(data, committedData);
           }
+          set({
+            data,
+            error: UNDEFINED,
+            _c: UNDEFINED
+          });
         }
       }
       MUTATION[key][1] = getTimestamp();
-      Promise.resolve(startRevalidate()).then(() => {
-        set({
-          _c: UNDEFINED
-        });
+      const res = await startRevalidate();
+      set({
+        _c: UNDEFINED
       });
       if (error) {
         if (throwOnError)
           throw error;
         return;
       }
-      return data;
+      return populateCache ? res : data;
     }
   }
   var revalidateAllKeys = (revalidators, type) => {
@@ -24850,7 +25309,7 @@
     if (!SWRGlobalState.has(provider)) {
       const opts = mergeObjects(defaultConfigOptions, options);
       const EVENT_REVALIDATORS = {};
-      const mutate2 = internalMutate.bind(UNDEFINED, provider);
+      const mutate3 = internalMutate.bind(UNDEFINED, provider);
       let unmount = noop;
       const subscriptions = {};
       const subscribe = (key, callback) => {
@@ -24875,7 +25334,7 @@
             {},
             {},
             {},
-            mutate2,
+            mutate3,
             setter,
             subscribe
           ]);
@@ -24893,7 +25352,7 @@
       initProvider();
       return [
         provider,
-        mutate2,
+        mutate3,
         initProvider,
         unmount
       ];
@@ -24956,23 +25415,23 @@
     }
     return v;
   };
-  var SWRConfigContext = (0, import_react.createContext)({});
+  var SWRConfigContext = (0, import_react3.createContext)({});
   var SWRConfig = (props) => {
     const { value } = props;
-    const parentConfig = (0, import_react.useContext)(SWRConfigContext);
+    const parentConfig = (0, import_react3.useContext)(SWRConfigContext);
     const isFunctionalConfig = isFunction(value);
-    const config = (0, import_react.useMemo)(() => isFunctionalConfig ? value(parentConfig) : value, [
+    const config = (0, import_react3.useMemo)(() => isFunctionalConfig ? value(parentConfig) : value, [
       isFunctionalConfig,
       parentConfig,
       value
     ]);
-    const extendedConfig = (0, import_react.useMemo)(() => isFunctionalConfig ? config : mergeConfigs(parentConfig, config), [
+    const extendedConfig = (0, import_react3.useMemo)(() => isFunctionalConfig ? config : mergeConfigs(parentConfig, config), [
       isFunctionalConfig,
       parentConfig,
       config
     ]);
     const provider = config && config.provider;
-    const cacheContextRef = (0, import_react.useRef)(UNDEFINED);
+    const cacheContextRef = (0, import_react3.useRef)(UNDEFINED);
     if (provider && !cacheContextRef.current) {
       cacheContextRef.current = initCache(provider(extendedConfig.cache || cache), config);
     }
@@ -24987,16 +25446,15 @@
         return cacheContext[3];
       }
     }, []);
-    return (0, import_react.createElement)(SWRConfigContext.Provider, mergeObjects(props, {
+    return (0, import_react3.createElement)(SWRConfigContext.Provider, mergeObjects(props, {
       value: extendedConfig
     }));
   };
-  var INFINITE_PREFIX = "$inf$";
   var enableDevtools = isWindowDefined && window.__SWR_DEVTOOLS_USE__;
   var use = enableDevtools ? window.__SWR_DEVTOOLS_USE__ : [];
   var setupDevTools = () => {
     if (enableDevtools) {
-      window.__SWR_DEVTOOLS_REACT__ = import_react.default;
+      window.__SWR_DEVTOOLS_REACT__ = import_react3.default;
     }
   };
   var normalize = (args) => {
@@ -25011,15 +25469,21 @@
     ];
   };
   var useSWRConfig = () => {
-    return mergeObjects(defaultConfig, (0, import_react.useContext)(SWRConfigContext));
+    return mergeObjects(defaultConfig, (0, import_react3.useContext)(SWRConfigContext));
+  };
+  var preload = (key_, fetcher2) => {
+    const [key, fnArg] = serialize(key_);
+    const [, , , PRELOAD] = SWRGlobalState.get(cache);
+    if (PRELOAD[key])
+      return PRELOAD[key];
+    const req = fetcher2(fnArg);
+    PRELOAD[key] = req;
+    return req;
   };
   var middleware = (useSWRNext) => (key_, fetcher_, config) => {
     const fetcher2 = fetcher_ && ((...args) => {
       const [key] = serialize(key_);
       const [, , , PRELOAD] = SWRGlobalState.get(cache);
-      if (key.startsWith(INFINITE_PREFIX)) {
-        return fetcher_(...args);
-      }
       const req = PRELOAD[key];
       if (isUndefined(req))
         return fetcher_(...args);
@@ -25035,10 +25499,10 @@
       const [key, fn, _config] = normalize(args);
       const config = mergeConfigs(fallbackConfig, _config);
       let next = hook;
-      const { use: use3 } = config;
-      const middleware2 = (use3 || []).concat(BUILT_IN_MIDDLEWARE);
-      for (let i = middleware2.length; i--; ) {
-        next = middleware2[i](next);
+      const { use: use5 } = config;
+      const middleware3 = (use5 || []).concat(BUILT_IN_MIDDLEWARE);
+      for (let i = middleware3.length; i--; ) {
+        next = middleware3[i](next);
       }
       return next(key, fn || config.fetcher || null, config);
     };
@@ -25054,10 +25518,21 @@
       }
     };
   };
+  var withMiddleware = (useSWR3, middleware3) => {
+    return (...args) => {
+      const [key, fn, config] = normalize(args);
+      const uses = (config.use || []).concat(middleware3);
+      return useSWR3(key, fn, {
+        ...config,
+        use: uses
+      });
+    };
+  };
   setupDevTools();
 
-  // node_modules/swr/core/dist/index.mjs
-  var use2 = import_react2.default.use || ((promise) => {
+  // node_modules/@clerk/shared/node_modules/swr/core/dist/index.mjs
+  var unstable_serialize = (key) => serialize(key)[0];
+  var use2 = import_react4.default.use || ((promise) => {
     if (promise.status === "pending") {
       throw promise;
     } else if (promise.status === "fulfilled") {
@@ -25080,28 +25555,28 @@
     dedupe: true
   };
   var useSWRHandler = (_key, fetcher2, config) => {
-    const { cache: cache2, compare: compare2, suspense, fallbackData, revalidateOnMount, revalidateIfStale, refreshInterval, refreshWhenHidden, refreshWhenOffline, keepPreviousData } = config;
-    const [EVENT_REVALIDATORS, MUTATION, FETCH, PRELOAD] = SWRGlobalState.get(cache2);
+    const { cache: cache3, compare: compare3, suspense, fallbackData, revalidateOnMount, revalidateIfStale, refreshInterval, refreshWhenHidden, refreshWhenOffline, keepPreviousData } = config;
+    const [EVENT_REVALIDATORS, MUTATION, FETCH, PRELOAD] = SWRGlobalState.get(cache3);
     const [key, fnArg] = serialize(_key);
-    const initialMountedRef = (0, import_react2.useRef)(false);
-    const unmountedRef = (0, import_react2.useRef)(false);
-    const keyRef = (0, import_react2.useRef)(key);
-    const fetcherRef = (0, import_react2.useRef)(fetcher2);
-    const configRef = (0, import_react2.useRef)(config);
+    const initialMountedRef = (0, import_react4.useRef)(false);
+    const unmountedRef = (0, import_react4.useRef)(false);
+    const keyRef = (0, import_react4.useRef)(key);
+    const fetcherRef = (0, import_react4.useRef)(fetcher2);
+    const configRef = (0, import_react4.useRef)(config);
     const getConfig = () => configRef.current;
     const isActive = () => getConfig().isVisible() && getConfig().isOnline();
-    const [getCache, setCache, subscribeCache, getInitialCache] = createCacheHelper(cache2, key);
-    const stateDependencies = (0, import_react2.useRef)({}).current;
+    const [getCache, setCache, subscribeCache, getInitialCache] = createCacheHelper(cache3, key);
+    const stateDependencies = (0, import_react4.useRef)({}).current;
     const fallback = isUndefined(fallbackData) ? config.fallback[key] : fallbackData;
     const isEqual = (prev, current) => {
       for (const _ in stateDependencies) {
         const t = _;
         if (t === "data") {
-          if (!compare2(prev[t], current[t])) {
+          if (!compare3(prev[t], current[t])) {
             if (!isUndefined(prev[t])) {
               return false;
             }
-            if (!compare2(returnedData, current[t])) {
+            if (!compare3(returnedData, current[t])) {
               return false;
             }
           }
@@ -25113,7 +25588,7 @@
       }
       return true;
     };
-    const getSnapshot = (0, import_react2.useMemo)(() => {
+    const getSnapshot = (0, import_react4.useMemo)(() => {
       const shouldStartRequest = (() => {
         if (!key)
           return false;
@@ -25164,17 +25639,17 @@
         () => serverSnapshot
       ];
     }, [
-      cache2,
+      cache3,
       key
     ]);
-    const cached = (0, import_shim.useSyncExternalStore)((0, import_react2.useCallback)(
+    const cached = (0, import_shim.useSyncExternalStore)((0, import_react4.useCallback)(
       (callback) => subscribeCache(key, (current, prev) => {
         if (!isEqual(prev, current))
           callback();
       }),
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [
-        cache2,
+        cache3,
         key
       ]
     ), getSnapshot[0], getSnapshot[1]);
@@ -25183,7 +25658,7 @@
     const cachedData = cached.data;
     const data = isUndefined(cachedData) ? fallback : cachedData;
     const error = cached.error;
-    const laggyDataRef = (0, import_react2.useRef)(data);
+    const laggyDataRef = (0, import_react4.useRef)(data);
     const returnedData = keepPreviousData ? isUndefined(cachedData) ? laggyDataRef.current : cachedData : data;
     const shouldDoInitialRevalidation = (() => {
       if (hasRevalidator && !isUndefined(error))
@@ -25199,7 +25674,7 @@
     const defaultValidatingState = !!(key && fetcher2 && isInitialMount && shouldDoInitialRevalidation);
     const isValidating = isUndefined(cached.isValidating) ? defaultValidatingState : cached.isValidating;
     const isLoading = isUndefined(cached.isLoading) ? defaultValidatingState : cached.isLoading;
-    const revalidate = (0, import_react2.useCallback)(
+    const revalidate = (0, import_react4.useCallback)(
       async (revalidateOpts) => {
         const currentFetcher = fetcherRef.current;
         if (!key || !currentFetcher || unmountedRef.current || getConfig().isPaused()) {
@@ -25278,7 +25753,7 @@
             return false;
           }
           const cacheData = getCache().data;
-          finalState.data = compare2(cacheData, newData) ? cacheData : newData;
+          finalState.data = compare3(cacheData, newData) ? cacheData : newData;
           if (shouldStartNewRequest) {
             if (callbackSafeguard()) {
               getConfig().onSuccess(newData, key, config);
@@ -25297,7 +25772,7 @@
                   currentConfig.onErrorRetry(err, key, currentConfig, (_opts) => {
                     const revalidators = EVENT_REVALIDATORS[key];
                     if (revalidators && revalidators[0]) {
-                      revalidators[0](events.ERROR_REVALIDATE_EVENT, _opts);
+                      revalidators[0](constants.ERROR_REVALIDATE_EVENT, _opts);
                     }
                   }, {
                     retryCount: (opts.retryCount || 0) + 1,
@@ -25325,13 +25800,13 @@
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [
         key,
-        cache2
+        cache3
       ]
     );
-    const boundMutate = (0, import_react2.useCallback)(
+    const boundMutate = (0, import_react4.useCallback)(
       // Use callback to make sure `keyRef.current` returns latest result every time
       (...args) => {
-        return internalMutate(cache2, keyRef.current, ...args);
+        return internalMutate(cache3, keyRef.current, ...args);
       },
       // eslint-disable-next-line react-hooks/exhaustive-deps
       []
@@ -25349,19 +25824,19 @@
       const softRevalidate = revalidate.bind(UNDEFINED, WITH_DEDUPE);
       let nextFocusRevalidatedAt = 0;
       const onRevalidate = (type, opts = {}) => {
-        if (type == events.FOCUS_EVENT) {
+        if (type == constants.FOCUS_EVENT) {
           const now = Date.now();
           if (getConfig().revalidateOnFocus && now > nextFocusRevalidatedAt && isActive()) {
             nextFocusRevalidatedAt = now + getConfig().focusThrottleInterval;
             softRevalidate();
           }
-        } else if (type == events.RECONNECT_EVENT) {
+        } else if (type == constants.RECONNECT_EVENT) {
           if (getConfig().revalidateOnReconnect && isActive()) {
             softRevalidate();
           }
-        } else if (type == events.MUTATE_EVENT) {
+        } else if (type == constants.MUTATE_EVENT) {
           return revalidate();
-        } else if (type == events.ERROR_REVALIDATE_EVENT) {
+        } else if (type == constants.ERROR_REVALIDATE_EVENT) {
           return revalidate(opts);
         }
         return;
@@ -25415,7 +25890,7 @@
       refreshWhenOffline,
       key
     ]);
-    (0, import_react2.useDebugValue)(returnedData);
+    (0, import_react4.useDebugValue)(returnedData);
     if (suspense && isUndefined(data) && key) {
       if (!IS_REACT_LEGACY && IS_SERVER) {
         throw new Error("Fallback data is required when using suspense in SSR.");
@@ -25464,6 +25939,2197 @@
   });
   var useSWR = withArgs(useSWRHandler);
 
+  // node_modules/@clerk/shared/node_modules/swr/infinite/dist/index.mjs
+  var import_react5 = __toESM(require_react(), 1);
+  var import_shim2 = __toESM(require_shim(), 1);
+  var INFINITE_PREFIX = "$inf$";
+  var getFirstPageKey = (getKey) => {
+    return serialize(getKey ? getKey(0, null) : null)[0];
+  };
+  var EMPTY_PROMISE = Promise.resolve();
+  var infinite = (useSWRNext) => (getKey, fn, config) => {
+    const didMountRef = (0, import_react5.useRef)(false);
+    const { cache: cache3, initialSize = 1, revalidateAll = false, persistSize = false, revalidateFirstPage = true, revalidateOnMount = false, parallel = false } = config;
+    let infiniteKey;
+    try {
+      infiniteKey = getFirstPageKey(getKey);
+      if (infiniteKey)
+        infiniteKey = INFINITE_PREFIX + infiniteKey;
+    } catch (err) {
+    }
+    const [get, set, subscribeCache] = createCacheHelper(cache3, infiniteKey);
+    const getSnapshot = (0, import_react5.useCallback)(() => {
+      const size = isUndefined(get()._l) ? initialSize : get()._l;
+      return size;
+    }, [
+      cache3,
+      infiniteKey,
+      initialSize
+    ]);
+    (0, import_shim2.useSyncExternalStore)((0, import_react5.useCallback)(
+      (callback) => {
+        if (infiniteKey)
+          return subscribeCache(infiniteKey, () => {
+            callback();
+          });
+        return () => {
+        };
+      },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [
+        cache3,
+        infiniteKey
+      ]
+    ), getSnapshot, getSnapshot);
+    const resolvePageSize = (0, import_react5.useCallback)(() => {
+      const cachedPageSize = get()._l;
+      return isUndefined(cachedPageSize) ? initialSize : cachedPageSize;
+    }, [
+      infiniteKey,
+      initialSize
+    ]);
+    const lastPageSizeRef = (0, import_react5.useRef)(resolvePageSize());
+    useIsomorphicLayoutEffect(() => {
+      if (!didMountRef.current) {
+        didMountRef.current = true;
+        return;
+      }
+      if (infiniteKey) {
+        set({
+          _l: persistSize ? lastPageSizeRef.current : resolvePageSize()
+        });
+      }
+    }, [
+      infiniteKey,
+      cache3
+    ]);
+    const shouldRevalidateOnMount = revalidateOnMount && !didMountRef.current;
+    const swr = useSWRNext(infiniteKey, async (key) => {
+      const forceRevalidateAll = get()._i;
+      const data = [];
+      const pageSize = resolvePageSize();
+      const [getCache] = createCacheHelper(cache3, key);
+      const cacheData = getCache().data;
+      const revalidators = [];
+      let previousPageData = null;
+      for (let i = 0; i < pageSize; ++i) {
+        const [pageKey, pageArg] = serialize(getKey(i, parallel ? null : previousPageData));
+        if (!pageKey) {
+          break;
+        }
+        const [getSWRCache, setSWRCache] = createCacheHelper(cache3, pageKey);
+        let pageData = getSWRCache().data;
+        const shouldFetchPage = revalidateAll || forceRevalidateAll || isUndefined(pageData) || revalidateFirstPage && !i && !isUndefined(cacheData) || shouldRevalidateOnMount || cacheData && !isUndefined(cacheData[i]) && !config.compare(cacheData[i], pageData);
+        if (fn && shouldFetchPage) {
+          const revalidate = async () => {
+            pageData = await fn(pageArg);
+            setSWRCache({
+              data: pageData,
+              _k: pageArg
+            });
+            data[i] = pageData;
+          };
+          if (parallel) {
+            revalidators.push(revalidate);
+          } else {
+            await revalidate();
+          }
+        } else {
+          data[i] = pageData;
+        }
+        if (!parallel) {
+          previousPageData = pageData;
+        }
+      }
+      if (parallel) {
+        await Promise.all(revalidators.map((r) => r()));
+      }
+      set({
+        _i: UNDEFINED
+      });
+      return data;
+    }, config);
+    const mutate3 = (0, import_react5.useCallback)(
+      // eslint-disable-next-line func-names
+      function(data, opts) {
+        const options = typeof opts === "boolean" ? {
+          revalidate: opts
+        } : opts || {};
+        const shouldRevalidate = options.revalidate !== false;
+        if (!infiniteKey)
+          return EMPTY_PROMISE;
+        if (shouldRevalidate) {
+          if (!isUndefined(data)) {
+            set({
+              _i: false
+            });
+          } else {
+            set({
+              _i: true
+            });
+          }
+        }
+        return arguments.length ? swr.mutate(data, {
+          ...options,
+          revalidate: shouldRevalidate
+        }) : swr.mutate();
+      },
+      // swr.mutate is always the same reference
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [
+        infiniteKey,
+        cache3
+      ]
+    );
+    const setSize = (0, import_react5.useCallback)(
+      (arg) => {
+        if (!infiniteKey)
+          return EMPTY_PROMISE;
+        const [, changeSize] = createCacheHelper(cache3, infiniteKey);
+        let size;
+        if (isFunction(arg)) {
+          size = arg(resolvePageSize());
+        } else if (typeof arg == "number") {
+          size = arg;
+        }
+        if (typeof size != "number")
+          return EMPTY_PROMISE;
+        changeSize({
+          _l: size
+        });
+        lastPageSizeRef.current = size;
+        const data = [];
+        const [getInfiniteCache] = createCacheHelper(cache3, infiniteKey);
+        let previousPageData = null;
+        for (let i = 0; i < size; ++i) {
+          const [pageKey] = serialize(getKey(i, previousPageData));
+          const [getCache] = createCacheHelper(cache3, pageKey);
+          const pageData = pageKey ? getCache().data : UNDEFINED;
+          if (isUndefined(pageData)) {
+            return mutate3(getInfiniteCache().data);
+          }
+          data.push(pageData);
+          previousPageData = pageData;
+        }
+        return mutate3(data);
+      },
+      // exclude getKey from the dependencies, which isn't allowed to change during the lifecycle
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [
+        infiniteKey,
+        cache3,
+        mutate3,
+        resolvePageSize
+      ]
+    );
+    return {
+      size: resolvePageSize(),
+      setSize,
+      mutate: mutate3,
+      get data() {
+        return swr.data;
+      },
+      get error() {
+        return swr.error;
+      },
+      get isValidating() {
+        return swr.isValidating;
+      },
+      get isLoading() {
+        return swr.isLoading;
+      }
+    };
+  };
+  var useSWRInfinite = withMiddleware(useSWR, infinite);
+
+  // node_modules/@clerk/shared/dist/react/index.mjs
+  var import_react7 = __toESM(require_react(), 1);
+  var import_react8 = __toESM(require_react(), 1);
+  var import_react9 = __toESM(require_react(), 1);
+  function assertContextExists(contextVal, msgOrCtx) {
+    if (!contextVal) {
+      throw typeof msgOrCtx === "string" ? new Error(msgOrCtx) : new Error(`${msgOrCtx.displayName} not found`);
+    }
+  }
+  var createContextAndHook = (displayName, options) => {
+    const { assertCtxFn = assertContextExists } = options || {};
+    const Ctx = import_react6.default.createContext(void 0);
+    Ctx.displayName = displayName;
+    const useCtx = () => {
+      const ctx = import_react6.default.useContext(Ctx);
+      assertCtxFn(ctx, `${displayName} not found`);
+      return ctx.value;
+    };
+    const useCtxWithoutGuarantee = () => {
+      const ctx = import_react6.default.useContext(Ctx);
+      return ctx ? ctx.value : {};
+    };
+    return [Ctx, useCtx, useCtxWithoutGuarantee];
+  };
+  var clerk_swr_exports = {};
+  __export2(clerk_swr_exports, {
+    SWRConfig: () => SWRConfig2,
+    useSWR: () => useSWR,
+    useSWRInfinite: () => useSWRInfinite
+  });
+  __reExport(clerk_swr_exports, dist_exports);
+  var [ClerkInstanceContext, useClerkInstanceContext] = createContextAndHook("ClerkInstanceContext");
+  var [UserContext, useUserContext] = createContextAndHook("UserContext");
+  var [ClientContext, useClientContext] = createContextAndHook("ClientContext");
+  var [SessionContext, useSessionContext] = createContextAndHook(
+    "SessionContext"
+  );
+  var [OrganizationContextInternal, useOrganizationContext] = createContextAndHook("OrganizationContext");
+  var OrganizationProvider = ({
+    children,
+    organization,
+    lastOrganizationMember,
+    lastOrganizationInvitation,
+    swrConfig
+  }) => {
+    return /* @__PURE__ */ import_react7.default.createElement(SWRConfig2, { value: swrConfig }, /* @__PURE__ */ import_react7.default.createElement(
+      OrganizationContextInternal.Provider,
+      {
+        value: {
+          value: {
+            organization,
+            lastOrganizationMember,
+            lastOrganizationInvitation
+          }
+        }
+      },
+      children
+    ));
+  };
+  var useSafeLayoutEffect = typeof window !== "undefined" ? import_react9.default.useLayoutEffect : import_react9.default.useEffect;
+
+  // node_modules/@clerk/clerk-react/dist/esm/contexts/IsomorphicClerkContext.js
+  var [IsomorphicClerkContext, useIsomorphicClerkContext] = [ClerkInstanceContext, useClerkInstanceContext];
+
+  // node_modules/@clerk/clerk-react/dist/esm/contexts/StructureContext.js
+  var import_react11 = __toESM(require_react());
+
+  // node_modules/@clerk/clerk-react/dist/esm/contexts/assertHelpers.js
+  function assertWrappedByClerkProvider(contextVal) {
+    if (!contextVal) {
+      throw new Error(noClerkProviderError);
+    }
+  }
+
+  // node_modules/@clerk/clerk-react/dist/esm/contexts/StructureContext.js
+  var StructureContextStates = Object.freeze({
+    noGuarantees: Object.freeze({
+      guaranteedLoaded: false
+    }),
+    guaranteedLoaded: Object.freeze({
+      guaranteedLoaded: true
+    })
+  });
+  var StructureContext = import_react11.default.createContext(void 0);
+  StructureContext.displayName = "StructureContext";
+  var useStructureContext = () => {
+    const structureCtx = import_react11.default.useContext(StructureContext);
+    assertWrappedByClerkProvider(structureCtx);
+    return structureCtx;
+  };
+  var LoadedGuarantee = ({ children }) => {
+    const structure = useStructureContext();
+    if (structure.guaranteedLoaded) {
+      return /* @__PURE__ */ import_react11.default.createElement(import_react11.default.Fragment, null, children);
+    }
+    return /* @__PURE__ */ import_react11.default.createElement(StructureContext.Provider, { value: StructureContextStates.guaranteedLoaded }, children);
+  };
+
+  // node_modules/@clerk/clerk-react/dist/esm/components/withClerk.js
+  var withClerk = (Component, displayName) => {
+    displayName = displayName || Component.displayName || Component.name || "Component";
+    Component.displayName = displayName;
+    const HOC = (props) => {
+      const clerk = useIsomorphicClerkContext();
+      if (!clerk.loaded) {
+        return null;
+      }
+      return /* @__PURE__ */ import_react12.default.createElement(LoadedGuarantee, null, /* @__PURE__ */ import_react12.default.createElement(
+        Component,
+        {
+          ...props,
+          clerk
+        }
+      ));
+    };
+    HOC.displayName = `withClerk(${displayName})`;
+    return HOC;
+  };
+
+  // node_modules/@clerk/clerk-react/dist/esm/contexts/ClerkContextProvider.js
+  var import_react18 = __toESM(require_react());
+
+  // node_modules/@clerk/clerk-react/dist/esm/isomorphicClerk.js
+  var _loaded;
+  var _domain;
+  var _proxyUrl;
+  var _frontendApi;
+  var _publishableKey;
+  var _instance;
+  var _IsomorphicClerk = class _IsomorphicClerk2 {
+    constructor(options) {
+      this.clerkjs = null;
+      this.preopenSignIn = null;
+      this.preopenSignUp = null;
+      this.preopenUserProfile = null;
+      this.preopenOrganizationProfile = null;
+      this.preopenCreateOrganization = null;
+      this.premountSignInNodes = /* @__PURE__ */ new Map();
+      this.premountSignUpNodes = /* @__PURE__ */ new Map();
+      this.premountUserProfileNodes = /* @__PURE__ */ new Map();
+      this.premountUserButtonNodes = /* @__PURE__ */ new Map();
+      this.premountOrganizationProfileNodes = /* @__PURE__ */ new Map();
+      this.premountCreateOrganizationNodes = /* @__PURE__ */ new Map();
+      this.premountOrganizationSwitcherNodes = /* @__PURE__ */ new Map();
+      this.premountOrganizationListNodes = /* @__PURE__ */ new Map();
+      this.premountMethodCalls = /* @__PURE__ */ new Map();
+      this.loadedListeners = [];
+      __privateAdd(this, _loaded, false);
+      __privateAdd(this, _domain, void 0);
+      __privateAdd(this, _proxyUrl, void 0);
+      __privateAdd(this, _frontendApi, void 0);
+      __privateAdd(this, _publishableKey, void 0);
+      this.isReady = () => Boolean(this.clerkjs?.isReady());
+      this.buildSignInUrl = (opts) => {
+        const callback = () => this.clerkjs?.buildSignInUrl(opts) || "";
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("buildSignInUrl", callback);
+        }
+      };
+      this.buildSignUpUrl = (opts) => {
+        const callback = () => this.clerkjs?.buildSignUpUrl(opts) || "";
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("buildSignUpUrl", callback);
+        }
+      };
+      this.buildUserProfileUrl = () => {
+        const callback = () => this.clerkjs?.buildUserProfileUrl() || "";
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("buildUserProfileUrl", callback);
+        }
+      };
+      this.buildCreateOrganizationUrl = () => {
+        const callback = () => this.clerkjs?.buildCreateOrganizationUrl() || "";
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("buildCreateOrganizationUrl", callback);
+        }
+      };
+      this.buildOrganizationProfileUrl = () => {
+        const callback = () => this.clerkjs?.buildOrganizationProfileUrl() || "";
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("buildOrganizationProfileUrl", callback);
+        }
+      };
+      this.buildHomeUrl = () => {
+        const callback = () => this.clerkjs?.buildHomeUrl() || "";
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("buildHomeUrl", callback);
+        }
+      };
+      this.buildUrlWithAuth = (to, opts) => {
+        const callback = () => this.clerkjs?.buildUrlWithAuth(to, opts) || "";
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("buildUrlWithAuth", callback);
+        }
+      };
+      this.handleUnauthenticated = () => {
+        const callback = () => this.clerkjs?.handleUnauthenticated();
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          void callback();
+        } else {
+          this.premountMethodCalls.set("handleUnauthenticated", callback);
+        }
+      };
+      this.addOnLoaded = (cb) => {
+        this.loadedListeners.push(cb);
+        if (this.loaded) {
+          this.emitLoaded();
+        }
+      };
+      this.emitLoaded = () => {
+        this.loadedListeners.forEach((cb) => cb());
+        this.loadedListeners = [];
+      };
+      this.hydrateClerkJS = (clerkjs) => {
+        if (!clerkjs) {
+          throw new Error("Failed to hydrate latest Clerk JS");
+        }
+        this.clerkjs = clerkjs;
+        this.premountMethodCalls.forEach((cb) => cb());
+        if (this.preopenSignIn !== null) {
+          clerkjs.openSignIn(this.preopenSignIn);
+        }
+        if (this.preopenSignUp !== null) {
+          clerkjs.openSignUp(this.preopenSignUp);
+        }
+        if (this.preopenUserProfile !== null) {
+          clerkjs.openUserProfile(this.preopenUserProfile);
+        }
+        if (this.preopenOrganizationProfile !== null) {
+          clerkjs.openOrganizationProfile(this.preopenOrganizationProfile);
+        }
+        if (this.preopenCreateOrganization !== null) {
+          clerkjs.openCreateOrganization(this.preopenCreateOrganization);
+        }
+        this.premountSignInNodes.forEach((props, node) => {
+          clerkjs.mountSignIn(node, props);
+        });
+        this.premountSignUpNodes.forEach((props, node) => {
+          clerkjs.mountSignUp(node, props);
+        });
+        this.premountUserProfileNodes.forEach((props, node) => {
+          clerkjs.mountUserProfile(node, props);
+        });
+        this.premountUserButtonNodes.forEach((props, node) => {
+          clerkjs.mountUserButton(node, props);
+        });
+        this.premountOrganizationListNodes.forEach((props, node) => {
+          clerkjs.mountOrganizationList(node, props);
+        });
+        __privateSet(this, _loaded, true);
+        this.emitLoaded();
+        return this.clerkjs;
+      };
+      this.__unstable__updateProps = (props) => {
+        if (this.clerkjs && "__unstable__updateProps" in this.clerkjs) {
+          this.clerkjs.__unstable__updateProps(props);
+        } else {
+          return void 0;
+        }
+      };
+      this.setActive = ({ session, organization, beforeEmit }) => {
+        if (this.clerkjs) {
+          return this.clerkjs.setActive({ session, organization, beforeEmit });
+        } else {
+          return Promise.reject();
+        }
+      };
+      this.setSession = (session, beforeEmit) => {
+        deprecated("setSession", "Use `Clerk.setActive` instead");
+        return this.setActive({ session, beforeEmit });
+      };
+      this.openSignIn = (props) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.openSignIn(props);
+        } else {
+          this.preopenSignIn = props;
+        }
+      };
+      this.closeSignIn = () => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.closeSignIn();
+        } else {
+          this.preopenSignIn = null;
+        }
+      };
+      this.openUserProfile = (props) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.openUserProfile(props);
+        } else {
+          this.preopenUserProfile = props;
+        }
+      };
+      this.closeUserProfile = () => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.closeUserProfile();
+        } else {
+          this.preopenUserProfile = null;
+        }
+      };
+      this.openOrganizationProfile = (props) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.openOrganizationProfile(props);
+        } else {
+          this.preopenOrganizationProfile = props;
+        }
+      };
+      this.closeOrganizationProfile = () => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.closeOrganizationProfile();
+        } else {
+          this.preopenOrganizationProfile = null;
+        }
+      };
+      this.openCreateOrganization = (props) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.openCreateOrganization(props);
+        } else {
+          this.preopenCreateOrganization = props;
+        }
+      };
+      this.closeCreateOrganization = () => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.closeCreateOrganization();
+        } else {
+          this.preopenCreateOrganization = null;
+        }
+      };
+      this.openSignUp = (props) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.openSignUp(props);
+        } else {
+          this.preopenSignUp = props;
+        }
+      };
+      this.closeSignUp = () => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.closeSignUp();
+        } else {
+          this.preopenSignUp = null;
+        }
+      };
+      this.mountSignIn = (node, props) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.mountSignIn(node, props);
+        } else {
+          this.premountSignInNodes.set(node, props);
+        }
+      };
+      this.unmountSignIn = (node) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.unmountSignIn(node);
+        } else {
+          this.premountSignInNodes.delete(node);
+        }
+      };
+      this.mountSignUp = (node, props) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.mountSignUp(node, props);
+        } else {
+          this.premountSignUpNodes.set(node, props);
+        }
+      };
+      this.unmountSignUp = (node) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.unmountSignUp(node);
+        } else {
+          this.premountSignUpNodes.delete(node);
+        }
+      };
+      this.mountUserProfile = (node, props) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.mountUserProfile(node, props);
+        } else {
+          this.premountUserProfileNodes.set(node, props);
+        }
+      };
+      this.unmountUserProfile = (node) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.unmountUserProfile(node);
+        } else {
+          this.premountUserProfileNodes.delete(node);
+        }
+      };
+      this.mountOrganizationProfile = (node, props) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.mountOrganizationProfile(node, props);
+        } else {
+          this.premountOrganizationProfileNodes.set(node, props);
+        }
+      };
+      this.unmountOrganizationProfile = (node) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.unmountOrganizationProfile(node);
+        } else {
+          this.premountOrganizationProfileNodes.delete(node);
+        }
+      };
+      this.mountCreateOrganization = (node, props) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.mountCreateOrganization(node, props);
+        } else {
+          this.premountCreateOrganizationNodes.set(node, props);
+        }
+      };
+      this.unmountCreateOrganization = (node) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.unmountCreateOrganization(node);
+        } else {
+          this.premountCreateOrganizationNodes.delete(node);
+        }
+      };
+      this.mountOrganizationSwitcher = (node, props) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.mountOrganizationSwitcher(node, props);
+        } else {
+          this.premountOrganizationSwitcherNodes.set(node, props);
+        }
+      };
+      this.unmountOrganizationSwitcher = (node) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.unmountOrganizationSwitcher(node);
+        } else {
+          this.premountOrganizationSwitcherNodes.delete(node);
+        }
+      };
+      this.mountOrganizationList = (node, props) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.mountOrganizationList(node, props);
+        } else {
+          this.premountOrganizationListNodes.set(node, props);
+        }
+      };
+      this.unmountOrganizationList = (node) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.unmountOrganizationList(node);
+        } else {
+          this.premountOrganizationListNodes.delete(node);
+        }
+      };
+      this.mountUserButton = (node, userButtonProps) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.mountUserButton(node, userButtonProps);
+        } else {
+          this.premountUserButtonNodes.set(node, userButtonProps);
+        }
+      };
+      this.unmountUserButton = (node) => {
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          this.clerkjs.unmountUserButton(node);
+        } else {
+          this.premountUserButtonNodes.delete(node);
+        }
+      };
+      this.addListener = (listener) => {
+        const callback = () => this.clerkjs?.addListener(listener);
+        if (this.clerkjs) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("addListener", callback);
+          return () => this.premountMethodCalls.delete("addListener");
+        }
+      };
+      this.navigate = (to) => {
+        const callback = () => this.clerkjs?.navigate(to);
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          void callback();
+        } else {
+          this.premountMethodCalls.set("navigate", callback);
+        }
+      };
+      this.redirectWithAuth = (...args) => {
+        const callback = () => this.clerkjs?.redirectWithAuth(...args);
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          void callback();
+        } else {
+          this.premountMethodCalls.set("redirectWithAuth", callback);
+        }
+      };
+      this.redirectToSignIn = (opts) => {
+        const callback = () => this.clerkjs?.redirectToSignIn(opts);
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          void callback();
+        } else {
+          this.premountMethodCalls.set("redirectToSignIn", callback);
+        }
+      };
+      this.redirectToSignUp = (opts) => {
+        const callback = () => this.clerkjs?.redirectToSignUp(opts);
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          void callback();
+        } else {
+          this.premountMethodCalls.set("redirectToSignUp", callback);
+        }
+      };
+      this.redirectToUserProfile = () => {
+        const callback = () => this.clerkjs?.redirectToUserProfile();
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          callback();
+        } else {
+          this.premountMethodCalls.set("redirectToUserProfile", callback);
+        }
+      };
+      this.redirectToHome = () => {
+        const callback = () => this.clerkjs?.redirectToHome();
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          callback();
+        } else {
+          this.premountMethodCalls.set("redirectToHome", callback);
+        }
+      };
+      this.redirectToOrganizationProfile = () => {
+        const callback = () => this.clerkjs?.redirectToOrganizationProfile();
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          callback();
+        } else {
+          this.premountMethodCalls.set("redirectToOrganizationProfile", callback);
+        }
+      };
+      this.redirectToCreateOrganization = () => {
+        const callback = () => this.clerkjs?.redirectToCreateOrganization();
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          callback();
+        } else {
+          this.premountMethodCalls.set("redirectToCreateOrganization", callback);
+        }
+      };
+      this.handleRedirectCallback = (params) => {
+        const callback = () => this.clerkjs?.handleRedirectCallback(params);
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          void callback()?.catch(() => {
+          });
+        } else {
+          this.premountMethodCalls.set("handleRedirectCallback", callback);
+        }
+      };
+      this.handleMagicLinkVerification = async (params) => {
+        deprecated("handleMagicLinkVerification", "Use `handleEmailLinkVerification` instead.");
+        const callback = () => this.clerkjs?.handleMagicLinkVerification(params);
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("handleMagicLinkVerification", callback);
+        }
+      };
+      this.handleEmailLinkVerification = async (params) => {
+        const callback = () => this.clerkjs?.handleEmailLinkVerification(params);
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("handleEmailLinkVerification", callback);
+        }
+      };
+      this.authenticateWithMetamask = async (params) => {
+        const callback = () => this.clerkjs?.authenticateWithMetamask(params);
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("authenticateWithMetamask", callback);
+        }
+      };
+      this.createOrganization = async (params) => {
+        const callback = () => this.clerkjs?.createOrganization(params);
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("createOrganization", callback);
+        }
+      };
+      this.getOrganizationMemberships = async () => {
+        const callback = () => this.clerkjs?.getOrganizationMemberships();
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("getOrganizationMemberships", callback);
+        }
+      };
+      this.getOrganization = async (organizationId) => {
+        const callback = () => this.clerkjs?.getOrganization(organizationId);
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("getOrganization", callback);
+        }
+      };
+      this.signOut = async (signOutCallbackOrOptions, options2) => {
+        const callback = () => this.clerkjs?.signOut(signOutCallbackOrOptions, options2);
+        if (this.clerkjs && __privateGet(this, _loaded)) {
+          return callback();
+        } else {
+          this.premountMethodCalls.set("signOut", callback);
+        }
+      };
+      const { Clerk = null, frontendApi, publishableKey } = options || {};
+      __privateSet(this, _frontendApi, frontendApi);
+      __privateSet(this, _publishableKey, publishableKey);
+      __privateSet(this, _proxyUrl, options?.proxyUrl);
+      __privateSet(this, _domain, options?.domain);
+      this.options = options;
+      this.Clerk = Clerk;
+      this.mode = inBrowser() ? "browser" : "server";
+      void this.loadClerkJS();
+    }
+    get publishableKey() {
+      return __privateGet(this, _publishableKey);
+    }
+    get loaded() {
+      return __privateGet(this, _loaded);
+    }
+    static getOrCreateInstance(options) {
+      if (!inBrowser() || !__privateGet(this, _instance) || options.Clerk && __privateGet(this, _instance).Clerk !== options.Clerk) {
+        __privateSet(this, _instance, new _IsomorphicClerk2(options));
+      }
+      return __privateGet(this, _instance);
+    }
+    static clearInstance() {
+      __privateSet(this, _instance, null);
+    }
+    get domain() {
+      if (typeof window !== "undefined" && window.location) {
+        return handleValueOrFn(__privateGet(this, _domain), new URL(window.location.href), "");
+      }
+      if (typeof __privateGet(this, _domain) === "function") {
+        throw new Error(unsupportedNonBrowserDomainOrProxyUrlFunction);
+      }
+      return __privateGet(this, _domain) || "";
+    }
+    get proxyUrl() {
+      if (typeof window !== "undefined" && window.location) {
+        return handleValueOrFn(__privateGet(this, _proxyUrl), new URL(window.location.href), "");
+      }
+      if (typeof __privateGet(this, _proxyUrl) === "function") {
+        throw new Error(unsupportedNonBrowserDomainOrProxyUrlFunction);
+      }
+      return __privateGet(this, _proxyUrl) || "";
+    }
+    get sdkMetadata() {
+      return this.clerkjs?.sdkMetadata || this.options.sdkMetadata || void 0;
+    }
+    get instanceType() {
+      return this.clerkjs?.instanceType;
+    }
+    get frontendApi() {
+      return this.clerkjs?.frontendApi || __privateGet(this, _frontendApi) || "";
+    }
+    get isStandardBrowser() {
+      return this.clerkjs?.isStandardBrowser || this.options.standardBrowser || false;
+    }
+    get isSatellite() {
+      if (typeof window !== "undefined" && window.location) {
+        return handleValueOrFn(this.options.isSatellite, new URL(window.location.href), false);
+      }
+      if (typeof this.options.isSatellite === "function") {
+        throw new Error(unsupportedNonBrowserDomainOrProxyUrlFunction);
+      }
+      return false;
+    }
+    async loadClerkJS() {
+      if (this.mode !== "browser" || __privateGet(this, _loaded)) {
+        return;
+      }
+      if (typeof window !== "undefined") {
+        window.__clerk_frontend_api = this.frontendApi;
+        window.__clerk_publishable_key = this.publishableKey;
+        window.__clerk_proxy_url = this.proxyUrl;
+        window.__clerk_domain = this.domain;
+      }
+      try {
+        if (this.Clerk) {
+          let c;
+          if (isConstructor(this.Clerk)) {
+            c = new this.Clerk(this.publishableKey || this.frontendApi || "", {
+              proxyUrl: this.proxyUrl,
+              domain: this.domain
+            });
+            await c.load(this.options);
+          } else {
+            c = this.Clerk;
+            if (!c.isReady()) {
+              await c.load(this.options);
+            }
+          }
+          global.Clerk = c;
+        } else {
+          if (!global.Clerk) {
+            await loadClerkJsScript({
+              ...this.options,
+              frontendApi: this.frontendApi,
+              publishableKey: this.publishableKey,
+              proxyUrl: this.proxyUrl,
+              domain: this.domain
+            });
+          }
+          if (!global.Clerk) {
+            throw new Error("Failed to download latest ClerkJS. Contact support@clerk.com.");
+          }
+          await global.Clerk.load(this.options);
+        }
+        global.Clerk.sdkMetadata = this.options.sdkMetadata ?? { name: "@clerk/clerk-react", version: "4.30.5" };
+        if (global.Clerk?.loaded || global.Clerk?.isReady()) {
+          return this.hydrateClerkJS(global.Clerk);
+        }
+        return;
+      } catch (err) {
+        const error = err;
+        if (false) {
+          console.error(error.stack || error.message || error);
+        } else {
+          throw err;
+        }
+        return;
+      }
+    }
+    get version() {
+      return this.clerkjs?.version;
+    }
+    get client() {
+      if (this.clerkjs) {
+        return this.clerkjs.client;
+      } else {
+        return void 0;
+      }
+    }
+    get session() {
+      if (this.clerkjs) {
+        return this.clerkjs.session;
+      } else {
+        return void 0;
+      }
+    }
+    get user() {
+      if (this.clerkjs) {
+        return this.clerkjs.user;
+      } else {
+        return void 0;
+      }
+    }
+    get organization() {
+      if (this.clerkjs) {
+        return this.clerkjs.organization;
+      } else {
+        return void 0;
+      }
+    }
+    get __unstable__environment() {
+      if (this.clerkjs) {
+        return this.clerkjs.__unstable__environment;
+      } else {
+        return void 0;
+      }
+    }
+    __unstable__setEnvironment(...args) {
+      if (this.clerkjs && "__unstable__setEnvironment" in this.clerkjs) {
+        this.clerkjs.__unstable__setEnvironment(args);
+      } else {
+        return void 0;
+      }
+    }
+  };
+  _loaded = /* @__PURE__ */ new WeakMap();
+  _domain = /* @__PURE__ */ new WeakMap();
+  _proxyUrl = /* @__PURE__ */ new WeakMap();
+  _frontendApi = /* @__PURE__ */ new WeakMap();
+  _publishableKey = /* @__PURE__ */ new WeakMap();
+  _instance = /* @__PURE__ */ new WeakMap();
+  __privateAdd(_IsomorphicClerk, _instance, void 0);
+  var IsomorphicClerk = _IsomorphicClerk;
+
+  // node_modules/@clerk/clerk-react/dist/esm/utils/deriveState.js
+  var deriveState = (clerkLoaded, state, initialState) => {
+    if (!clerkLoaded && initialState) {
+      return deriveFromSsrInitialState(initialState);
+    }
+    return deriveFromClientSideState(state);
+  };
+  var deriveFromSsrInitialState = (initialState) => {
+    const userId = initialState.userId;
+    const user = initialState.user;
+    const sessionId = initialState.sessionId;
+    const session = initialState.session;
+    const organization = initialState.organization;
+    const orgId = initialState.orgId;
+    const orgRole = initialState.orgRole;
+    const orgPermissions = initialState.orgPermissions;
+    const orgSlug = initialState.orgSlug;
+    const actor = initialState.actor;
+    return {
+      userId,
+      user,
+      sessionId,
+      session,
+      organization,
+      orgId,
+      orgRole,
+      orgPermissions,
+      orgSlug,
+      actor,
+      lastOrganizationInvitation: null,
+      lastOrganizationMember: null
+    };
+  };
+  var deriveFromClientSideState = (state) => {
+    const userId = state.user ? state.user.id : state.user;
+    const user = state.user;
+    const sessionId = state.session ? state.session.id : state.session;
+    const session = state.session;
+    const actor = session?.actor;
+    const organization = state.organization;
+    const orgId = state.organization ? state.organization.id : state.organization;
+    const orgSlug = organization?.slug;
+    const membership = organization ? user?.organizationMemberships?.find((om) => om.organization.id === orgId) : organization;
+    const orgPermissions = membership ? membership.permissions : membership;
+    const orgRole = membership ? membership.role : membership;
+    const lastOrganizationInvitation = state.lastOrganizationInvitation;
+    const lastOrganizationMember = state.lastOrganizationMember;
+    return {
+      userId,
+      user,
+      sessionId,
+      session,
+      organization,
+      orgId,
+      orgRole,
+      orgSlug,
+      orgPermissions,
+      actor,
+      lastOrganizationInvitation,
+      lastOrganizationMember
+    };
+  };
+
+  // node_modules/@clerk/clerk-react/dist/esm/contexts/AuthContext.js
+  var [AuthContext, useAuthContext] = createContextAndHook("AuthContext");
+
+  // node_modules/@clerk/clerk-react/dist/esm/contexts/ClerkContextProvider.js
+  function ClerkContextProvider(props) {
+    const { isomorphicClerkOptions, initialState, children } = props;
+    const { isomorphicClerk: clerk, loaded: clerkLoaded } = useLoadedIsomorphicClerk(isomorphicClerkOptions);
+    if (isomorphicClerkOptions.frontendApi) {
+      deprecated("frontendApi", "Use `publishableKey` instead.");
+    }
+    const [state, setState] = import_react18.default.useState({
+      client: clerk.client,
+      session: clerk.session,
+      user: clerk.user,
+      organization: clerk.organization,
+      lastOrganizationInvitation: null,
+      lastOrganizationMember: null
+    });
+    import_react18.default.useEffect(() => {
+      return clerk.addListener((e) => setState({ ...e }));
+    }, []);
+    const derivedState = deriveState(clerkLoaded, state, initialState);
+    const clerkCtx = import_react18.default.useMemo(() => ({ value: clerk }), [clerkLoaded]);
+    const clientCtx = import_react18.default.useMemo(() => ({ value: state.client }), [state.client]);
+    const {
+      sessionId,
+      session,
+      userId,
+      user,
+      orgId,
+      actor,
+      lastOrganizationInvitation,
+      lastOrganizationMember,
+      organization,
+      orgRole,
+      orgSlug,
+      orgPermissions
+    } = derivedState;
+    const authCtx = import_react18.default.useMemo(() => {
+      const value = { sessionId, userId, actor, orgId, orgRole, orgSlug, orgPermissions };
+      return { value };
+    }, [sessionId, userId, actor, orgId, orgRole, orgSlug]);
+    const userCtx = import_react18.default.useMemo(() => ({ value: user }), [userId, user]);
+    const sessionCtx = import_react18.default.useMemo(() => ({ value: session }), [sessionId, session]);
+    const organizationCtx = import_react18.default.useMemo(() => {
+      const value = {
+        organization,
+        lastOrganizationInvitation,
+        lastOrganizationMember
+      };
+      return { value };
+    }, [orgId, organization, lastOrganizationInvitation, lastOrganizationMember]);
+    return (
+      // @ts-expect-error value passed is of type IsomorphicClerk where the context expects LoadedClerk
+      /* @__PURE__ */ import_react18.default.createElement(IsomorphicClerkContext.Provider, { value: clerkCtx }, /* @__PURE__ */ import_react18.default.createElement(ClientContext.Provider, { value: clientCtx }, /* @__PURE__ */ import_react18.default.createElement(SessionContext.Provider, { value: sessionCtx }, /* @__PURE__ */ import_react18.default.createElement(OrganizationProvider, { ...organizationCtx.value }, /* @__PURE__ */ import_react18.default.createElement(AuthContext.Provider, { value: authCtx }, /* @__PURE__ */ import_react18.default.createElement(UserContext.Provider, { value: userCtx }, children))))))
+    );
+  }
+  var useLoadedIsomorphicClerk = (options) => {
+    const [loaded, setLoaded] = import_react18.default.useState(false);
+    const isomorphicClerk = import_react18.default.useMemo(() => IsomorphicClerk.getOrCreateInstance(options), []);
+    import_react18.default.useEffect(() => {
+      isomorphicClerk.__unstable__updateProps({ appearance: options.appearance });
+    }, [options.appearance]);
+    import_react18.default.useEffect(() => {
+      isomorphicClerk.__unstable__updateProps({ options });
+    }, [options.localization]);
+    import_react18.default.useEffect(() => {
+      isomorphicClerk.addOnLoaded(() => setLoaded(true));
+    }, []);
+    import_react18.default.useEffect(() => {
+      return () => {
+        IsomorphicClerk.clearInstance();
+      };
+    }, []);
+    return { isomorphicClerk, loaded };
+  };
+
+  // node_modules/@clerk/clerk-react/dist/esm/contexts/ClerkProvider.js
+  __internal__setErrorThrowerOptions({
+    packageName: "@clerk/clerk-react"
+  });
+  function ClerkProviderBase(props) {
+    const { initialState, children, ...restIsomorphicClerkOptions } = props;
+    const { frontendApi = "", publishableKey = "", Clerk: userInitialisedClerk } = restIsomorphicClerkOptions;
+    if (!userInitialisedClerk) {
+      if (!publishableKey && !frontendApi) {
+        errorThrower.throwMissingPublishableKeyError();
+      } else if (publishableKey && !isPublishableKey(publishableKey)) {
+        errorThrower.throwInvalidPublishableKeyError({ key: publishableKey });
+      } else if (!publishableKey && frontendApi && !isLegacyFrontendApiKey(frontendApi)) {
+        errorThrower.throwInvalidFrontendApiError({ key: frontendApi });
+      }
+    }
+    return /* @__PURE__ */ import_react19.default.createElement(StructureContext.Provider, { value: StructureContextStates.noGuarantees }, /* @__PURE__ */ import_react19.default.createElement(
+      ClerkContextProvider,
+      {
+        initialState,
+        isomorphicClerkOptions: restIsomorphicClerkOptions
+      },
+      children
+    ));
+  }
+  var ClerkProvider = withMaxAllowedInstancesGuard(ClerkProviderBase, "ClerkProvider", multipleClerkProvidersError);
+  ClerkProvider.displayName = "ClerkProvider";
+
+  // node_modules/@clerk/clerk-react/dist/esm/components/controlComponents.js
+  var import_react20 = __toESM(require_react());
+  var SignedIn = ({ children }) => {
+    const { userId } = useAuthContext();
+    if (userId) {
+      return /* @__PURE__ */ import_react20.default.createElement(import_react20.default.Fragment, null, children);
+    }
+    return null;
+  };
+  var SignedOut = ({ children }) => {
+    const { userId } = useAuthContext();
+    if (userId === null) {
+      return /* @__PURE__ */ import_react20.default.createElement(import_react20.default.Fragment, null, children);
+    }
+    return null;
+  };
+  var RedirectToSignIn = withClerk(({ clerk, ...props }) => {
+    const { client, session } = clerk;
+    const { __unstable__environment } = clerk;
+    const hasActiveSessions = client.activeSessions && client.activeSessions.length > 0;
+    import_react20.default.useEffect(() => {
+      if (session === null && hasActiveSessions && __unstable__environment) {
+        const { afterSignOutOneUrl } = __unstable__environment.displayConfig;
+        void clerk.navigate(afterSignOutOneUrl);
+      } else {
+        void clerk.redirectToSignIn(props);
+      }
+    }, []);
+    return null;
+  }, "RedirectToSignIn");
+  var RedirectToSignUp = withClerk(({ clerk, ...props }) => {
+    import_react20.default.useEffect(() => {
+      void clerk.redirectToSignUp(props);
+    }, []);
+    return null;
+  }, "RedirectToSignUp");
+  var RedirectToUserProfile = withClerk(({ clerk }) => {
+    import_react20.default.useEffect(() => {
+      clerk.redirectToUserProfile();
+    }, []);
+    return null;
+  }, "RedirectToUserProfile");
+  var RedirectToOrganizationProfile = withClerk(({ clerk }) => {
+    import_react20.default.useEffect(() => {
+      clerk.redirectToOrganizationProfile();
+    }, []);
+    return null;
+  }, "RedirectToOrganizationProfile");
+  var RedirectToCreateOrganization = withClerk(({ clerk }) => {
+    import_react20.default.useEffect(() => {
+      clerk.redirectToCreateOrganization();
+    }, []);
+    return null;
+  }, "RedirectToCreateOrganization");
+  var AuthenticateWithRedirectCallback = withClerk(
+    ({ clerk, ...handleRedirectCallbackParams }) => {
+      import_react20.default.useEffect(() => {
+        void clerk.handleRedirectCallback(handleRedirectCallbackParams);
+      }, []);
+      return null;
+    },
+    "AuthenticateWithRedirectCallback"
+  );
+
+  // node_modules/@clerk/clerk-react/dist/esm/components/SignInButton.js
+  var import_react21 = __toESM(require_react());
+  var SignInButton = withClerk(({ clerk, children, ...props }) => {
+    const { afterSignInUrl, afterSignUpUrl, redirectUrl, mode, ...rest } = props;
+    children = normalizeWithDefaultValue(children, "Sign in");
+    const child = assertSingleChild(children)("SignInButton");
+    const clickHandler = () => {
+      const opts = { afterSignInUrl, afterSignUpUrl, redirectUrl };
+      if (mode === "modal") {
+        return clerk.openSignIn(opts);
+      }
+      return clerk.redirectToSignIn(opts);
+    };
+    const wrappedChildClickHandler = async (e) => {
+      await safeExecute(child.props.onClick)(e);
+      return clickHandler();
+    };
+    const childProps = { ...rest, onClick: wrappedChildClickHandler };
+    return import_react21.default.cloneElement(child, childProps);
+  }, "SignInButton");
+
+  // node_modules/@clerk/clerk-react/dist/esm/components/SignOutButton.js
+  var import_react22 = __toESM(require_react());
+  var SignOutButton = withClerk(
+    ({ clerk, children, ...props }) => {
+      const { signOutCallback, signOutOptions, ...rest } = props;
+      children = normalizeWithDefaultValue(children, "Sign out");
+      const child = assertSingleChild(children)("SignOutButton");
+      const clickHandler = () => {
+        return clerk.signOut(signOutCallback, signOutOptions);
+      };
+      const wrappedChildClickHandler = async (e) => {
+        await safeExecute(child.props.onClick)(e);
+        return clickHandler();
+      };
+      const childProps = { ...rest, onClick: wrappedChildClickHandler };
+      return import_react22.default.cloneElement(child, childProps);
+    },
+    "SignOutButton"
+  );
+
+  // index.jsx
+  var import_react27 = __toESM(require_react());
+  var import_client = __toESM(require_client());
+
+  // components/App.jsx
+  var import_react26 = __toESM(require_react());
+
+  // components/AddProcess.jsx
+  var import_react25 = __toESM(require_react());
+
+  // node_modules/swr/dist/core/index.mjs
+  var import_react24 = __toESM(require_react(), 1);
+  var import_shim3 = __toESM(require_shim(), 1);
+
+  // node_modules/swr/dist/_internal/index.mjs
+  var import_react23 = __toESM(require_react(), 1);
+  var noop2 = () => {
+  };
+  var UNDEFINED2 = (
+    /*#__NOINLINE__*/
+    noop2()
+  );
+  var OBJECT2 = Object;
+  var isUndefined2 = (v) => v === UNDEFINED2;
+  var isFunction2 = (v) => typeof v == "function";
+  var mergeObjects2 = (a, b) => ({
+    ...a,
+    ...b
+  });
+  var isPromiseLike2 = (x) => isFunction2(x.then);
+  var table2 = /* @__PURE__ */ new WeakMap();
+  var counter2 = 0;
+  var stableHash2 = (arg) => {
+    const type = typeof arg;
+    const constructor = arg && arg.constructor;
+    const isDate = constructor == Date;
+    let result;
+    let index;
+    if (OBJECT2(arg) === arg && !isDate && constructor != RegExp) {
+      result = table2.get(arg);
+      if (result)
+        return result;
+      result = ++counter2 + "~";
+      table2.set(arg, result);
+      if (constructor == Array) {
+        result = "@";
+        for (index = 0; index < arg.length; index++) {
+          result += stableHash2(arg[index]) + ",";
+        }
+        table2.set(arg, result);
+      }
+      if (constructor == OBJECT2) {
+        result = "#";
+        const keys = OBJECT2.keys(arg).sort();
+        while (!isUndefined2(index = keys.pop())) {
+          if (!isUndefined2(arg[index])) {
+            result += index + ":" + stableHash2(arg[index]) + ",";
+          }
+        }
+        table2.set(arg, result);
+      }
+    } else {
+      result = isDate ? arg.toJSON() : type == "symbol" ? arg.toString() : type == "string" ? JSON.stringify(arg) : "" + arg;
+    }
+    return result;
+  };
+  var SWRGlobalState2 = /* @__PURE__ */ new WeakMap();
+  var EMPTY_CACHE2 = {};
+  var INITIAL_CACHE2 = {};
+  var STR_UNDEFINED2 = "undefined";
+  var isWindowDefined2 = typeof window != STR_UNDEFINED2;
+  var isDocumentDefined2 = typeof document != STR_UNDEFINED2;
+  var hasRequestAnimationFrame2 = () => isWindowDefined2 && typeof window["requestAnimationFrame"] != STR_UNDEFINED2;
+  var createCacheHelper2 = (cache3, key) => {
+    const state = SWRGlobalState2.get(cache3);
+    return [
+      // Getter
+      () => !isUndefined2(key) && cache3.get(key) || EMPTY_CACHE2,
+      // Setter
+      (info) => {
+        if (!isUndefined2(key)) {
+          const prev = cache3.get(key);
+          if (!(key in INITIAL_CACHE2)) {
+            INITIAL_CACHE2[key] = prev;
+          }
+          state[5](key, mergeObjects2(prev, info), prev || EMPTY_CACHE2);
+        }
+      },
+      // Subscriber
+      state[6],
+      // Get server cache snapshot
+      () => {
+        if (!isUndefined2(key)) {
+          if (key in INITIAL_CACHE2)
+            return INITIAL_CACHE2[key];
+        }
+        return !isUndefined2(key) && cache3.get(key) || EMPTY_CACHE2;
+      }
+    ];
+  };
+  var online2 = true;
+  var isOnline2 = () => online2;
+  var [onWindowEvent2, offWindowEvent2] = isWindowDefined2 && window.addEventListener ? [
+    window.addEventListener.bind(window),
+    window.removeEventListener.bind(window)
+  ] : [
+    noop2,
+    noop2
+  ];
+  var isVisible2 = () => {
+    const visibilityState = isDocumentDefined2 && document.visibilityState;
+    return isUndefined2(visibilityState) || visibilityState !== "hidden";
+  };
+  var initFocus2 = (callback) => {
+    if (isDocumentDefined2) {
+      document.addEventListener("visibilitychange", callback);
+    }
+    onWindowEvent2("focus", callback);
+    return () => {
+      if (isDocumentDefined2) {
+        document.removeEventListener("visibilitychange", callback);
+      }
+      offWindowEvent2("focus", callback);
+    };
+  };
+  var initReconnect2 = (callback) => {
+    const onOnline = () => {
+      online2 = true;
+      callback();
+    };
+    const onOffline = () => {
+      online2 = false;
+    };
+    onWindowEvent2("online", onOnline);
+    onWindowEvent2("offline", onOffline);
+    return () => {
+      offWindowEvent2("online", onOnline);
+      offWindowEvent2("offline", onOffline);
+    };
+  };
+  var preset2 = {
+    isOnline: isOnline2,
+    isVisible: isVisible2
+  };
+  var defaultConfigOptions2 = {
+    initFocus: initFocus2,
+    initReconnect: initReconnect2
+  };
+  var IS_REACT_LEGACY2 = !import_react23.default.useId;
+  var IS_SERVER2 = !isWindowDefined2 || "Deno" in window;
+  var rAF2 = (f) => hasRequestAnimationFrame2() ? window["requestAnimationFrame"](f) : setTimeout(f, 1);
+  var useIsomorphicLayoutEffect2 = IS_SERVER2 ? import_react23.useEffect : import_react23.useLayoutEffect;
+  var navigatorConnection2 = typeof navigator !== "undefined" && navigator.connection;
+  var slowConnection2 = !IS_SERVER2 && navigatorConnection2 && ([
+    "slow-2g",
+    "2g"
+  ].includes(navigatorConnection2.effectiveType) || navigatorConnection2.saveData);
+  var serialize2 = (key) => {
+    if (isFunction2(key)) {
+      try {
+        key = key();
+      } catch (err) {
+        key = "";
+      }
+    }
+    const args = key;
+    key = typeof key == "string" ? key : (Array.isArray(key) ? key.length : key) ? stableHash2(key) : "";
+    return [
+      key,
+      args
+    ];
+  };
+  var __timestamp2 = 0;
+  var getTimestamp2 = () => ++__timestamp2;
+  var FOCUS_EVENT2 = 0;
+  var RECONNECT_EVENT2 = 1;
+  var MUTATE_EVENT2 = 2;
+  var ERROR_REVALIDATE_EVENT2 = 3;
+  var events = {
+    __proto__: null,
+    ERROR_REVALIDATE_EVENT: ERROR_REVALIDATE_EVENT2,
+    FOCUS_EVENT: FOCUS_EVENT2,
+    MUTATE_EVENT: MUTATE_EVENT2,
+    RECONNECT_EVENT: RECONNECT_EVENT2
+  };
+  async function internalMutate2(...args) {
+    const [cache3, _key, _data, _opts] = args;
+    const options = mergeObjects2({
+      populateCache: true,
+      throwOnError: true
+    }, typeof _opts === "boolean" ? {
+      revalidate: _opts
+    } : _opts || {});
+    let populateCache = options.populateCache;
+    const rollbackOnErrorOption = options.rollbackOnError;
+    let optimisticData = options.optimisticData;
+    const rollbackOnError = (error) => {
+      return typeof rollbackOnErrorOption === "function" ? rollbackOnErrorOption(error) : rollbackOnErrorOption !== false;
+    };
+    const throwOnError = options.throwOnError;
+    if (isFunction2(_key)) {
+      const keyFilter = _key;
+      const matchedKeys = [];
+      const it = cache3.keys();
+      for (const key of it) {
+        if (
+          // Skip the special useSWRInfinite and useSWRSubscription keys.
+          !/^\$(inf|sub)\$/.test(key) && keyFilter(cache3.get(key)._k)
+        ) {
+          matchedKeys.push(key);
+        }
+      }
+      return Promise.all(matchedKeys.map(mutateByKey));
+    }
+    return mutateByKey(_key);
+    async function mutateByKey(_k) {
+      const [key] = serialize2(_k);
+      if (!key)
+        return;
+      const [get, set] = createCacheHelper2(cache3, key);
+      const [EVENT_REVALIDATORS, MUTATION, FETCH, PRELOAD] = SWRGlobalState2.get(cache3);
+      const startRevalidate = () => {
+        const revalidators = EVENT_REVALIDATORS[key];
+        const revalidate = isFunction2(options.revalidate) ? options.revalidate(get().data, _k) : options.revalidate !== false;
+        if (revalidate) {
+          delete FETCH[key];
+          delete PRELOAD[key];
+          if (revalidators && revalidators[0]) {
+            return revalidators[0](MUTATE_EVENT2).then(() => get().data);
+          }
+        }
+        return get().data;
+      };
+      if (args.length < 3) {
+        return startRevalidate();
+      }
+      let data = _data;
+      let error;
+      const beforeMutationTs = getTimestamp2();
+      MUTATION[key] = [
+        beforeMutationTs,
+        0
+      ];
+      const hasOptimisticData = !isUndefined2(optimisticData);
+      const state = get();
+      const displayedData = state.data;
+      const currentData = state._c;
+      const committedData = isUndefined2(currentData) ? displayedData : currentData;
+      if (hasOptimisticData) {
+        optimisticData = isFunction2(optimisticData) ? optimisticData(committedData, displayedData) : optimisticData;
+        set({
+          data: optimisticData,
+          _c: committedData
+        });
+      }
+      if (isFunction2(data)) {
+        try {
+          data = data(committedData);
+        } catch (err) {
+          error = err;
+        }
+      }
+      if (data && isPromiseLike2(data)) {
+        data = await data.catch((err) => {
+          error = err;
+        });
+        if (beforeMutationTs !== MUTATION[key][0]) {
+          if (error)
+            throw error;
+          return data;
+        } else if (error && hasOptimisticData && rollbackOnError(error)) {
+          populateCache = true;
+          set({
+            data: committedData,
+            _c: UNDEFINED2
+          });
+        }
+      }
+      if (populateCache) {
+        if (!error) {
+          if (isFunction2(populateCache)) {
+            const populateCachedData = populateCache(data, committedData);
+            set({
+              data: populateCachedData,
+              error: UNDEFINED2,
+              _c: UNDEFINED2
+            });
+          } else {
+            set({
+              data,
+              error: UNDEFINED2,
+              _c: UNDEFINED2
+            });
+          }
+        }
+      }
+      MUTATION[key][1] = getTimestamp2();
+      Promise.resolve(startRevalidate()).then(() => {
+        set({
+          _c: UNDEFINED2
+        });
+      });
+      if (error) {
+        if (throwOnError)
+          throw error;
+        return;
+      }
+      return data;
+    }
+  }
+  var revalidateAllKeys2 = (revalidators, type) => {
+    for (const key in revalidators) {
+      if (revalidators[key][0])
+        revalidators[key][0](type);
+    }
+  };
+  var initCache2 = (provider, options) => {
+    if (!SWRGlobalState2.has(provider)) {
+      const opts = mergeObjects2(defaultConfigOptions2, options);
+      const EVENT_REVALIDATORS = {};
+      const mutate3 = internalMutate2.bind(UNDEFINED2, provider);
+      let unmount = noop2;
+      const subscriptions = {};
+      const subscribe = (key, callback) => {
+        const subs = subscriptions[key] || [];
+        subscriptions[key] = subs;
+        subs.push(callback);
+        return () => subs.splice(subs.indexOf(callback), 1);
+      };
+      const setter = (key, value, prev) => {
+        provider.set(key, value);
+        const subs = subscriptions[key];
+        if (subs) {
+          for (const fn of subs) {
+            fn(value, prev);
+          }
+        }
+      };
+      const initProvider = () => {
+        if (!SWRGlobalState2.has(provider)) {
+          SWRGlobalState2.set(provider, [
+            EVENT_REVALIDATORS,
+            {},
+            {},
+            {},
+            mutate3,
+            setter,
+            subscribe
+          ]);
+          if (!IS_SERVER2) {
+            const releaseFocus = opts.initFocus(setTimeout.bind(UNDEFINED2, revalidateAllKeys2.bind(UNDEFINED2, EVENT_REVALIDATORS, FOCUS_EVENT2)));
+            const releaseReconnect = opts.initReconnect(setTimeout.bind(UNDEFINED2, revalidateAllKeys2.bind(UNDEFINED2, EVENT_REVALIDATORS, RECONNECT_EVENT2)));
+            unmount = () => {
+              releaseFocus && releaseFocus();
+              releaseReconnect && releaseReconnect();
+              SWRGlobalState2.delete(provider);
+            };
+          }
+        }
+      };
+      initProvider();
+      return [
+        provider,
+        mutate3,
+        initProvider,
+        unmount
+      ];
+    }
+    return [
+      provider,
+      SWRGlobalState2.get(provider)[4]
+    ];
+  };
+  var onErrorRetry2 = (_, __, config, revalidate, opts) => {
+    const maxRetryCount = config.errorRetryCount;
+    const currentRetryCount = opts.retryCount;
+    const timeout = ~~((Math.random() + 0.5) * (1 << (currentRetryCount < 8 ? currentRetryCount : 8))) * config.errorRetryInterval;
+    if (!isUndefined2(maxRetryCount) && currentRetryCount > maxRetryCount) {
+      return;
+    }
+    setTimeout(revalidate, timeout, opts);
+  };
+  var compare2 = (currentData, newData) => stableHash2(currentData) == stableHash2(newData);
+  var [cache2, mutate2] = initCache2(/* @__PURE__ */ new Map());
+  var defaultConfig2 = mergeObjects2(
+    {
+      // events
+      onLoadingSlow: noop2,
+      onSuccess: noop2,
+      onError: noop2,
+      onErrorRetry: onErrorRetry2,
+      onDiscarded: noop2,
+      // switches
+      revalidateOnFocus: true,
+      revalidateOnReconnect: true,
+      revalidateIfStale: true,
+      shouldRetryOnError: true,
+      // timeouts
+      errorRetryInterval: slowConnection2 ? 1e4 : 5e3,
+      focusThrottleInterval: 5 * 1e3,
+      dedupingInterval: 2 * 1e3,
+      loadingTimeout: slowConnection2 ? 5e3 : 3e3,
+      // providers
+      compare: compare2,
+      isPaused: () => false,
+      cache: cache2,
+      mutate: mutate2,
+      fallback: {}
+    },
+    // use web preset by default
+    preset2
+  );
+  var mergeConfigs2 = (a, b) => {
+    const v = mergeObjects2(a, b);
+    if (b) {
+      const { use: u1, fallback: f1 } = a;
+      const { use: u2, fallback: f2 } = b;
+      if (u1 && u2) {
+        v.use = u1.concat(u2);
+      }
+      if (f1 && f2) {
+        v.fallback = mergeObjects2(f1, f2);
+      }
+    }
+    return v;
+  };
+  var SWRConfigContext2 = (0, import_react23.createContext)({});
+  var SWRConfig3 = (props) => {
+    const { value } = props;
+    const parentConfig = (0, import_react23.useContext)(SWRConfigContext2);
+    const isFunctionalConfig = isFunction2(value);
+    const config = (0, import_react23.useMemo)(() => isFunctionalConfig ? value(parentConfig) : value, [
+      isFunctionalConfig,
+      parentConfig,
+      value
+    ]);
+    const extendedConfig = (0, import_react23.useMemo)(() => isFunctionalConfig ? config : mergeConfigs2(parentConfig, config), [
+      isFunctionalConfig,
+      parentConfig,
+      config
+    ]);
+    const provider = config && config.provider;
+    const cacheContextRef = (0, import_react23.useRef)(UNDEFINED2);
+    if (provider && !cacheContextRef.current) {
+      cacheContextRef.current = initCache2(provider(extendedConfig.cache || cache2), config);
+    }
+    const cacheContext = cacheContextRef.current;
+    if (cacheContext) {
+      extendedConfig.cache = cacheContext[0];
+      extendedConfig.mutate = cacheContext[1];
+    }
+    useIsomorphicLayoutEffect2(() => {
+      if (cacheContext) {
+        cacheContext[2] && cacheContext[2]();
+        return cacheContext[3];
+      }
+    }, []);
+    return (0, import_react23.createElement)(SWRConfigContext2.Provider, mergeObjects2(props, {
+      value: extendedConfig
+    }));
+  };
+  var INFINITE_PREFIX2 = "$inf$";
+  var enableDevtools2 = isWindowDefined2 && window.__SWR_DEVTOOLS_USE__;
+  var use3 = enableDevtools2 ? window.__SWR_DEVTOOLS_USE__ : [];
+  var setupDevTools2 = () => {
+    if (enableDevtools2) {
+      window.__SWR_DEVTOOLS_REACT__ = import_react23.default;
+    }
+  };
+  var normalize2 = (args) => {
+    return isFunction2(args[1]) ? [
+      args[0],
+      args[1],
+      args[2] || {}
+    ] : [
+      args[0],
+      null,
+      (args[1] === null ? args[2] : args[1]) || {}
+    ];
+  };
+  var useSWRConfig2 = () => {
+    return mergeObjects2(defaultConfig2, (0, import_react23.useContext)(SWRConfigContext2));
+  };
+  var middleware2 = (useSWRNext) => (key_, fetcher_, config) => {
+    const fetcher2 = fetcher_ && ((...args) => {
+      const [key] = serialize2(key_);
+      const [, , , PRELOAD] = SWRGlobalState2.get(cache2);
+      if (key.startsWith(INFINITE_PREFIX2)) {
+        return fetcher_(...args);
+      }
+      const req = PRELOAD[key];
+      if (isUndefined2(req))
+        return fetcher_(...args);
+      delete PRELOAD[key];
+      return req;
+    });
+    return useSWRNext(key_, fetcher2, config);
+  };
+  var BUILT_IN_MIDDLEWARE2 = use3.concat(middleware2);
+  var withArgs2 = (hook) => {
+    return function useSWRArgs(...args) {
+      const fallbackConfig = useSWRConfig2();
+      const [key, fn, _config] = normalize2(args);
+      const config = mergeConfigs2(fallbackConfig, _config);
+      let next = hook;
+      const { use: use5 } = config;
+      const middleware3 = (use5 || []).concat(BUILT_IN_MIDDLEWARE2);
+      for (let i = middleware3.length; i--; ) {
+        next = middleware3[i](next);
+      }
+      return next(key, fn || config.fetcher || null, config);
+    };
+  };
+  var subscribeCallback2 = (key, callbacks, callback) => {
+    const keyedRevalidators = callbacks[key] || (callbacks[key] = []);
+    keyedRevalidators.push(callback);
+    return () => {
+      const index = keyedRevalidators.indexOf(callback);
+      if (index >= 0) {
+        keyedRevalidators[index] = keyedRevalidators[keyedRevalidators.length - 1];
+        keyedRevalidators.pop();
+      }
+    };
+  };
+  setupDevTools2();
+
+  // node_modules/swr/dist/core/index.mjs
+  var use4 = import_react24.default.use || ((promise) => {
+    if (promise.status === "pending") {
+      throw promise;
+    } else if (promise.status === "fulfilled") {
+      return promise.value;
+    } else if (promise.status === "rejected") {
+      throw promise.reason;
+    } else {
+      promise.status = "pending";
+      promise.then((v) => {
+        promise.status = "fulfilled";
+        promise.value = v;
+      }, (e) => {
+        promise.status = "rejected";
+        promise.reason = e;
+      });
+      throw promise;
+    }
+  });
+  var WITH_DEDUPE2 = {
+    dedupe: true
+  };
+  var useSWRHandler2 = (_key, fetcher2, config) => {
+    const { cache: cache3, compare: compare3, suspense, fallbackData, revalidateOnMount, revalidateIfStale, refreshInterval, refreshWhenHidden, refreshWhenOffline, keepPreviousData } = config;
+    const [EVENT_REVALIDATORS, MUTATION, FETCH, PRELOAD] = SWRGlobalState2.get(cache3);
+    const [key, fnArg] = serialize2(_key);
+    const initialMountedRef = (0, import_react24.useRef)(false);
+    const unmountedRef = (0, import_react24.useRef)(false);
+    const keyRef = (0, import_react24.useRef)(key);
+    const fetcherRef = (0, import_react24.useRef)(fetcher2);
+    const configRef = (0, import_react24.useRef)(config);
+    const getConfig = () => configRef.current;
+    const isActive = () => getConfig().isVisible() && getConfig().isOnline();
+    const [getCache, setCache, subscribeCache, getInitialCache] = createCacheHelper2(cache3, key);
+    const stateDependencies = (0, import_react24.useRef)({}).current;
+    const fallback = isUndefined2(fallbackData) ? config.fallback[key] : fallbackData;
+    const isEqual = (prev, current) => {
+      for (const _ in stateDependencies) {
+        const t = _;
+        if (t === "data") {
+          if (!compare3(prev[t], current[t])) {
+            if (!isUndefined2(prev[t])) {
+              return false;
+            }
+            if (!compare3(returnedData, current[t])) {
+              return false;
+            }
+          }
+        } else {
+          if (current[t] !== prev[t]) {
+            return false;
+          }
+        }
+      }
+      return true;
+    };
+    const getSnapshot = (0, import_react24.useMemo)(() => {
+      const shouldStartRequest = (() => {
+        if (!key)
+          return false;
+        if (!fetcher2)
+          return false;
+        if (!isUndefined2(revalidateOnMount))
+          return revalidateOnMount;
+        if (getConfig().isPaused())
+          return false;
+        if (suspense)
+          return false;
+        if (!isUndefined2(revalidateIfStale))
+          return revalidateIfStale;
+        return true;
+      })();
+      const getSelectedCache = (state) => {
+        const snapshot = mergeObjects2(state);
+        delete snapshot._k;
+        if (!shouldStartRequest) {
+          return snapshot;
+        }
+        return {
+          isValidating: true,
+          isLoading: true,
+          ...snapshot
+        };
+      };
+      const cachedData2 = getCache();
+      const initialData = getInitialCache();
+      const clientSnapshot = getSelectedCache(cachedData2);
+      const serverSnapshot = cachedData2 === initialData ? clientSnapshot : getSelectedCache(initialData);
+      let memorizedSnapshot = clientSnapshot;
+      return [
+        () => {
+          const newSnapshot = getSelectedCache(getCache());
+          const compareResult = isEqual(newSnapshot, memorizedSnapshot);
+          if (compareResult) {
+            memorizedSnapshot.data = newSnapshot.data;
+            memorizedSnapshot.isLoading = newSnapshot.isLoading;
+            memorizedSnapshot.isValidating = newSnapshot.isValidating;
+            memorizedSnapshot.error = newSnapshot.error;
+            return memorizedSnapshot;
+          } else {
+            memorizedSnapshot = newSnapshot;
+            return newSnapshot;
+          }
+        },
+        () => serverSnapshot
+      ];
+    }, [
+      cache3,
+      key
+    ]);
+    const cached = (0, import_shim3.useSyncExternalStore)((0, import_react24.useCallback)(
+      (callback) => subscribeCache(key, (current, prev) => {
+        if (!isEqual(prev, current))
+          callback();
+      }),
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [
+        cache3,
+        key
+      ]
+    ), getSnapshot[0], getSnapshot[1]);
+    const isInitialMount = !initialMountedRef.current;
+    const hasRevalidator = EVENT_REVALIDATORS[key] && EVENT_REVALIDATORS[key].length > 0;
+    const cachedData = cached.data;
+    const data = isUndefined2(cachedData) ? fallback : cachedData;
+    const error = cached.error;
+    const laggyDataRef = (0, import_react24.useRef)(data);
+    const returnedData = keepPreviousData ? isUndefined2(cachedData) ? laggyDataRef.current : cachedData : data;
+    const shouldDoInitialRevalidation = (() => {
+      if (hasRevalidator && !isUndefined2(error))
+        return false;
+      if (isInitialMount && !isUndefined2(revalidateOnMount))
+        return revalidateOnMount;
+      if (getConfig().isPaused())
+        return false;
+      if (suspense)
+        return isUndefined2(data) ? false : revalidateIfStale;
+      return isUndefined2(data) || revalidateIfStale;
+    })();
+    const defaultValidatingState = !!(key && fetcher2 && isInitialMount && shouldDoInitialRevalidation);
+    const isValidating = isUndefined2(cached.isValidating) ? defaultValidatingState : cached.isValidating;
+    const isLoading = isUndefined2(cached.isLoading) ? defaultValidatingState : cached.isLoading;
+    const revalidate = (0, import_react24.useCallback)(
+      async (revalidateOpts) => {
+        const currentFetcher = fetcherRef.current;
+        if (!key || !currentFetcher || unmountedRef.current || getConfig().isPaused()) {
+          return false;
+        }
+        let newData;
+        let startAt;
+        let loading = true;
+        const opts = revalidateOpts || {};
+        const shouldStartNewRequest = !FETCH[key] || !opts.dedupe;
+        const callbackSafeguard = () => {
+          if (IS_REACT_LEGACY2) {
+            return !unmountedRef.current && key === keyRef.current && initialMountedRef.current;
+          }
+          return key === keyRef.current;
+        };
+        const finalState = {
+          isValidating: false,
+          isLoading: false
+        };
+        const finishRequestAndUpdateState = () => {
+          setCache(finalState);
+        };
+        const cleanupState = () => {
+          const requestInfo = FETCH[key];
+          if (requestInfo && requestInfo[1] === startAt) {
+            delete FETCH[key];
+          }
+        };
+        const initialState = {
+          isValidating: true
+        };
+        if (isUndefined2(getCache().data)) {
+          initialState.isLoading = true;
+        }
+        try {
+          if (shouldStartNewRequest) {
+            setCache(initialState);
+            if (config.loadingTimeout && isUndefined2(getCache().data)) {
+              setTimeout(() => {
+                if (loading && callbackSafeguard()) {
+                  getConfig().onLoadingSlow(key, config);
+                }
+              }, config.loadingTimeout);
+            }
+            FETCH[key] = [
+              currentFetcher(fnArg),
+              getTimestamp2()
+            ];
+          }
+          [newData, startAt] = FETCH[key];
+          newData = await newData;
+          if (shouldStartNewRequest) {
+            setTimeout(cleanupState, config.dedupingInterval);
+          }
+          if (!FETCH[key] || FETCH[key][1] !== startAt) {
+            if (shouldStartNewRequest) {
+              if (callbackSafeguard()) {
+                getConfig().onDiscarded(key);
+              }
+            }
+            return false;
+          }
+          finalState.error = UNDEFINED2;
+          const mutationInfo = MUTATION[key];
+          if (!isUndefined2(mutationInfo) && // case 1
+          (startAt <= mutationInfo[0] || // case 2
+          startAt <= mutationInfo[1] || // case 3
+          mutationInfo[1] === 0)) {
+            finishRequestAndUpdateState();
+            if (shouldStartNewRequest) {
+              if (callbackSafeguard()) {
+                getConfig().onDiscarded(key);
+              }
+            }
+            return false;
+          }
+          const cacheData = getCache().data;
+          finalState.data = compare3(cacheData, newData) ? cacheData : newData;
+          if (shouldStartNewRequest) {
+            if (callbackSafeguard()) {
+              getConfig().onSuccess(newData, key, config);
+            }
+          }
+        } catch (err) {
+          cleanupState();
+          const currentConfig = getConfig();
+          const { shouldRetryOnError } = currentConfig;
+          if (!currentConfig.isPaused()) {
+            finalState.error = err;
+            if (shouldStartNewRequest && callbackSafeguard()) {
+              currentConfig.onError(err, key, currentConfig);
+              if (shouldRetryOnError === true || isFunction2(shouldRetryOnError) && shouldRetryOnError(err)) {
+                if (!getConfig().revalidateOnFocus || !getConfig().revalidateOnReconnect || isActive()) {
+                  currentConfig.onErrorRetry(err, key, currentConfig, (_opts) => {
+                    const revalidators = EVENT_REVALIDATORS[key];
+                    if (revalidators && revalidators[0]) {
+                      revalidators[0](events.ERROR_REVALIDATE_EVENT, _opts);
+                    }
+                  }, {
+                    retryCount: (opts.retryCount || 0) + 1,
+                    dedupe: true
+                  });
+                }
+              }
+            }
+          }
+        }
+        loading = false;
+        finishRequestAndUpdateState();
+        return true;
+      },
+      // `setState` is immutable, and `eventsCallback`, `fnArg`, and
+      // `keyValidating` are depending on `key`, so we can exclude them from
+      // the deps array.
+      //
+      // FIXME:
+      // `fn` and `config` might be changed during the lifecycle,
+      // but they might be changed every render like this.
+      // `useSWR('key', () => fetch('/api/'), { suspense: true })`
+      // So we omit the values from the deps array
+      // even though it might cause unexpected behaviors.
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [
+        key,
+        cache3
+      ]
+    );
+    const boundMutate = (0, import_react24.useCallback)(
+      // Use callback to make sure `keyRef.current` returns latest result every time
+      (...args) => {
+        return internalMutate2(cache3, keyRef.current, ...args);
+      },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      []
+    );
+    useIsomorphicLayoutEffect2(() => {
+      fetcherRef.current = fetcher2;
+      configRef.current = config;
+      if (!isUndefined2(cachedData)) {
+        laggyDataRef.current = cachedData;
+      }
+    });
+    useIsomorphicLayoutEffect2(() => {
+      if (!key)
+        return;
+      const softRevalidate = revalidate.bind(UNDEFINED2, WITH_DEDUPE2);
+      let nextFocusRevalidatedAt = 0;
+      const onRevalidate = (type, opts = {}) => {
+        if (type == events.FOCUS_EVENT) {
+          const now = Date.now();
+          if (getConfig().revalidateOnFocus && now > nextFocusRevalidatedAt && isActive()) {
+            nextFocusRevalidatedAt = now + getConfig().focusThrottleInterval;
+            softRevalidate();
+          }
+        } else if (type == events.RECONNECT_EVENT) {
+          if (getConfig().revalidateOnReconnect && isActive()) {
+            softRevalidate();
+          }
+        } else if (type == events.MUTATE_EVENT) {
+          return revalidate();
+        } else if (type == events.ERROR_REVALIDATE_EVENT) {
+          return revalidate(opts);
+        }
+        return;
+      };
+      const unsubEvents = subscribeCallback2(key, EVENT_REVALIDATORS, onRevalidate);
+      unmountedRef.current = false;
+      keyRef.current = key;
+      initialMountedRef.current = true;
+      setCache({
+        _k: fnArg
+      });
+      if (shouldDoInitialRevalidation) {
+        if (isUndefined2(data) || IS_SERVER2) {
+          softRevalidate();
+        } else {
+          rAF2(softRevalidate);
+        }
+      }
+      return () => {
+        unmountedRef.current = true;
+        unsubEvents();
+      };
+    }, [
+      key
+    ]);
+    useIsomorphicLayoutEffect2(() => {
+      let timer;
+      function next() {
+        const interval = isFunction2(refreshInterval) ? refreshInterval(getCache().data) : refreshInterval;
+        if (interval && timer !== -1) {
+          timer = setTimeout(execute, interval);
+        }
+      }
+      function execute() {
+        if (!getCache().error && (refreshWhenHidden || getConfig().isVisible()) && (refreshWhenOffline || getConfig().isOnline())) {
+          revalidate(WITH_DEDUPE2).then(next);
+        } else {
+          next();
+        }
+      }
+      next();
+      return () => {
+        if (timer) {
+          clearTimeout(timer);
+          timer = -1;
+        }
+      };
+    }, [
+      refreshInterval,
+      refreshWhenHidden,
+      refreshWhenOffline,
+      key
+    ]);
+    (0, import_react24.useDebugValue)(returnedData);
+    if (suspense && isUndefined2(data) && key) {
+      if (!IS_REACT_LEGACY2 && IS_SERVER2) {
+        throw new Error("Fallback data is required when using suspense in SSR.");
+      }
+      fetcherRef.current = fetcher2;
+      configRef.current = config;
+      unmountedRef.current = false;
+      const req = PRELOAD[key];
+      if (!isUndefined2(req)) {
+        const promise = boundMutate(req);
+        use4(promise);
+      }
+      if (isUndefined2(error)) {
+        const promise = revalidate(WITH_DEDUPE2);
+        if (!isUndefined2(returnedData)) {
+          promise.status = "fulfilled";
+          promise.value = true;
+        }
+        use4(promise);
+      } else {
+        throw error;
+      }
+    }
+    return {
+      mutate: boundMutate,
+      get data() {
+        stateDependencies.data = true;
+        return returnedData;
+      },
+      get error() {
+        stateDependencies.error = true;
+        return error;
+      },
+      get isValidating() {
+        stateDependencies.isValidating = true;
+        return isValidating;
+      },
+      get isLoading() {
+        stateDependencies.isLoading = true;
+        return isLoading;
+      }
+    };
+  };
+  var SWRConfig4 = OBJECT2.defineProperty(SWRConfig3, "defaultValue", {
+    value: defaultConfig2
+  });
+  var useSWR2 = withArgs2(useSWRHandler2);
+
   // components/AddProcess.jsx
   var import_jsx_runtime = __toESM(require_jsx_runtime());
   function getLocalDate() {
@@ -25471,11 +28137,11 @@
     return new Date(Date.now() - tzoffset).toISOString();
   }
   var AddProcess = () => {
-    const [title, setTitle] = (0, import_react3.useState)("");
-    const [frequencyNumber, setFrequencyNumber] = (0, import_react3.useState)("");
-    const [frequencyUnit, setFrequencyUnit] = (0, import_react3.useState)("D");
-    const [dueNext, setDueNext] = (0, import_react3.useState)(getLocalDate().split("T")[0]);
-    const { mutate: mutate2 } = useSWRConfig();
+    const [title, setTitle] = (0, import_react25.useState)("");
+    const [frequencyNumber, setFrequencyNumber] = (0, import_react25.useState)("");
+    const [frequencyUnit, setFrequencyUnit] = (0, import_react25.useState)("D");
+    const [dueNext, setDueNext] = (0, import_react25.useState)(getLocalDate().split("T")[0]);
+    const { mutate: mutate3 } = useSWRConfig2();
     const handleSubmit = async (event) => {
       event.preventDefault();
       if (!title || !frequencyNumber || !frequencyUnit || !dueNext) {
@@ -25497,7 +28163,7 @@
         setFrequencyNumber("");
         setFrequencyUnit("");
         setDueNext("");
-        mutate2("/tasks");
+        mutate3("/tasks");
       } catch (err) {
         console.log(err);
       }
@@ -25633,25 +28299,35 @@
   // api/fetcher.js
   var fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-  // components/ProcessList.jsx
+  // components/DueTaskList.jsx
   var import_jsx_runtime2 = __toESM(require_jsx_runtime());
-  var ProcessList = () => {
+  var DueTaskList = () => {
+    let d = /* @__PURE__ */ new Date();
+    d = new Date(d.getTime() - d.getTimezoneOffset() * 6e4);
+    const yyyymmdd = d.toISOString().slice(0, 10);
     const {
-      data: task,
+      data: tasks,
       error,
       isLoading
-    } = useSWR("/tasks", fetcher);
-    const { mutate: mutate2 } = useSWRConfig();
+    } = useSWR2(
+      `/due-tasks?${new URLSearchParams({
+        localDate: yyyymmdd
+      })}`,
+      fetcher
+    );
+    const { mutate: mutate3 } = useSWRConfig2();
     if (error)
       return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { children: "failed to load" });
     if (isLoading)
       return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { children: "loading..." });
-    const handleDelete = async (title) => {
+    const handleComplete = async (id) => {
       try {
-        await fetch(`/tasks/${title}`, {
-          method: "DELETE"
+        await fetch(`/due-tasks/${id}`, {
+          method: "PUT"
         });
-        mutate2("/tasks");
+        mutate3(`/due-tasks?${new URLSearchParams({
+          localDate: yyyymmdd
+        })}`);
       } catch (err) {
         console.log(err);
       }
@@ -25674,22 +28350,20 @@
                 children: "Title"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: {
-              flex: "1",
-              textAlign: "center"
-            }, children: "Frequency" }),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: {
-              textAlign: "right"
-            }, children: "Due Date" }),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: {
-              padding: "5px",
-              margin: "0 5px",
-              width: "100px"
-            } })
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+              "div",
+              {
+                style: {
+                  padding: "5px",
+                  margin: "0 5px",
+                  width: "100px"
+                }
+              }
+            )
           ]
         }
       ),
-      task.map((tasks) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+      tasks.map((task) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
         "div",
         {
           style: {
@@ -25704,16 +28378,9 @@
                 style: {
                   width: "100px"
                 },
-                children: tasks.title
+                children: task.title
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: {
-              flex: "1",
-              textAlign: "center"
-            }, children: tasks.frequency }),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: {
-              textAlign: "right"
-            }, children: tasks.due_date }),
             /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
               "button",
               {
@@ -25722,46 +28389,36 @@
                   margin: "0 5px",
                   width: "100px"
                 },
-                onClick: () => handleDelete(tasks.id),
-                children: "Delete"
+                onClick: () => handleComplete(task.id),
+                children: "Complete"
               }
             )
           ]
         },
-        tasks.title
+        task.title
       ))
     ] });
   };
 
-  // components/DueTaskList.jsx
+  // components/ProcessList.jsx
   var import_jsx_runtime3 = __toESM(require_jsx_runtime());
-  var DueTaskList = () => {
-    let d = /* @__PURE__ */ new Date();
-    d = new Date(d.getTime() - d.getTimezoneOffset() * 6e4);
-    const yyyymmdd = d.toISOString().slice(0, 10);
+  var ProcessList = () => {
     const {
-      data: tasks,
+      data: task,
       error,
       isLoading
-    } = useSWR(
-      `/due-tasks?${new URLSearchParams({
-        localDate: yyyymmdd
-      })}`,
-      fetcher
-    );
-    const { mutate: mutate2 } = useSWRConfig();
+    } = useSWR2("/tasks", fetcher);
+    const { mutate: mutate3 } = useSWRConfig2();
     if (error)
       return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { children: "failed to load" });
     if (isLoading)
       return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { children: "loading..." });
-    const handleComplete = async (id) => {
+    const handleDelete = async (title) => {
       try {
-        await fetch(`/due-tasks/${id}`, {
-          method: "PUT"
+        await fetch(`/tasks/${title}`, {
+          method: "DELETE"
         });
-        mutate2(`/due-tasks?${new URLSearchParams({
-          localDate: yyyymmdd
-        })}`);
+        mutate3("/tasks");
       } catch (err) {
         console.log(err);
       }
@@ -25784,20 +28441,22 @@
                 children: "Title"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
-              "div",
-              {
-                style: {
-                  padding: "5px",
-                  margin: "0 5px",
-                  width: "100px"
-                }
-              }
-            )
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { style: {
+              flex: "1",
+              textAlign: "center"
+            }, children: "Frequency" }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { style: {
+              textAlign: "right"
+            }, children: "Due Date" }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { style: {
+              padding: "5px",
+              margin: "0 5px",
+              width: "100px"
+            } })
           ]
         }
       ),
-      tasks.map((task) => /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+      task.map((tasks) => /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
         "div",
         {
           style: {
@@ -25812,9 +28471,16 @@
                 style: {
                   width: "100px"
                 },
-                children: task.title
+                children: tasks.title
               }
             ),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { style: {
+              flex: "1",
+              textAlign: "center"
+            }, children: tasks.frequency }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { style: {
+              textAlign: "right"
+            }, children: tasks.due_date }),
             /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
               "button",
               {
@@ -25823,97 +28489,126 @@
                   margin: "0 5px",
                   width: "100px"
                 },
-                onClick: () => handleComplete(task.id),
-                children: "Complete"
+                onClick: () => handleDelete(tasks.id),
+                children: "Delete"
               }
             )
           ]
         },
-        task.title
+        tasks.title
       ))
     ] });
   };
 
-  // components/App.jsx
+  // components/SignIn.jsx
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
+  var SignIn = () => {
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
+      "sign in",
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(SignInButton, {})
+    ] });
+  };
+
+  // components/App.jsx
+  var import_jsx_runtime5 = __toESM(require_jsx_runtime());
   var App = () => {
-    const [page, setPage] = (0, import_react4.useState)(2);
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-      "div",
-      {
-        style: {
-          width: "100%",
-          height: "100vh"
-        },
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-              "button",
-              {
-                style: {
-                  padding: "10px",
-                  margin: "10px",
-                  border: "none",
-                  backgroundColor: page === 2 ? "#ddd" : "#fff",
-                  cursor: "pointer"
-                },
-                onClick: () => setPage(2),
-                children: "Due Tasks"
-              }
-            ),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-              "button",
-              {
-                style: {
-                  padding: "10px",
-                  margin: "10px",
-                  border: "none",
-                  backgroundColor: page === 1 ? "#ddd" : "#fff",
-                  cursor: "pointer"
-                },
-                onClick: () => setPage(1),
-                children: "Settings"
-              }
-            )
-          ] }),
-          page === 1 && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-            "div",
-            {
-              style: {
-                width: "500px",
-                margin: "0 auto",
-                padding: "20px",
-                border: "1px solid #ddd",
-                borderRadius: "5px"
-              },
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ProcessList, {}),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(AddProcess, {})
-              ]
-            }
-          ),
-          page === 2 && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-            "div",
-            {
-              style: {
-                width: "500px",
-                margin: "0 auto",
-                padding: "20px",
-                border: "1px solid #ddd",
-                borderRadius: "5px"
-              },
-              children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(DueTaskList, {})
-            }
-          )
-        ]
-      }
-    );
+    const [page, setPage] = (0, import_react26.useState)(2);
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { width: "100%", height: "100vh" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SignedOut, { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SignIn, {}) }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(SignedIn, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+          "div",
+          {
+            style: {
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%"
+            },
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+                  "button",
+                  {
+                    style: {
+                      padding: "10px",
+                      margin: "10px",
+                      border: "none",
+                      backgroundColor: page === 2 ? "#ddd" : "#fff",
+                      cursor: "pointer"
+                    },
+                    onClick: () => setPage(2),
+                    children: "Due Tasks"
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+                  "button",
+                  {
+                    style: {
+                      padding: "10px",
+                      margin: "10px",
+                      border: "none",
+                      backgroundColor: page === 1 ? "#ddd" : "#fff",
+                      cursor: "pointer"
+                    },
+                    onClick: () => setPage(1),
+                    children: "Settings"
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SignOutButton, {})
+            ]
+          }
+        ),
+        page === 1 && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+          "div",
+          {
+            style: {
+              width: "500px",
+              margin: "0 auto",
+              padding: "20px",
+              border: "1px solid #ddd",
+              borderRadius: "5px"
+            },
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ProcessList, {}),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(AddProcess, {})
+            ]
+          }
+        ),
+        page === 2 && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+          "div",
+          {
+            style: {
+              width: "500px",
+              margin: "0 auto",
+              padding: "20px",
+              border: "1px solid #ddd",
+              borderRadius: "5px"
+            },
+            children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(DueTaskList, {})
+          }
+        )
+      ] })
+    ] });
+  };
+
+  // stage.js
+  var STAGES = {
+    "staging": {
+      VITE_CLERK_PUBLISHABLE_KEY: "pk_test_ZW5nYWdpbmctbWFja2VyZWwtODAuY2xlcmsuYWNjb3VudHMuZGV2JA"
+    },
+    "production": {
+      VITE_CLERK_PUBLISHABLE_KEY: ""
+    }
   };
 
   // index.jsx
-  var import_jsx_runtime5 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime6 = __toESM(require_jsx_runtime());
   var root = (0, import_client.createRoot)(document.getElementById("app"));
-  root.render(/* @__PURE__ */ (0, import_jsx_runtime5.jsx)(App, {}));
+  root.render(
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react27.default.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ClerkProvider, { publishableKey: STAGES.staging.VITE_CLERK_PUBLISHABLE_KEY, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(App, {}) }) })
+  );
 })();
 /*! Bundled license information:
 
