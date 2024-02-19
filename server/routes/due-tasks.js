@@ -2,19 +2,17 @@ import dayjs from "dayjs";
 import "dotenv/config";
 import express from "express";
 import pkg from "pg";
-import { userId } from "../global.js";
 
 const { Client } = pkg;
 
 const router = express.Router();
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
-});
-
 router
   .get("/", async function (req, res, next) {
+    if (!req.query.userId) {
+      return res.status(400).json({ error: "userId is required" });
+    }
+
     const client = new Client({
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
@@ -29,7 +27,7 @@ router
     let dueTasks = [];
     try {
       const { rows } = await client.query(
-        `SELECT * from tasks where due_date::date <= '${localDate}'::date and user_id = ${userId} order by title ASC`
+        `SELECT * from tasks where due_date::date <= '${localDate}'::date and user_id = '${req.query.userId}' order by title ASC`
       );
 
       dueTasks = rows;

@@ -27093,6 +27093,20 @@ ${warning}`
 
   // node_modules/@clerk/clerk-react/dist/esm/components/controlComponents.js
   var import_react20 = __toESM(require_react());
+
+  // node_modules/@clerk/clerk-react/dist/esm/hooks/useUser.js
+  function useUser() {
+    const user = useUserContext();
+    if (user === void 0) {
+      return { isLoaded: false, isSignedIn: void 0, user: void 0 };
+    }
+    if (user === null) {
+      return { isLoaded: true, isSignedIn: false, user: null };
+    }
+    return { isLoaded: true, isSignedIn: true, user };
+  }
+
+  // node_modules/@clerk/clerk-react/dist/esm/components/controlComponents.js
   var SignedIn = ({ children }) => {
     const { userId } = useAuthContext();
     if (userId) {
@@ -28141,6 +28155,7 @@ ${warning}`
     const [frequencyNumber, setFrequencyNumber] = (0, import_react25.useState)("");
     const [frequencyUnit, setFrequencyUnit] = (0, import_react25.useState)("D");
     const [dueNext, setDueNext] = (0, import_react25.useState)(getLocalDate().split("T")[0]);
+    const { user } = useUser();
     const { mutate: mutate3 } = useSWRConfig2();
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -28156,14 +28171,19 @@ ${warning}`
           body: JSON.stringify({
             title,
             frequency: `${frequencyNumber}${frequencyUnit}`,
-            dueNext
+            dueNext,
+            userId: user.id
           })
         });
         setTitle("");
         setFrequencyNumber("");
-        setFrequencyUnit("");
-        setDueNext("");
-        mutate3("/tasks");
+        setFrequencyUnit("D");
+        setDueNext(getLocalDate().split("T")[0]);
+        mutate3(
+          `/tasks?${new URLSearchParams({
+            userId: user.id
+          })}`
+        );
       } catch (err) {
         console.log(err);
       }
@@ -28302,6 +28322,7 @@ ${warning}`
   // components/DueTaskList.jsx
   var import_jsx_runtime2 = __toESM(require_jsx_runtime());
   var DueTaskList = () => {
+    const { user } = useUser();
     let d = /* @__PURE__ */ new Date();
     d = new Date(d.getTime() - d.getTimezoneOffset() * 6e4);
     const yyyymmdd = d.toISOString().slice(0, 10);
@@ -28311,7 +28332,8 @@ ${warning}`
       isLoading
     } = useSWR2(
       `/due-tasks?${new URLSearchParams({
-        localDate: yyyymmdd
+        localDate: yyyymmdd,
+        userId: user.id
       })}`,
       fetcher
     );
@@ -28325,9 +28347,12 @@ ${warning}`
         await fetch(`/due-tasks/${id}`, {
           method: "PUT"
         });
-        mutate3(`/due-tasks?${new URLSearchParams({
-          localDate: yyyymmdd
-        })}`);
+        mutate3(
+          `/due-tasks?${new URLSearchParams({
+            localDate: yyyymmdd,
+            userId: user.id
+          })}`
+        );
       } catch (err) {
         console.log(err);
       }
@@ -28403,12 +28428,21 @@ ${warning}`
   // components/ProcessList.jsx
   var import_jsx_runtime3 = __toESM(require_jsx_runtime());
   var ProcessList = () => {
+    const { user } = useUser();
     const {
       data: task,
       error,
-      isLoading
-    } = useSWR2("/tasks", fetcher);
-    const { mutate: mutate3 } = useSWRConfig2();
+      isLoading,
+      mutate: mutate3
+    } = useSWR2(
+      `/tasks?${new URLSearchParams({
+        userId: user.id
+      })}`,
+      fetcher,
+      {
+        skip: !user
+      }
+    );
     if (error)
       return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { children: "failed to load" });
     if (isLoading)
@@ -28418,7 +28452,7 @@ ${warning}`
         await fetch(`/tasks/${title}`, {
           method: "DELETE"
         });
-        mutate3("/tasks");
+        mutate3();
       } catch (err) {
         console.log(err);
       }
@@ -28441,18 +28475,35 @@ ${warning}`
                 children: "Title"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { style: {
-              flex: "1",
-              textAlign: "center"
-            }, children: "Frequency" }),
-            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { style: {
-              textAlign: "right"
-            }, children: "Due Date" }),
-            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { style: {
-              padding: "5px",
-              margin: "0 5px",
-              width: "100px"
-            } })
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              "div",
+              {
+                style: {
+                  flex: "1",
+                  textAlign: "center"
+                },
+                children: "Frequency"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              "div",
+              {
+                style: {
+                  textAlign: "right"
+                },
+                children: "Due Date"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              "div",
+              {
+                style: {
+                  padding: "5px",
+                  margin: "0 5px",
+                  width: "100px"
+                }
+              }
+            )
           ]
         }
       ),
@@ -28474,13 +28525,25 @@ ${warning}`
                 children: tasks.title
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { style: {
-              flex: "1",
-              textAlign: "center"
-            }, children: tasks.frequency }),
-            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { style: {
-              textAlign: "right"
-            }, children: tasks.due_date }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              "div",
+              {
+                style: {
+                  flex: "1",
+                  textAlign: "center"
+                },
+                children: tasks.frequency
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              "div",
+              {
+                style: {
+                  textAlign: "right"
+                },
+                children: tasks.due_date
+              }
+            ),
             /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
               "button",
               {

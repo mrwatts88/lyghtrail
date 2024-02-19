@@ -1,18 +1,17 @@
 import "dotenv/config";
 import express from "express";
 import pkg from "pg";
-import { userId } from "../global.js";
 const { Client } = pkg;
 
 const router = express.Router();
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
-});
-
 router
   .get("/", async function (req, res, next) {
+
+    if (!req.query.userId) {
+      return res.status(400).json({ error: "userId is required" });
+    }
+    
     const client = new Client({
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
@@ -22,7 +21,7 @@ router
     let result = [];
     try {
       const res = await client.query("SELECT * from tasks where user_id = $1 order by title ASC", [
-        userId,
+        req.query.userId,
       ]);
       result = res.rows;
     } catch (err) {
@@ -43,7 +42,7 @@ router
     try {
       await client.query(
         "INSERT into tasks (title, frequency, due_date, user_id) VALUES ($1, $2, $3, $4)",
-        [req.body.title, req.body.frequency, req.body.dueNext, userId]
+        [req.body.title, req.body.frequency, req.body.dueNext, req.body.userId]
       );
     } catch (err) {
       console.log(err);

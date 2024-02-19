@@ -3,7 +3,6 @@
 #### APIs
 
 - [ ] validate and sanitize inputs
-- [ ] auth (sign in/up)
 - [ ] authorize requests
 - [x] change client request url
 - [x] add user id to DB records and use in requests/queries
@@ -17,13 +16,16 @@
 - [x] add process
 - [x] get all processes
 - [x] delete process
-- [x] Get all due tasks
+- [x] get all due tasks
+- [x] after adding a task, 'days' doesn't get put into state
+- [x] after adding a task, date doesn't repopulate
+- [x] auth (sign in/up)
 
 
 #### Client
 
 - [ ] nav between settings and about
-- [ ] signed out page (marketing/landing)
+- [x] signed out page (marketing/landing)
 - [x] Get all due tasks
 - [x] update due task (complete task)
 - [x] nav between due tasks and settings
@@ -33,6 +35,7 @@
     - title, number, unit, due next
 
 #### Infra
-- [ ] add production stage (with db)
+- [ ] set up DNS
+- [x] add production stage (with db)
 - [x] Heroku deploy node, react, and postgres
 - [x] Create tables in Heroku Postgres

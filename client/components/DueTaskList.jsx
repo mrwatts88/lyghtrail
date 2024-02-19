@@ -1,8 +1,10 @@
 import useSWR from "swr";
 import { fetcher } from "../api/fetcher";
 import { useSWRConfig } from "swr";
+import { useUser } from "@clerk/clerk-react";
 
 export const DueTaskList = () => {
+  const { user } = useUser();
   let d = new Date();
   d = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
   const yyyymmdd = d.toISOString().slice(0, 10);
@@ -14,6 +16,7 @@ export const DueTaskList = () => {
   } = useSWR(
     `/due-tasks?${new URLSearchParams({
       localDate: yyyymmdd,
+      userId: user.id,
     })}`,
     fetcher
   );
@@ -29,9 +32,12 @@ export const DueTaskList = () => {
         method: "PUT",
       });
 
-      mutate(`/due-tasks?${new URLSearchParams({
-        localDate: yyyymmdd,
-      })}`);
+      mutate(
+        `/due-tasks?${new URLSearchParams({
+          localDate: yyyymmdd,
+          userId: user.id,
+        })}`
+      );
     } catch (err) {
       console.log(err);
     }

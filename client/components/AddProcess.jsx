@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSWRConfig } from "swr";
+import { useUser } from "@clerk/clerk-react";
 
 function getLocalDate() {
   var tzoffset = new Date().getTimezoneOffset() * 60000;
@@ -11,6 +12,7 @@ export const AddProcess = () => {
   const [frequencyNumber, setFrequencyNumber] = useState("");
   const [frequencyUnit, setFrequencyUnit] = useState("D");
   const [dueNext, setDueNext] = useState(getLocalDate().split("T")[0]);
+  const { user } = useUser();
 
   const { mutate } = useSWRConfig();
 
@@ -31,15 +33,20 @@ export const AddProcess = () => {
           title,
           frequency: `${frequencyNumber}${frequencyUnit}`,
           dueNext,
+          userId: user.id,
         }),
       });
 
       setTitle("");
       setFrequencyNumber("");
-      setFrequencyUnit("");
-      setDueNext("");
+      setFrequencyUnit("D");
+      setDueNext(getLocalDate().split("T")[0]);
 
-      mutate("/tasks");
+      mutate(
+        `/tasks?${new URLSearchParams({
+          userId: user.id,
+        })}`
+      );
     } catch (err) {
       console.log(err);
     }

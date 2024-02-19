@@ -16,35 +16,23 @@ try {
   await client.query("DROP TABLE IF EXISTS users");
 
   await client.query(`
-        CREATE TABLE users (
-          id SERIAL PRIMARY KEY,
-          username VARCHAR(255) UNIQUE NOT NULL,
-          password VARCHAR(255) NOT NULL
-        )
-    `);
-
-  await client.query(`
         CREATE TABLE tasks (
           id SERIAL PRIMARY KEY,
           title VARCHAR(255) UNIQUE NOT NULL,
           frequency VARCHAR(50) NOT NULL,
           due_date VARCHAR(10) NOT NULL,
-          user_id INTEGER REFERENCES users(id)
+          user_id VARCHAR(255) NOT NULL
         )
     `);
 
   await client.query(`
-        INSERT INTO users (username, password) VALUES
-          ('matt', 'password')
-    `);
-
-  await client.query(`
-        INSERT INTO tasks (title, frequency, due_date, user_id) VALUES
-          ('clean house', '1D', '2024-02-04', 1),
-          ('water plants', '3D', '2024-02-04', 1),
-          ('do laundry', '7D', '2024-02-04', 1),
-          ('buy groceries', '14D', '2024-02-08', 1),
-          ('pay bills', '30D', '2024-02-07', 1)
+        INSERT INTO tasks (user_id, title, frequency, due_date) VALUES
+          ('user_2cW51io0uEbSGg4vFxgZWAt6lYm', 'clean house', '1D', '2024-02-04'),
+          ('user_2cW51io0uEbSGg4vFxgZWAt6lYm', 'water plants', '3D', '2024-02-04'),
+          ('user_2cW51io0uEbSGg4vFxgZWAt6lYm', 'do laundry', '7D', '2024-02-04'),
+          ('user_2cW51io0uEbSGg4vFxgZWAt6lYm', 'buy groceries', '14D', '2024-02-08'),
+          ('user_2cW51io0uEbSGg4vFxgZWAt6lYm', 'pay bills', '30D', '2024-02-07'),
+          ('user_2cW51io0uEbSGg4vFxgZWAt6lY2', 'clean jess', '1D', '2024-02-04')
     `);
 } catch (err) {
   console.error(err);
