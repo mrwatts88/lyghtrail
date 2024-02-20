@@ -4,7 +4,6 @@ import createHttpError from "http-errors";
 import logger from "morgan";
 import indexRouter from "./routes/index.js";
 import tasksRouter from "./routes/tasks.js";
-import usersRouter from "./routes/users.js";
 import dueTasksRouter from "./routes/due-tasks.js";
 import cors from 'cors'
 import path from "path";
@@ -20,7 +19,6 @@ app.use(cookieParser());
 app.use("/", indexRouter);
 app.use("/tasks", tasksRouter);
 app.use("/due-tasks", dueTasksRouter);
-app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
