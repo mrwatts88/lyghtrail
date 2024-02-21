@@ -4,9 +4,7 @@
   "description": "",
   "type": "module",
   "main": "seed.js",
-  "scripts": {
-    "seed": "node seed.js"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -4,6 +4,7 @@
 
 - [ ] validate and sanitize inputs
 - [ ] authorize requests
+- [ ] one time tasks
 - [x] change client request url
 - [x] add user id to DB records and use in requests/queries
 - [x] build react app into server public folder and serve static files
@@ -25,6 +26,7 @@
 #### Client
 
 - [ ] nav between settings and about
+- [ ] switch to Next or Vite
 - [x] signed out page (marketing/landing)
 - [x] Get all due tasks
 - [x] update due task (complete task)
@@ -35,7 +37,8 @@
     - title, number, unit, due next
 
 #### Infra
-- [ ] set up DNS
+- [x] update production DB
+- [x] set up DNS
 - [x] add production stage (with db)
 - [x] Heroku deploy node, react, and postgres
 - [x] Create tables in Heroku Postgres
