@@ -1,14 +1,15 @@
 import "dotenv/config";
 import express from "express";
 import pkg from "pg";
-import { decrypt, encrypt } from "../services/crypto.js";
+import { decrypt, encrypt } from "../services/crypto";
+import { Task } from "../types/entities";
 
 const { Client } = pkg;
 
 const router = express.Router();
 
 router
-  .get("/", async function (req, res, next) {
+  .get("/", async function (req, res) {
     if (!req.query.userId) {
       return res.status(400).json({ error: "userId is required" });
     }
@@ -19,7 +20,7 @@ router
     });
     await client.connect();
 
-    let result = [];
+    let result: Task[] = [];
     try {
       const res = await client.query(
         "SELECT * from tasks where user_id = $1 order by title ASC",
@@ -46,12 +47,18 @@ router
     });
     await client.connect();
 
-    const { encryptedData, iv }= encrypt(req.body.title);
+    const { encryptedData, iv } = encrypt(req.body.title);
 
     try {
       await client.query(
         "INSERT into tasks (title, frequency, due_date, user_id, title_iv) VALUES ($1, $2, $3, $4, $5)",
-        [encryptedData, req.body.frequency, req.body.dueNext, req.body.userId, iv]
+        [
+          encryptedData,
+          req.body.frequency,
+          req.body.dueNext,
+          req.body.userId,
+          iv,
+        ]
       );
     } catch (err) {
       console.log(err);
@@ -62,7 +69,7 @@ router
     await client.end();
     return res.json({ success: true });
   })
-  .delete("/:id", async function (req, res, next) {
+  .delete("/:id", async function (req, res) {
     const client = new Client({
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },

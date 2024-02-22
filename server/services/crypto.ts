@@ -1,9 +1,9 @@
 import crypto from "crypto";
 import "dotenv/config";
 
-const key = Buffer.from(process.env.CRYPTO_KEY, "hex");
+const key = Buffer.from(process.env.CRYPTO_KEY as string, "hex");
 
-export function encrypt(text) {
+export function encrypt(text: string): { encryptedData: string; iv: string } {
   if (key.length !== 32) {
     throw new Error("Key must be 32 bytes (256 bits).");
   }
@@ -20,7 +20,7 @@ export function encrypt(text) {
   };
 }
 
-export function decrypt(encryptedData, ivHex) {
+export function decrypt(encryptedData: string, ivHex: string): string {
   const iv = Buffer.from(ivHex, "hex");
   const decipher = crypto.createDecipheriv("aes-256-cbc", key, iv);
 

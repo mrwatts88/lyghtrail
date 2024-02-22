@@ -1,16 +1,20 @@
 # TODO
 
-- [ ] use TypeScript
 - [ ] set up absolute imports
-- [ ] imports without extensions
 - [ ] validate and sanitize inputs
 - [ ] authorize requests
-- [ ] one time tasks
-- [ ] bump task (by x days, x weeks, x months, x years)
-- [ ] set up stripe
 - [ ] add routing
 - [ ] nav between settings and about
+- [ ] change to phone code auth
+- [ ] implement UI design
+- [ ] set up stripe
 - [ ] implement 7 day trial (no CC required)
+- [ ] launch
+- [ ] add search
+- [ ] one time tasks
+- [ ] bump task (by x days, x weeks, x months, x years)
+- [x] use TypeScript for server
+- [x] use TypeScript for client
 - [x] encrypt tasks
 - [x] make title non-unique
 - [x] change client request url

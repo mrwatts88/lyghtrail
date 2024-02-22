@@ -2386,9 +2386,9 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React14 = require_react();
+          var React16 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React14.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React16.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -3993,7 +3993,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React14.Children.forEach(props.children, function(child) {
+                  React16.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -12440,7 +12440,7 @@
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React14.Component().refs;
+          var emptyRefsObject = new React16.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -23490,8 +23490,8 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React14 = require_react();
-          var ReactSharedInternals = React14.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var React16 = require_react();
+          var ReactSharedInternals = React16.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function error(format) {
             {
               {
@@ -23521,13 +23521,13 @@
             return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y;
           }
           var objectIs = typeof Object.is === "function" ? Object.is : is;
-          var useState5 = React14.useState, useEffect3 = React14.useEffect, useLayoutEffect3 = React14.useLayoutEffect, useDebugValue3 = React14.useDebugValue;
+          var useState5 = React16.useState, useEffect3 = React16.useEffect, useLayoutEffect3 = React16.useLayoutEffect, useDebugValue3 = React16.useDebugValue;
           var didWarnOld18Alpha = false;
           var didWarnUncachedGetSnapshot = false;
           function useSyncExternalStore4(subscribe, getSnapshot, getServerSnapshot) {
             {
               if (!didWarnOld18Alpha) {
-                if (React14.startTransition !== void 0) {
+                if (React16.startTransition !== void 0) {
                   didWarnOld18Alpha = true;
                   error("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release.");
                 }
@@ -23592,7 +23592,7 @@
           var canUseDOM = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
           var isServerEnvironment = !canUseDOM;
           var shim = isServerEnvironment ? useSyncExternalStore$1 : useSyncExternalStore4;
-          var useSyncExternalStore$2 = React14.useSyncExternalStore !== void 0 ? React14.useSyncExternalStore : shim;
+          var useSyncExternalStore$2 = React16.useSyncExternalStore !== void 0 ? React16.useSyncExternalStore : shim;
           exports.useSyncExternalStore = useSyncExternalStore$2;
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
@@ -23652,7 +23652,7 @@
       if (true) {
         (function() {
           "use strict";
-          var React14 = require_react();
+          var React16 = require_react();
           var REACT_ELEMENT_TYPE = Symbol.for("react.element");
           var REACT_PORTAL_TYPE = Symbol.for("react.portal");
           var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
@@ -23678,7 +23678,7 @@
             }
             return null;
           }
-          var ReactSharedInternals = React14.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React16.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function error(format) {
             {
               {
@@ -24514,10 +24514,10 @@
             }
           }
           var jsx7 = jsxWithValidationDynamic;
-          var jsxs6 = jsxWithValidationStatic;
+          var jsxs5 = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
           exports.jsx = jsx7;
-          exports.jsxs = jsxs6;
+          exports.jsxs = jsxs5;
         })();
       }
     }
@@ -27210,21 +27210,21 @@ ${warning}`
     "SignOutButton"
   );
 
-  // index.jsx
+  // index.tsx
   var import_react27 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
-  // components/App.jsx
+  // components/App.tsx
   var import_react26 = __toESM(require_react());
 
-  // components/AddProcess.jsx
+  // components/AddProcess.tsx
   var import_react25 = __toESM(require_react());
 
-  // node_modules/swr/dist/core/index.mjs
+  // node_modules/swr/core/dist/index.mjs
   var import_react24 = __toESM(require_react(), 1);
   var import_shim3 = __toESM(require_shim(), 1);
 
-  // node_modules/swr/dist/_internal/index.mjs
+  // node_modules/swr/_internal/dist/index.mjs
   var import_react23 = __toESM(require_react(), 1);
   var noop2 = () => {
   };
@@ -27406,6 +27406,7 @@ ${warning}`
     let populateCache = options.populateCache;
     const rollbackOnErrorOption = options.rollbackOnError;
     let optimisticData = options.optimisticData;
+    const revalidate = options.revalidate !== false;
     const rollbackOnError = (error) => {
       return typeof rollbackOnErrorOption === "function" ? rollbackOnErrorOption(error) : rollbackOnErrorOption !== false;
     };
@@ -27433,7 +27434,6 @@ ${warning}`
       const [EVENT_REVALIDATORS, MUTATION, FETCH, PRELOAD] = SWRGlobalState2.get(cache3);
       const startRevalidate = () => {
         const revalidators = EVENT_REVALIDATORS[key];
-        const revalidate = isFunction2(options.revalidate) ? options.revalidate(get().data, _k) : options.revalidate !== false;
         if (revalidate) {
           delete FETCH[key];
           delete PRELOAD[key];
@@ -27736,7 +27736,7 @@ ${warning}`
   };
   setupDevTools2();
 
-  // node_modules/swr/dist/core/index.mjs
+  // node_modules/swr/core/dist/index.mjs
   var use4 = import_react24.default.use || ((promise) => {
     if (promise.status === "pending") {
       throw promise;
@@ -27973,7 +27973,7 @@ ${warning}`
             if (shouldStartNewRequest && callbackSafeguard()) {
               currentConfig.onError(err, key, currentConfig);
               if (shouldRetryOnError === true || isFunction2(shouldRetryOnError) && shouldRetryOnError(err)) {
-                if (!getConfig().revalidateOnFocus || !getConfig().revalidateOnReconnect || isActive()) {
+                if (isActive()) {
                   currentConfig.onErrorRetry(err, key, currentConfig, (_opts) => {
                     const revalidators = EVENT_REVALIDATORS[key];
                     if (revalidators && revalidators[0]) {
@@ -28144,7 +28144,7 @@ ${warning}`
   });
   var useSWR2 = withArgs2(useSWRHandler2);
 
-  // components/AddProcess.jsx
+  // components/AddProcess.tsx
   var import_jsx_runtime = __toESM(require_jsx_runtime());
   function getLocalDate() {
     var tzoffset = (/* @__PURE__ */ new Date()).getTimezoneOffset() * 6e4;
@@ -28159,7 +28159,7 @@ ${warning}`
     const { mutate: mutate3 } = useSWRConfig2();
     const handleSubmit = async (event) => {
       event.preventDefault();
-      if (!title || !frequencyNumber || !frequencyUnit || !dueNext) {
+      if (!title || !frequencyNumber || !frequencyUnit || !dueNext || !user) {
         return;
       }
       try {
@@ -28316,10 +28316,12 @@ ${warning}`
     );
   };
 
-  // api/fetcher.js
-  var fetcher = (...args) => fetch(...args).then((res) => res.json());
+  // api/fetcher.ts
+  var fetcher = async (...args) => {
+    return (await fetch(...args)).json();
+  };
 
-  // components/DueTaskList.jsx
+  // components/DueTaskList.tsx
   var import_jsx_runtime2 = __toESM(require_jsx_runtime());
   var DueTaskList = () => {
     const { user } = useUser();
@@ -28327,32 +28329,28 @@ ${warning}`
     d = new Date(d.getTime() - d.getTimezoneOffset() * 6e4);
     const yyyymmdd = d.toISOString().slice(0, 10);
     const {
-      data: tasks,
+      data: tasks = [],
       error,
-      isLoading
+      isLoading,
+      mutate: mutate3
     } = useSWR2(
-      `/due-tasks?${new URLSearchParams({
+      user ? `/due-tasks?${new URLSearchParams({
         localDate: yyyymmdd,
         userId: user.id
-      })}`,
+      })}` : null,
       fetcher
     );
-    const { mutate: mutate3 } = useSWRConfig2();
     if (error)
       return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { children: "failed to load" });
     if (isLoading)
       return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { children: "loading..." });
     const handleComplete = async (id) => {
+      if (!user) {
+        return;
+      }
       try {
-        await fetch(`/due-tasks/${id}`, {
-          method: "PUT"
-        });
-        mutate3(
-          `/due-tasks?${new URLSearchParams({
-            localDate: yyyymmdd,
-            userId: user.id
-          })}`
-        );
+        await fetch(`/due-tasks/${id}`, { method: "PUT" });
+        mutate3();
       } catch (err) {
         console.log(err);
       }
@@ -28425,23 +28423,20 @@ ${warning}`
     ] });
   };
 
-  // components/ProcessList.jsx
+  // components/ProcessList.tsx
   var import_jsx_runtime3 = __toESM(require_jsx_runtime());
   var ProcessList = () => {
     const { user } = useUser();
     const {
-      data: task,
+      data: tasks = [],
       error,
       isLoading,
       mutate: mutate3
     } = useSWR2(
-      `/tasks?${new URLSearchParams({
+      user ? `/tasks?${new URLSearchParams({
         userId: user.id
-      })}`,
-      fetcher,
-      {
-        skip: !user
-      }
+      })}` : null,
+      fetcher
     );
     if (error)
       return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { children: "failed to load" });
@@ -28449,9 +28444,7 @@ ${warning}`
       return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { children: "loading..." });
     const handleDelete = async (title) => {
       try {
-        await fetch(`/tasks/${title}`, {
-          method: "DELETE"
-        });
+        await fetch(`/tasks/${title}`, { method: "DELETE" });
         mutate3();
       } catch (err) {
         console.log(err);
@@ -28507,7 +28500,7 @@ ${warning}`
           ]
         }
       ),
-      task.map((tasks) => /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+      tasks.map((task) => /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
         "div",
         {
           style: {
@@ -28522,7 +28515,7 @@ ${warning}`
                 style: {
                   width: "100px"
                 },
-                children: tasks.title
+                children: task.title
               }
             ),
             /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
@@ -28532,7 +28525,7 @@ ${warning}`
                   flex: "1",
                   textAlign: "center"
                 },
-                children: tasks.frequency
+                children: task.frequency
               }
             ),
             /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
@@ -28541,7 +28534,7 @@ ${warning}`
                 style: {
                   textAlign: "right"
                 },
-                children: tasks.due_date
+                children: task.due_date
               }
             ),
             /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
@@ -28552,27 +28545,24 @@ ${warning}`
                   margin: "0 5px",
                   width: "100px"
                 },
-                onClick: () => handleDelete(tasks.id),
+                onClick: () => handleDelete(task.id),
                 children: "Delete"
               }
             )
           ]
         },
-        tasks.title
+        task.title
       ))
     ] });
   };
 
-  // components/SignIn.jsx
+  // components/SignIn.tsx
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
   var SignIn = () => {
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-      "sign in",
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(SignInButton, {})
-    ] });
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(SignInButton, {}) });
   };
 
-  // components/App.jsx
+  // components/App.tsx
   var import_jsx_runtime5 = __toESM(require_jsx_runtime());
   var App = () => {
     const [page, setPage] = (0, import_react26.useState)(2);
@@ -28656,12 +28646,12 @@ ${warning}`
     ] });
   };
 
-  // stage.js
+  // stage.ts
   var STAGES = {
-    "staging": {
+    staging: {
       VITE_CLERK_PUBLISHABLE_KEY: "pk_test_ZW5nYWdpbmctbWFja2VyZWwtODAuY2xlcmsuYWNjb3VudHMuZGV2JA"
     },
-    "production": {
+    production: {
       VITE_CLERK_PUBLISHABLE_KEY: "pk_live_Y2xlcmsubHlnaHRyYWlsLmNvbSQ"
     }
   };
@@ -28674,7 +28664,7 @@ ${warning}`
     return STAGES[stage];
   };
 
-  // index.jsx
+  // index.tsx
   var import_jsx_runtime6 = __toESM(require_jsx_runtime());
   var root = (0, import_client.createRoot)(document.getElementById("app"));
   root.render(

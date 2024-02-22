@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon ./bin/www",
-    "start": "node ./bin/www"
+    "dev": "nodemon -e ts --exec 'tsx' ./bin/www",
+    "start": "tsx ./bin/www.ts"
   },
   "type": "module",
   "dependencies": {
@@ -15,18 +15,23 @@
     "dotenv": "^16.4.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
     "morgan": "~1.9.1",
-    "pg": "^8.11.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "pg": "^8.11.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.23.9",
-    "@babel/core": "^7.23.9",
-    "nodemon": "^3.0.3"
+    "@types/cookie-parser": "^1.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/debug": "^4.1.12",
+    "@types/express": "^4.17.21",
+    "@types/express-handlebars": "^6.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.11.20",
+    "@types/pg": "^8.11.0",
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.7.1"
   },
-  "main": "app.js",
+  "main": "app.ts",
   "keywords": [],
   "author": "",
   "license": "ISC",

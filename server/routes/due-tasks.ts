@@ -2,14 +2,15 @@ import dayjs from "dayjs";
 import "dotenv/config";
 import express from "express";
 import pkg from "pg";
-import { decrypt } from "../services/crypto.js";
+import { decrypt } from "../services/crypto";
+import { Task } from "../types/entities";
 
 const { Client } = pkg;
 
 const router = express.Router();
 
 router
-  .get("/", async function (req, res, next) {
+  .get("/", async function (req, res) {
     if (!req.query.userId) {
       return res.status(400).json({ error: "userId is required" });
     }
@@ -25,7 +26,7 @@ router
       return res.status(400).json({ error: "localDate is required" });
     }
 
-    let dueTasks = [];
+    let dueTasks: Task[] = [];
     try {
       const { rows } = await client.query(
         `SELECT * from tasks where due_date::date <= '${localDate}'::date and user_id = '${req.query.userId}' order by title ASC`
@@ -44,7 +45,7 @@ router
     await client.end();
     return res.json(dueTasks);
   })
-  .put("/:id", async function (req, res, next) {
+  .put("/:id", async function (req, res) {
     const client = new Client({
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
