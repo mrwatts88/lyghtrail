@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "esbuild --watch index.jsx --jsx=automatic --bundle --outfile=../server/public/out.js",
-    "build": "esbuild index.jsx --jsx=automatic --bundle --outfile=../server/public/out.js"
+    "dev": "esbuild --watch index.tsx --jsx=automatic --bundle --outfile=../server/public/out.js",
+    "build": "esbuild index.tsx --jsx=automatic --bundle --outfile=../server/public/out.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,7 @@
     "swr": "^2.2.4"
   },
   "devDependencies": {
+    "@types/react": "^18.2.57",
     "esbuild": "^0.20.0"
   }
 }

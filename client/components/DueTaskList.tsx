@@ -1,34 +1,41 @@
 import { useUser } from "@clerk/clerk-react";
+import React from "react";
 import useSWR from "swr";
 import { fetcher } from "../api/fetcher";
+import { Task } from "../types/entities";
 
-export const ProcessList = () => {
+export const DueTaskList = (): React.ReactElement => {
   const { user } = useUser();
 
+  let d = new Date();
+  d = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+  const yyyymmdd = d.toISOString().slice(0, 10);
+
   const {
-    data: task,
+    data: tasks = [],
     error,
     isLoading,
     mutate,
-  } = useSWR(
-    `/tasks?${new URLSearchParams({
-      userId: user.id,
-    })}`,
-    fetcher,
-    {
-      skip: !user,
-    }
+  } = useSWR<Task[], Error, string | null>(
+    user
+      ? `/due-tasks?${new URLSearchParams({
+          localDate: yyyymmdd,
+          userId: user.id,
+        })}`
+      : null,
+    fetcher
   );
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
 
-  const handleDelete = async (title) => {
-    try {
-      await fetch(`/tasks/${title}`, {
-        method: "DELETE",
-      });
+  const handleComplete = async (id: string): Promise<void> => {
+    if (!user) {
+      return;
+    }
 
+    try {
+      await fetch(`/due-tasks/${id}`, { method: "PUT" });
       mutate();
     } catch (err) {
       console.log(err);
@@ -52,21 +59,6 @@ export const ProcessList = () => {
         </div>
         <div
           style={{
-            flex: "1",
-            textAlign: "center",
-          }}
-        >
-          Frequency
-        </div>
-        <div
-          style={{
-            textAlign: "right",
-          }}
-        >
-          Due Date
-        </div>
-        <div
-          style={{
             padding: "5px",
             margin: "0 5px",
             width: "100px",
@@ -74,9 +66,9 @@ export const ProcessList = () => {
         />
       </div>
 
-      {task.map((tasks) => (
+      {tasks.map((task) => (
         <div
-          key={tasks.title}
+          key={task.title}
           style={{
             display: "flex",
             justifyContent: "space-between",
@@ -88,22 +80,7 @@ export const ProcessList = () => {
               width: "100px",
             }}
           >
-            {tasks.title}
-          </div>
-          <div
-            style={{
-              flex: "1",
-              textAlign: "center",
-            }}
-          >
-            {tasks.frequency}
-          </div>
-          <div
-            style={{
-              textAlign: "right",
-            }}
-          >
-            {tasks.due_date}
+            {task.title}
           </div>
           <button
             style={{
@@ -111,9 +88,9 @@ export const ProcessList = () => {
               margin: "0 5px",
               width: "100px",
             }}
-            onClick={() => handleDelete(tasks.id)}
+            onClick={() => handleComplete(task.id)}
           >
-            Delete
+            Complete
           </button>
         </div>
       ))}

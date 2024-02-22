@@ -1,43 +1,33 @@
+import React from "react";
+import { useUser } from "@clerk/clerk-react";
 import useSWR from "swr";
 import { fetcher } from "../api/fetcher";
-import { useSWRConfig } from "swr";
-import { useUser } from "@clerk/clerk-react";
+import { Task } from "../types/entities";
 
-export const DueTaskList = () => {
+export const ProcessList = (): React.ReactElement => {
   const { user } = useUser();
-  let d = new Date();
-  d = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
-  const yyyymmdd = d.toISOString().slice(0, 10);
 
   const {
-    data: tasks,
+    data: tasks = [],
     error,
     isLoading,
-  } = useSWR(
-    `/due-tasks?${new URLSearchParams({
-      localDate: yyyymmdd,
-      userId: user.id,
-    })}`,
+    mutate,
+  } = useSWR<Task[], Error, string | null>(
+    user
+      ? `/tasks?${new URLSearchParams({
+          userId: user.id,
+        })}`
+      : null,
     fetcher
   );
-
-  const { mutate } = useSWRConfig();
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
 
-  const handleComplete = async (id) => {
+  const handleDelete = async (title: string): Promise<void> => {
     try {
-      await fetch(`/due-tasks/${id}`, {
-        method: "PUT",
-      });
-
-      mutate(
-        `/due-tasks?${new URLSearchParams({
-          localDate: yyyymmdd,
-          userId: user.id,
-        })}`
-      );
+      await fetch(`/tasks/${title}`, { method: "DELETE" });
+      mutate();
     } catch (err) {
       console.log(err);
     }
@@ -57,6 +47,21 @@ export const DueTaskList = () => {
           }}
         >
           Title
+        </div>
+        <div
+          style={{
+            flex: "1",
+            textAlign: "center",
+          }}
+        >
+          Frequency
+        </div>
+        <div
+          style={{
+            textAlign: "right",
+          }}
+        >
+          Due Date
         </div>
         <div
           style={{
@@ -83,15 +88,30 @@ export const DueTaskList = () => {
           >
             {task.title}
           </div>
+          <div
+            style={{
+              flex: "1",
+              textAlign: "center",
+            }}
+          >
+            {task.frequency}
+          </div>
+          <div
+            style={{
+              textAlign: "right",
+            }}
+          >
+            {task.due_date}
+          </div>
           <button
             style={{
               padding: "5px",
               margin: "0 5px",
               width: "100px",
             }}
-            onClick={() => handleComplete(task.id)}
+            onClick={() => handleDelete(task.id)}
           >
-            Complete
+            Delete
           </button>
         </div>
       ))}

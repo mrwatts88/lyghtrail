@@ -1,12 +1,12 @@
 import { SignOutButton, SignedIn, SignedOut } from "@clerk/clerk-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { AddProcess } from "./AddProcess";
 import { DueTaskList } from "./DueTaskList";
 import { ProcessList } from "./ProcessList";
 import { SignIn } from "./SignIn";
 
-export const App = () => {
-  const [page, setPage] = useState(2);
+export const App = (): React.ReactElement => {
+  const [page, setPage] = useState<number>(2);
 
   return (
     <div style={{ width: "100%", height: "100vh" }}>

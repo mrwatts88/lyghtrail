@@ -1,25 +1,25 @@
-import { useState } from "react";
+import React, { FormEventHandler, useState } from "react";
 import { useSWRConfig } from "swr";
 import { useUser } from "@clerk/clerk-react";
 
-function getLocalDate() {
+function getLocalDate(): string {
   var tzoffset = new Date().getTimezoneOffset() * 60000;
   return new Date(Date.now() - tzoffset).toISOString();
 }
 
-export const AddProcess = () => {
-  const [title, setTitle] = useState("");
-  const [frequencyNumber, setFrequencyNumber] = useState("");
-  const [frequencyUnit, setFrequencyUnit] = useState("D");
-  const [dueNext, setDueNext] = useState(getLocalDate().split("T")[0]);
+export const AddProcess = (): React.ReactElement => {
+  const [title, setTitle] = useState<string>("");
+  const [frequencyNumber, setFrequencyNumber] = useState<string>("");
+  const [frequencyUnit, setFrequencyUnit] = useState<string>("D");
+  const [dueNext, setDueNext] = useState<string>(getLocalDate().split("T")[0]);
   const { user } = useUser();
 
   const { mutate } = useSWRConfig();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit: FormEventHandler<HTMLButtonElement | HTMLFormElement> = async (event) => {
     event.preventDefault();
 
-    if (!title || !frequencyNumber || !frequencyUnit || !dueNext) {
+    if (!title || !frequencyNumber || !frequencyUnit || !dueNext || !user) {
       return;
     }
 
@@ -52,15 +52,15 @@ export const AddProcess = () => {
     }
   };
 
-  const handleTitleChange = (event) => {
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setTitle(event.target.value);
   };
 
-  const handleFrequencyNumberChange = (event) => {
+  const handleFrequencyNumberChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setFrequencyNumber(event.target.value);
   };
 
-  const handleFrequencyUnitChange = (event) => {
+  const handleFrequencyUnitChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     setFrequencyUnit(event.target.value);
   };
 
