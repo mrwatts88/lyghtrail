@@ -1,10 +1,18 @@
 # TODO
 
-#### APIs
-
+- [ ] use TypeScript
+- [ ] set up absolute imports
+- [ ] imports without extensions
 - [ ] validate and sanitize inputs
 - [ ] authorize requests
 - [ ] one time tasks
+- [ ] bump task (by x days, x weeks, x months, x years)
+- [ ] set up stripe
+- [ ] add routing
+- [ ] nav between settings and about
+- [ ] implement 7 day trial (no CC required)
+- [x] encrypt tasks
+- [x] make title non-unique
 - [x] change client request url
 - [x] add user id to DB records and use in requests/queries
 - [x] build react app into server public folder and serve static files
@@ -21,12 +29,6 @@
 - [x] after adding a task, 'days' doesn't get put into state
 - [x] after adding a task, date doesn't repopulate
 - [x] auth (sign in/up)
-
-
-#### Client
-
-- [ ] nav between settings and about
-- [ ] switch to Next or Vite
 - [x] signed out page (marketing/landing)
 - [x] Get all due tasks
 - [x] update due task (complete task)
@@ -35,8 +37,6 @@
 - [x] Get all processes
 - [x] Add process
     - title, number, unit, due next
-
-#### Infra
 - [x] update production DB
 - [x] set up DNS
 - [x] add production stage (with db)

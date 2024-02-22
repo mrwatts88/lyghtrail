@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import "dotenv/config";
 import express from "express";
 import pkg from "pg";
+import { decrypt } from "../services/crypto.js";
 
 const { Client } = pkg;
 
@@ -30,7 +31,10 @@ router
         `SELECT * from tasks where due_date::date <= '${localDate}'::date and user_id = '${req.query.userId}' order by title ASC`
       );
 
-      dueTasks = rows;
+      dueTasks = rows.map((task) => {
+        task.title = decrypt(task.title, task.title_iv);
+        return task;
+      });
     } catch (err) {
       console.error(err);
       await client.end();

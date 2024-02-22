@@ -28677,7 +28677,6 @@ ${warning}`
   // index.jsx
   var import_jsx_runtime6 = __toESM(require_jsx_runtime());
   var root = (0, import_client.createRoot)(document.getElementById("app"));
-  console.log(getStageEnv().VITE_CLERK_PUBLISHABLE_KEY);
   root.render(
     /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react27.default.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ClerkProvider, { publishableKey: getStageEnv().VITE_CLERK_PUBLISHABLE_KEY, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(App, {}) }) })
   );

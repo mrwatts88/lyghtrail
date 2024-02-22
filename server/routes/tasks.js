@@ -1,17 +1,18 @@
 import "dotenv/config";
 import express from "express";
 import pkg from "pg";
+import { decrypt, encrypt } from "../services/crypto.js";
+
 const { Client } = pkg;
 
 const router = express.Router();
 
 router
   .get("/", async function (req, res, next) {
-
     if (!req.query.userId) {
       return res.status(400).json({ error: "userId is required" });
     }
-    
+
     const client = new Client({
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
@@ -20,10 +21,16 @@ router
 
     let result = [];
     try {
-      const res = await client.query("SELECT * from tasks where user_id = $1 order by title ASC", [
-        req.query.userId,
-      ]);
+      const res = await client.query(
+        "SELECT * from tasks where user_id = $1 order by title ASC",
+        [req.query.userId]
+      );
       result = res.rows;
+
+      result = result.map((task) => {
+        task.title = decrypt(task.title, task.title_iv);
+        return task;
+      });
     } catch (err) {
       console.error(err);
       return res.status(500).json({ error: err });
@@ -39,18 +46,17 @@ router
     });
     await client.connect();
 
+    const { encryptedData, iv }= encrypt(req.body.title);
+
     try {
       await client.query(
-        "INSERT into tasks (title, frequency, due_date, user_id) VALUES ($1, $2, $3, $4)",
-        [req.body.title, req.body.frequency, req.body.dueNext, req.body.userId]
+        "INSERT into tasks (title, frequency, due_date, user_id, title_iv) VALUES ($1, $2, $3, $4, $5)",
+        [encryptedData, req.body.frequency, req.body.dueNext, req.body.userId, iv]
       );
     } catch (err) {
       console.log(err);
-      // unique_violation, title already exists
-      if (err.code !== "23505") {
-        await client.end();
-        return res.status(500).json({ error: err });
-      }
+      await client.end();
+      return res.status(500).json({ error: err });
     }
 
     await client.end();
