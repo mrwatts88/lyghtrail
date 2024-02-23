@@ -13,7 +13,7 @@ export const getStageEnv = () => {
 
   const currentUrl = window.location.href;
 
-  if (currentUrl.includes("lyghtrail.com")) {
+  if (currentUrl.includes("lyghtrail.com") && !currentUrl.includes("staging")) {
     stage = "production";
   }
 
