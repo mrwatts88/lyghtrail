@@ -1,3 +1,4 @@
+import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
 import "dotenv/config";
 import express from "express";
 import pkg from "pg";
@@ -9,9 +10,13 @@ const { Client } = pkg;
 const router = express.Router();
 
 router
-  .get("/", async function (req, res) {
+  .get("/", ClerkExpressRequireAuth(), async function (req, res) {
     if (!req.query.userId) {
       return res.status(400).json({ error: "userId is required" });
+    }
+
+    if (req.auth.userId !== req.query.userId) {
+      return res.status(401).json({ error: "Unauthorized" });
     }
 
     const client = new Client({
@@ -40,7 +45,7 @@ router
       return res.json(result);
     }
   })
-  .post("/", async function (req, res) {
+  .post("/", ClerkExpressRequireAuth(), async function (req, res) {
     if (!req.body.title) {
       return res.status(400).json({ error: "title is required" });
     }
@@ -51,6 +56,10 @@ router
 
     if (!req.body.dueNext) {
       return res.status(400).json({ error: "dueNext is required" });
+    }
+
+    if (req.body.userId !== req.auth.userId) {
+      return res.status(401).json({ error: "Unauthorized" });
     }
 
     const client = new Client({
@@ -81,7 +90,7 @@ router
     await client.end();
     return res.json({ success: true });
   })
-  .delete("/:id", async function (req, res) {
+  .delete("/:id", ClerkExpressRequireAuth(), async function (req, res) {
     if (!req.params.id) {
       return res.status(400).json({ error: "id is required" });
     }
@@ -93,7 +102,10 @@ router
     await client.connect();
 
     try {
-      await client.query("DELETE FROM tasks WHERE id = $1", [req.params.id]);
+      await client.query("DELETE FROM tasks WHERE id = $1 and user_id = $2", [
+        req.params.id,
+        req.auth.userId,
+      ]);
     } catch (err) {
       console.error(err);
       await client.end();

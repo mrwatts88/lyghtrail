@@ -1,3 +1,4 @@
+import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
 import dayjs from "dayjs";
 import "dotenv/config";
 import express from "express";
@@ -6,11 +7,10 @@ import { decrypt } from "~/services/crypto";
 import { Task } from "~/types/entities";
 
 const { Client } = pkg;
-
 const router = express.Router();
 
 router
-  .get("/", async function (req, res) {
+  .get("/", ClerkExpressRequireAuth(), async function (req, res) {
     if (!req.query.userId) {
       return res.status(400).json({ error: "userId is required" });
     }
@@ -19,6 +19,10 @@ router
 
     if (!localDate) {
       return res.status(400).json({ error: "localDate is required" });
+    }
+
+    if (req.auth.userId !== req.query.userId) {
+      return res.status(401).json({ error: "Unauthorized" });
     }
 
     const client = new Client({
@@ -47,11 +51,11 @@ router
     await client.end();
     return res.json(dueTasks);
   })
-  .put("/:id", async function (req, res) {
+  .put("/:id", ClerkExpressRequireAuth(), async function (req, res) {
     if (!req.params.id) {
       return res.status(400).json({ error: "id is required" });
     }
-    
+
     const client = new Client({
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
@@ -60,9 +64,15 @@ router
 
     try {
       const { rows } = await client.query(
-        "SELECT frequency, due_date from tasks where id = $1",
+        "SELECT * from tasks where id = $1",
         [req.params.id]
       );
+
+      const userId = rows[0].user_id;
+
+      if (req.auth.userId !== userId) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
 
       const frequency = rows[0].frequency;
       const previousDueDate = dayjs(rows[0].due_date);

@@ -1,3 +1,4 @@
+import { StrictAuthProp } from "@clerk/clerk-sdk-node";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
@@ -7,6 +8,12 @@ import path from "path";
 import dueTasksRouter from "~/routes/due-tasks";
 import indexRouter from "~/routes/index";
 import tasksRouter from "~/routes/tasks";
+
+declare global {
+  namespace Express {
+    interface Request extends StrictAuthProp {}
+  }
+}
 
 const app = express();
 app.use(cors());
