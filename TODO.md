@@ -1,5 +1,6 @@
 # TODO
 
+- [ ] add build step to heroku deployment
 - [ ] add routing
 - [ ] set up stripe
 - [ ] implement 7 day trial (no CC required)
