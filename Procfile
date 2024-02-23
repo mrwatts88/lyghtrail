@@ -1,1 +1,1 @@
-web: cd server && tsx ./bin/www.ts
+web: cd client && npm run build && cd ../server && tsx ./bin/www.ts
