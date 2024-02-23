@@ -1,6 +1,5 @@
 # TODO
 
-- [ ] add build step to heroku deployment
 - [ ] add routing
 - [ ] set up stripe
 - [ ] implement 7 day trial (no CC required)
@@ -12,6 +11,7 @@
 - [ ] add search
 - [ ] one time tasks
 - [ ] bump task (by x days, x weeks, x months, x years)
+- [x] add pre-commit to build client
 - [x] authorize requests
 - [x] validate and sanitize inputs
 - [x] set up absolute imports

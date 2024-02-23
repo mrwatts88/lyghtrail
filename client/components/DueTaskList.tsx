@@ -55,7 +55,7 @@ export const DueTaskList = (): React.ReactElement => {
             width: "100px",
           }}
         >
-          title
+          Title
         </div>
         <div
           style={{

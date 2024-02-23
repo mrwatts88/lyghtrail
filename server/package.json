@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "nodemon -e ts --exec 'tsx' ./bin/www",
-    "start": "tsx ./bin/www.ts"
+    "start": "tsx ./bin/www.ts",
+    "prepare": "husky install"
   },
   "type": "module",
   "dependencies": {
@@ -30,7 +31,8 @@
     "@types/node": "^20.11.20",
     "@types/pg": "^8.11.0",
     "nodemon": "^3.0.3",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "husky": "^8.0.0"
   },
   "main": "app.ts",
   "keywords": [],
