@@ -4,9 +4,9 @@ import express from "express";
 import createHttpError from "http-errors";
 import logger from "morgan";
 import path from "path";
-import dueTasksRouter from "./routes/due-tasks";
-import indexRouter from "./routes/index";
-import tasksRouter from "./routes/tasks";
+import dueTasksRouter from "~/routes/due-tasks";
+import indexRouter from "~/routes/index";
+import tasksRouter from "~/routes/tasks";
 
 const app = express();
 app.use(cors());

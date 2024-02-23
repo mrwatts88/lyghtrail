@@ -2,8 +2,8 @@ import dayjs from "dayjs";
 import "dotenv/config";
 import express from "express";
 import pkg from "pg";
-import { decrypt } from "../services/crypto";
-import { Task } from "../types/entities";
+import { decrypt } from "~/services/crypto";
+import { Task } from "~/types/entities";
 
 const { Client } = pkg;
 

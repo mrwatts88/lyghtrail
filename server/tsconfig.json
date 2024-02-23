@@ -7,7 +7,10 @@
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "paths": {
+      "~/*": ["./*"]
+    },
   },
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Recommended",

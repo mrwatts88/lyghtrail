@@ -2,7 +2,7 @@
 
 import debugImport from "debug";
 import http from "http";
-import app from "../app";
+import app from "~/app";
 
 const debug = debugImport("maintain:server");
 

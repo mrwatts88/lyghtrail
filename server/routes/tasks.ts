@@ -1,8 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import pkg from "pg";
-import { decrypt, encrypt } from "../services/crypto";
-import { Task } from "../types/entities";
+import { decrypt, encrypt } from "~/services/crypto";
+import { Task } from "~/types/entities";
 
 const { Client } = pkg;
 
