@@ -41,6 +41,18 @@ router
     }
   })
   .post("/", async function (req, res) {
+    if (!req.body.title) {
+      return res.status(400).json({ error: "title is required" });
+    }
+
+    if (!req.body.frequency) {
+      return res.status(400).json({ error: "frequency is required" });
+    }
+
+    if (!req.body.dueNext) {
+      return res.status(400).json({ error: "dueNext is required" });
+    }
+
     const client = new Client({
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
@@ -70,6 +82,10 @@ router
     return res.json({ success: true });
   })
   .delete("/:id", async function (req, res) {
+    if (!req.params.id) {
+      return res.status(400).json({ error: "id is required" });
+    }
+
     const client = new Client({
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },

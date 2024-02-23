@@ -15,16 +15,18 @@ router
       return res.status(400).json({ error: "userId is required" });
     }
 
-    const client = new Client({
-      connectionString: process.env.DATABASE_URL,
-      ssl: { rejectUnauthorized: false },
-    });
-    await client.connect();
     const localDate = req.query["localDate"];
 
     if (!localDate) {
       return res.status(400).json({ error: "localDate is required" });
     }
+
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+    });
+
+    await client.connect();
 
     let dueTasks: Task[] = [];
     try {
@@ -46,6 +48,10 @@ router
     return res.json(dueTasks);
   })
   .put("/:id", async function (req, res) {
+    if (!req.params.id) {
+      return res.status(400).json({ error: "id is required" });
+    }
+    
     const client = new Client({
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
@@ -59,11 +65,8 @@ router
       );
 
       const frequency = rows[0].frequency;
-
       const previousDueDate = dayjs(rows[0].due_date);
-
       let newDueDate = previousDueDate;
-
       const frequencyValue = frequency.slice(0, -1);
       const frequencyUnit = frequency.slice(-1);
 
