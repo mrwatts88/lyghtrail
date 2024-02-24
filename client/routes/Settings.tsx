@@ -1,7 +1,7 @@
 import React from "react";
-import { AddProcess } from "../components/AddProcess";
-import { NavBar } from "../components/NavBar";
-import { ProcessList } from "../components/ProcessList";
+import { AddProcess } from "~/components/AddProcess";
+import { NavBar } from "~/components/NavBar";
+import { ProcessList } from "~/components/ProcessList";
 
 export const Settings = (): React.ReactElement => {
   return (

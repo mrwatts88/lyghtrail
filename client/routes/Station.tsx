@@ -1,6 +1,6 @@
 import React from "react";
-import { DueTaskList } from "../components/DueTaskList";
-import { NavBar } from "../components/NavBar";
+import { DueTaskList } from "~/components/DueTaskList";
+import { NavBar } from "~/components/NavBar";
 
 export const Station = (): React.ReactElement => {
   return (

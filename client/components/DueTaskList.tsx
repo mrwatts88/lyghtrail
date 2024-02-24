@@ -1,8 +1,8 @@
 import { useUser } from "@clerk/clerk-react";
 import React from "react";
 import useSWR from "swr";
-import { fetcher } from "../api/fetcher";
-import { Task } from "../types/entities";
+import { fetcher } from "~/api/fetcher";
+import { Task } from "~/types/entities";
 
 export const DueTaskList = (): React.ReactElement => {
   const { user } = useUser();

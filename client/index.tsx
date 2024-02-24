@@ -1,11 +1,11 @@
 import { ClerkProvider, SignIn, SignedIn, SignedOut } from "@clerk/clerk-react";
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./routes/Error";
-import { Settings } from "./routes/Settings";
-import { Station } from "./routes/Station";
-import { getStageEnv } from "./stage";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import ErrorPage from "~/routes/Error";
+import { Settings } from "~/routes/Settings";
+import { Station } from "~/routes/Station";
+import { getStageEnv } from "~/stage";
 
 const root = createRoot(document.getElementById("app") as Element);
 

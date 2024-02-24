@@ -1,16 +1,23 @@
 {
-  "name": "maintain",
+  "name": "lightrail-server",
   "version": "1.0.0",
   "description": "A recurring task todo list",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev": "lerna run dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "husky": "^8.0.0"
-  }
+    "husky": "^8.0.0",
+    "lerna": "^8.1.2"
+  },
+  "dependencies": {},
+  "workspaces": [
+    "server",
+    "client"
+  ]
 }

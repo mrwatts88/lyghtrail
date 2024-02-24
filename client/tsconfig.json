@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "paths": {
+      "~/*": ["./*"]
+    }
+  }
+}

@@ -1,6 +1,5 @@
 # TODO
 
-- [ ] set up absolute imports for client
 - [ ] set up stripe
 - [ ] implement 7 day trial (no CC required)
 - [ ] implement UI design
@@ -11,6 +10,8 @@
 - [ ] add search
 - [ ] one time tasks
 - [ ] bump task (by x days, x weeks, x months, x years)
+- [x] set up lerna
+- [x] set up absolute imports for client
 - [x] add routing
 - [x] add pre-commit to build client
 - [x] authorize requests
