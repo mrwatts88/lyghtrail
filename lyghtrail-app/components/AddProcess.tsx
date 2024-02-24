@@ -16,7 +16,13 @@ export const AddProcess = (): React.ReactElement => {
 
   const { mutate } = useSWRConfig();
 
-  const handleSubmit: FormEventHandler<HTMLButtonElement | HTMLFormElement> = async (event) => {
+  let d = new Date();
+  d = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+  const yyyymmdd = d.toISOString().slice(0, 10);
+
+  const handleSubmit: FormEventHandler<
+    HTMLButtonElement | HTMLFormElement
+  > = async (event) => {
     event.preventDefault();
 
     if (!title || !frequencyNumber || !frequencyUnit || !dueNext || !user) {
@@ -42,25 +48,39 @@ export const AddProcess = (): React.ReactElement => {
       setFrequencyUnit("D");
       setDueNext(getLocalDate().split("T")[0]);
 
-      mutate(
+      await mutate(
         `/tasks?${new URLSearchParams({
           userId: user.id,
         })}`
+      );
+      await mutate(
+        user
+          ? `/due-tasks?${new URLSearchParams({
+              localDate: yyyymmdd,
+              userId: user.id,
+            })}`
+          : null
       );
     } catch (err) {
       console.log(err);
     }
   };
 
-  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleTitleChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setTitle(event.target.value);
   };
 
-  const handleFrequencyNumberChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleFrequencyNumberChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setFrequencyNumber(event.target.value);
   };
 
-  const handleFrequencyUnitChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+  const handleFrequencyUnitChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ): void => {
     setFrequencyUnit(event.target.value);
   };
 

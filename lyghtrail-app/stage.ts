@@ -17,5 +17,5 @@ export const getStageEnv = () => {
     stage = "production";
   }
 
-  return STAGES[stage];
+  return STAGES[stage as keyof typeof STAGES];
 };

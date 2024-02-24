@@ -1,5 +1,6 @@
 # TODO
 
+- [ ] unauthorized on browser focus (maybe need to wait for clerk to load to render app)
 - [ ] set up stripe
 - [ ] implement 7 day trial (no CC required)
 - [ ] implement UI design
@@ -7,9 +8,11 @@
 - [ ] landing page
 - [ ] change to phone code auth
 - [ ] launch
-- [ ] add search
+- [ ] drag and drop
+- [ ] search
 - [ ] one time tasks
 - [ ] bump task (by x days, x weeks, x months, x years)
+- [x] switch to React Native
 - [x] set up lerna
 - [x] set up absolute imports for client
 - [x] add routing

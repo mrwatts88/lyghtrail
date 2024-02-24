@@ -17,7 +17,7 @@ declare global {
 
 const app = express();
 app.use(cors());
-app.use(express.static(path.join(path.resolve(), "public")));
+app.use(express.static(path.join(path.resolve(), "dist")));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,7 +28,7 @@ app.use("/tasks", tasksRouter);
 app.use("/due-tasks", dueTasksRouter);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(path.resolve(), "public", "index.html"));
+  res.sendFile(path.join(path.resolve(), "dist", "index.html"));
 });
 
 app.use(function (req, res, next) {
