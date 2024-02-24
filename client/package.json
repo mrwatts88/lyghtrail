@@ -14,10 +14,12 @@
     "@clerk/clerk-react": "^4.30.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.1",
     "swr": "^2.2.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.57",
+    "@types/react-dom": "^18.2.19",
     "esbuild": "^0.20.0"
   }
 }

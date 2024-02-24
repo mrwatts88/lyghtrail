@@ -27,6 +27,10 @@ app.use("/", indexRouter);
 app.use("/tasks", tasksRouter);
 app.use("/due-tasks", dueTasksRouter);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(path.resolve(), "public", "index.html"));
+});
+
 app.use(function (req, res, next) {
   next(createHttpError(404));
 });
@@ -34,7 +38,6 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res) {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
-
   res.status(err.status || 500);
 } as express.ErrorRequestHandler);
 

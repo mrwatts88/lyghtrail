@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] add routing
+- [ ] set up absolute imports for client
 - [ ] set up stripe
 - [ ] implement 7 day trial (no CC required)
 - [ ] implement UI design
@@ -11,10 +11,11 @@
 - [ ] add search
 - [ ] one time tasks
 - [ ] bump task (by x days, x weeks, x months, x years)
+- [x] add routing
 - [x] add pre-commit to build client
 - [x] authorize requests
 - [x] validate and sanitize inputs
-- [x] set up absolute imports
+- [x] set up absolute imports for server
 - [x] use TypeScript for server
 - [x] use TypeScript for client
 - [x] encrypt tasks
