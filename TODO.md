@@ -1,5 +1,6 @@
 # TODO
 
+- [ ] rate limiting
 - [ ] unauthorized on browser focus (maybe need to wait for clerk to load to render app)
 - [ ] set up stripe
 - [ ] implement 7 day trial (no CC required)
