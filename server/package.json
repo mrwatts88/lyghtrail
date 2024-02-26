@@ -1,10 +1,11 @@
 {
-  "name": "maintain",
+  "name": "server",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "nodemon -e ts --exec 'tsx' ./bin/www",
-    "start": "tsx ./bin/www.ts"
+    "start": "tsx ./bin/www.ts",
+    "deps": "npm install"
   },
   "type": "module",
   "dependencies": {
