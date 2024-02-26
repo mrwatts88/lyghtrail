@@ -1,7 +1,7 @@
 # TODO
 
-- [ ] rate limiting
-- [ ] unauthorized on browser focus (maybe need to wait for clerk to load to render app)
+- [ ] text input character limit
+- [ ] get mobile working with stages
 - [ ] set up stripe
 - [ ] implement 7 day trial (no CC required)
 - [ ] implement UI design
@@ -13,6 +13,10 @@
 - [ ] search
 - [ ] one time tasks
 - [ ] bump task (by x days, x weeks, x months, x years)
+- [x] rate limiting
+  - heroku data for redis, rate-limit-redis, express-rate-limit, ioredis
+- [x] bug: unauthorized on browser focus (maybe need to wait for clerk to load to render app)
+- [x] bug: deleting right after adding when duplicates exists
 - [x] switch to React Native
 - [x] set up lerna
 - [x] set up absolute imports for client

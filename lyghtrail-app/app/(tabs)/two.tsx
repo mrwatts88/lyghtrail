@@ -53,7 +53,7 @@ export default function TabTwoScreen() {
     <View style={styles.container}>
       <AddProcess />
       {tasks.map((task) => (
-        <View key={task.title} style={styles.taskRow}>
+        <View key={task.id} style={styles.taskRow}>
           <View style={styles.taskTitle}>{task.title}</View>
           <View style={styles.taskFrequency}>{task.frequency}</View>
           <View style={styles.taskDueDate}>{task.due_date}</View>

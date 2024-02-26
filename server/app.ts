@@ -8,6 +8,9 @@ import path from "path";
 import dueTasksRouter from "~/routes/due-tasks";
 import indexRouter from "~/routes/index";
 import tasksRouter from "~/routes/tasks";
+import Redis from "ioredis";
+import rateLimit from "express-rate-limit";
+import RedisStore from "rate-limit-redis";
 
 declare global {
   namespace Express {
@@ -15,7 +18,27 @@ declare global {
   }
 }
 
+const client = new Redis(process.env.REDIS_TLS_URL as string, {
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
+
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 200,
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+
+	// Redis store configuration
+	store: new RedisStore({
+		// @ts-expect-error - Known issue: the `call` function is not present in @types/ioredis
+		sendCommand: (...args: string[]) => client.call(...args),
+	}),
+})
+
 const app = express();
+app.use(limiter);
 app.use(cors());
 app.use(express.static(path.join(path.resolve(), "dist")));
 app.use(logger("dev"));

@@ -55,7 +55,7 @@ export default function TabOneScreen() {
     <View style={styles.container}>
       <SignOutButton />
       {tasks.map((task) => (
-        <View key={task.title} style={styles.taskRow}>
+        <View key={task.id} style={styles.taskRow}>
           <View style={styles.taskTitle}>{task.title}</View>
           <Button onPress={() => handleComplete(task.id)} title="Complete" />
         </View>

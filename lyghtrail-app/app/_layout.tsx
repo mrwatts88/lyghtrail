@@ -1,4 +1,5 @@
 import {
+  ClerkLoaded,
   ClerkProvider,
   SignInButton,
   SignedIn,
@@ -58,15 +59,17 @@ function RootLayoutNav() {
   return (
     <ClerkProvider publishableKey={getStageEnv().VITE_CLERK_PUBLISHABLE_KEY}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <SignedOut>
-          <SignInButton />
-        </SignedOut>
-        <SignedIn>
-          <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="modal" options={{ presentation: "modal" }} />
-          </Stack>
-        </SignedIn>
+        <ClerkLoaded>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+            </Stack>
+          </SignedIn>
+        </ClerkLoaded>
       </ThemeProvider>
     </ClerkProvider>
   );
