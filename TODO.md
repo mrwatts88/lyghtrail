@@ -1,18 +1,22 @@
 # TODO
 
-- [ ] text input character limit
-- [ ] get mobile working with stages
-- [ ] set up stripe
-- [ ] implement 7 day trial (no CC required)
+- [ ] get mobile working with stages (expo and EAS)
 - [ ] implement UI design
 - [ ] add about page
 - [ ] landing page
 - [ ] change to phone code auth
+- [ ] mobile app screenshots
+- [ ] terms and conditions
+- [ ] app store set up
+- [ ] set up product hunt
 - [ ] launch
+- [ ] set up stripe
+- [ ] implement 7 day trial (no CC required)
 - [ ] drag and drop
 - [ ] search
 - [ ] one time tasks
 - [ ] bump task (by x days, x weeks, x months, x years)
+- [x] text input character limit
 - [x] rate limiting
   - heroku data for redis, rate-limit-redis, express-rate-limit, ioredis
 - [x] bug: unauthorized on browser focus (maybe need to wait for clerk to load to render app)

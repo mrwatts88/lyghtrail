@@ -69,7 +69,12 @@ export const AddProcess = (): React.ReactElement => {
   const handleTitleChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    setTitle(event.target.value);
+    const inputValue = event.target.value;
+    if (inputValue.length > 255) {
+      setTitle(inputValue.slice(0, 255));
+    } else {
+      setTitle(inputValue);
+    }
   };
 
   const handleFrequencyNumberChange = (
