@@ -1,21 +1,26 @@
 # TODO
 
-- [ ] get mobile working with stages (expo and EAS)
+- [ ] get Apple Developer membership
+- [ ] persist mobile clerk token
+- [ ] fix browser warnings
+- [ ] abstract more api functions
 - [ ] implement UI design
 - [ ] add about page
 - [ ] landing page
 - [ ] change to phone code auth
+- [ ] app store set up
 - [ ] mobile app screenshots
 - [ ] terms and conditions
-- [ ] app store set up
 - [ ] set up product hunt
 - [ ] launch
 - [ ] set up stripe
 - [ ] implement 7 day trial (no CC required)
 - [ ] drag and drop
+- [ ] theming
 - [ ] search
 - [ ] one time tasks
 - [ ] bump task (by x days, x weeks, x months, x years)
+- [x] get mobile working with stages (expo and EAS)
 - [x] text input character limit
 - [x] rate limiting
   - heroku data for redis, rate-limit-redis, express-rate-limit, ioredis

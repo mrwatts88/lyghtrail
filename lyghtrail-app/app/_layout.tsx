@@ -1,10 +1,9 @@
 import {
   ClerkLoaded,
   ClerkProvider,
-  SignInButton,
   SignedIn,
   SignedOut,
-} from "@clerk/clerk-react";
+} from "~/packages/clerk";
 import {
   DarkTheme,
   DefaultTheme,
@@ -14,6 +13,7 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import SignInScreen from "~/components/SignInScreen";
 import { useColorScheme } from "~/components/useColorScheme";
 import { getStageEnv } from "~/stage";
 
@@ -61,7 +61,7 @@ function RootLayoutNav() {
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <ClerkLoaded>
           <SignedOut>
-            <SignInButton />
+            <SignInScreen />
           </SignedOut>
           <SignedIn>
             <Stack>

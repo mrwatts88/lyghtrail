@@ -1,8 +1,9 @@
-import { SignOutButton, useUser } from "@clerk/clerk-react";
+import { useUser } from "~/packages/clerk";
 import { Button, StyleSheet } from "react-native";
 import useSWR, { useSWRConfig } from "swr";
 import { fetcher } from "~/api/fetcher";
-import { View } from "~/components/Themed";
+import { tasksApi } from "~/api/tasks";
+import { Text, View } from "~/components/Themed";
 import { Task } from "~/types/entities";
 
 export default function TabOneScreen() {
@@ -28,8 +29,8 @@ export default function TabOneScreen() {
     fetcher
   );
 
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (error) return <Text>failed to load</Text>;
+  if (isLoading) return <Text>loading...</Text>;
 
   const handleComplete = async (id: string): Promise<void> => {
     if (!user) {
@@ -37,7 +38,7 @@ export default function TabOneScreen() {
     }
 
     try {
-      await fetch(`/due-tasks/${id}`, { method: "PUT" });
+      await tasksApi.completeTask(id);
       await mutate();
       await mutateTasks(
         user
@@ -53,10 +54,9 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-      <SignOutButton />
       {tasks.map((task) => (
         <View key={task.id} style={styles.taskRow}>
-          <View style={styles.taskTitle}>{task.title}</View>
+          <View style={styles.taskTitle}><Text>{task.title}</Text></View>
           <Button onPress={() => handleComplete(task.id)} title="Complete" />
         </View>
       ))}

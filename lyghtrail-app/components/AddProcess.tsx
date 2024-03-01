@@ -1,6 +1,9 @@
-import React, { FormEventHandler, useState } from "react";
+import { useUser } from "~/packages/clerk";
+import React, { useState } from "react";
+import { Button, TextInput } from "react-native";
 import { useSWRConfig } from "swr";
-import { useUser } from "@clerk/clerk-react";
+import { tasksApi } from "~/api/tasks";
+import { View } from "./Themed";
 
 function getLocalDate(): string {
   var tzoffset = new Date().getTimezoneOffset() * 60000;
@@ -20,27 +23,18 @@ export const AddProcess = (): React.ReactElement => {
   d = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
   const yyyymmdd = d.toISOString().slice(0, 10);
 
-  const handleSubmit: FormEventHandler<
-    HTMLButtonElement | HTMLFormElement
-  > = async (event) => {
-    event.preventDefault();
-
+  const handleSubmit = async () => {
     if (!title || !frequencyNumber || !frequencyUnit || !dueNext || !user) {
       return;
     }
 
     try {
-      await fetch("/tasks", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title,
-          frequency: `${frequencyNumber}${frequencyUnit}`,
-          dueNext,
-          userId: user.id,
-        }),
+      await tasksApi.addTask({
+        title,
+        frequencyNumber: parseInt(frequencyNumber, 10),
+        frequencyUnit,
+        dueNext,
+        user,
       });
 
       setTitle("");
@@ -66,10 +60,7 @@ export const AddProcess = (): React.ReactElement => {
     }
   };
 
-  const handleTitleChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    const inputValue = event.target.value;
+  const handleTitleChange = (inputValue: string): void => {
     if (inputValue.length > 255) {
       setTitle(inputValue.slice(0, 255));
     } else {
@@ -77,10 +68,8 @@ export const AddProcess = (): React.ReactElement => {
     }
   };
 
-  const handleFrequencyNumberChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    setFrequencyNumber(event.target.value);
+  const handleFrequencyNumberChange = (freq: string): void => {
+    setFrequencyNumber(freq);
   };
 
   const handleFrequencyUnitChange = (
@@ -90,66 +79,62 @@ export const AddProcess = (): React.ReactElement => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        margin: "10px auto",
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
-      <div
+    // <form
+    //   onSubmit={handleSubmit}
+    //   style={{
+    //     margin: "10px auto",
+    //     display: "flex",
+    //     justifyContent: "space-between",
+    //   }}
+    // >
+    <View>
+      <View
         style={{
           flex: 1,
         }}
       >
-        <div
+        <View
           style={{
             display: "flex",
             justifyContent: "space-between",
             flexDirection: "row",
-            marginBottom: "5px",
+            marginBottom: 5,
           }}
         >
-          <input
+          <TextInput
             placeholder="Title"
-            type="text"
-            name="title"
             value={title}
-            onChange={handleTitleChange}
+            onChangeText={handleTitleChange}
             style={{
-              flex: "1",
-              marginRight: "5px",
+              flex: 1,
+              marginRight: 5,
             }}
           />
-          <input
-            type="date"
+          <TextInput
             value={dueNext}
-            onChange={(e) => setDueNext(e.target.value)}
+            onChangeText={setDueNext}
             style={{
-              flex: "1",
-              marginLeft: "5px",
+              flex: 1,
+              marginLeft: 5,
             }}
           />
-        </div>
-        <div
+        </View>
+        <View
           style={{
             display: "flex",
             justifyContent: "space-between",
           }}
         >
-          <input
-            type="number"
+          <TextInput
             placeholder="#"
-            onChange={handleFrequencyNumberChange}
+            onChangeText={handleFrequencyNumberChange}
             value={frequencyNumber}
-            min={1}
             style={{
-              flex: "1",
-              marginRight: "5px",
+              flex: 1,
+              marginRight: 5,
             }}
           />
-          <select
+          {/* <select
             onChange={handleFrequencyUnitChange}
             value={frequencyUnit}
             style={{
@@ -157,24 +142,32 @@ export const AddProcess = (): React.ReactElement => {
               marginLeft: "5px",
             }}
           >
-            <option value="D">Days</option>
-            <option value="W">Weeks</option>
-            <option value="M">Months</option>
-            <option value="Y">Years</option>
-          </select>
-        </div>
-      </div>
-      <button
-        onSubmit={handleSubmit}
-        type="submit"
-        style={{
-          padding: "5px",
-          width: "100px",
-          margin: "0 5px",
-        }}
-      >
-        Add
-      </button>
-    </form>
+            <option value="D">
+              <Text>Days</Text>
+            </option>
+            <option value="W">
+              <Text>Weeks</Text>
+            </option>
+            <option value="M">
+              <Text>Months</Text>
+            </option>
+            <option value="Y">
+              <Text>Years</Text>
+            </option>
+          </select> */}
+        </View>
+      </View>
+      <Button
+        title="Add"
+        onPress={handleSubmit}
+        // style={{
+        //   padding:5,
+        //   width: 100,
+        //   marginHorizontal: 5,
+        //   marginVertical: 0,
+        // }}
+      />
+    </View>
+    // {/* </form> */}
   );
 };

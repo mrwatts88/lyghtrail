@@ -1,0 +1,43 @@
+{
+  "cli": {
+    "version": ">= 7.3.0",
+    "promptToConfigurePushNotifications": false,
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "common-dev": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "development"
+    },
+    "dev-device": {
+      "extends": "common-dev"
+    },
+    "dev-sim": {
+      "extends": "common-dev",
+      "ios": {
+        "simulator": true
+      }
+    },
+    "staging": {
+      "channel": "staging"
+    },
+    "production": {
+      "channel": "production"
+    }
+  },
+  "submit": {
+    "staging": {
+      "ios": {},
+      "android": {
+        "releaseStatus": "draft"
+      }
+    },
+    "production": {
+      "ios": {},
+      "android": {
+        "releaseStatus": "draft"
+      }
+    }
+  }
+}

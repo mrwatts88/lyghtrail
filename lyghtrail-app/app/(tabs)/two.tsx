@@ -1,10 +1,11 @@
-import { useUser } from "@clerk/clerk-react";
+import { useUser } from "~/packages/clerk";
 import { Button, StyleSheet } from "react-native";
 import useSWR, { useSWRConfig } from "swr";
 import { fetcher } from "~/api/fetcher";
+import { tasksApi } from "~/api/tasks";
 import { AddProcess } from "~/components/AddProcess";
 import { MonoText } from "~/components/StyledText";
-import { View } from "~/components/Themed";
+import { Text, View } from "~/components/Themed";
 import { Task } from "~/types/entities";
 
 export default function TabTwoScreen() {
@@ -32,9 +33,9 @@ export default function TabTwoScreen() {
   if (error) return <MonoText>failed to load</MonoText>;
   if (isLoading) return <MonoText>loading...</MonoText>;
 
-  const handleDelete = async (title: string): Promise<void> => {
+  const handleDelete = async (id: string): Promise<void> => {
     try {
-      await fetch(`/tasks/${title}`, { method: "DELETE" });
+      await tasksApi.deleteTask(id);
       await mutate();
       await mutateDueTasks(
         user
@@ -54,13 +55,12 @@ export default function TabTwoScreen() {
       <AddProcess />
       {tasks.map((task) => (
         <View key={task.id} style={styles.taskRow}>
-          <View style={styles.taskTitle}>{task.title}</View>
-          <View style={styles.taskFrequency}>{task.frequency}</View>
-          <View style={styles.taskDueDate}>{task.due_date}</View>
-          <Button
-            onPress={() => handleDelete(task.id)}
-            title="Delete"
-          />
+          <View style={styles.taskTitle}>
+            <Text>{task.title}</Text>
+          </View>
+          <View style={styles.taskFrequency}><Text>{task.frequency}</Text></View>
+          <View style={styles.taskDueDate}><Text>{task.due_date}</Text></View>
+          <Button onPress={() => handleDelete(task.id)} title="Delete" />
         </View>
       ))}
     </View>

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "lyghtrail-app",
-    "slug": "lyghtrail-app",
+    "name": "LyghtRail",
+    "slug": "lyghtrail",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -16,13 +16,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.lyght.rail"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.lyght.rail"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +39,21 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "e8e7e7ec-abe5-4f86-9a73-9be0f83f8635"
+      }
+    },
+    "owner": "mrwatts88",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/e8e7e7ec-abe5-4f86-9a73-9be0f83f8635"
     }
   }
 }
