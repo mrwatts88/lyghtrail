@@ -1,52 +1,25 @@
-import { useUser } from "~/packages/clerk";
-import { Button, StyleSheet } from "react-native";
-import useSWR, { useSWRConfig } from "swr";
-import { fetcher } from "~/api/fetcher";
-import { tasksApi } from "~/api/tasks";
+import { Button, ScrollView, StyleSheet } from "react-native";
+import { tasksApi, useDueTasks, useTasks } from "~/api/tasks";
 import { Text, View } from "~/components/Themed";
-import { Task } from "~/types/entities";
+import { useUser } from "~/packages/clerk";
 
 export default function TabOneScreen() {
-  const { user } = useUser();
-  const { mutate: mutateTasks } = useSWRConfig();
+  const { isLoaded, isSignedIn } = useUser();
+  const { dueTasks, dueTasksError, dueTasksIsLoading, dueTasksRefresh } =
+    useDueTasks();
+  const { tasksRefresh } = useTasks();
 
-  let d = new Date();
-  d = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
-  const yyyymmdd = d.toISOString().slice(0, 10);
+  if (!isLoaded || !isSignedIn) {
+    return null;
+  }
 
-  const {
-    data: tasks = [],
-    error,
-    isLoading,
-    mutate,
-  } = useSWR<Task[], Error, string | null>(
-    user
-      ? `/due-tasks?${new URLSearchParams({
-          localDate: yyyymmdd,
-          userId: user.id,
-        })}`
-      : null,
-    fetcher
-  );
-
-  if (error) return <Text>failed to load</Text>;
-  if (isLoading) return <Text>loading...</Text>;
+  if (dueTasksError) return <Text>failed to load</Text>;
+  if (dueTasksIsLoading) return <Text>loading...</Text>;
 
   const handleComplete = async (id: string): Promise<void> => {
-    if (!user) {
-      return;
-    }
-
     try {
       await tasksApi.completeTask(id);
-      await mutate();
-      await mutateTasks(
-        user
-          ? `/tasks?${new URLSearchParams({
-              userId: user.id,
-            })}`
-          : null
-      );
+      await Promise.all([tasksRefresh(), dueTasksRefresh()]);
     } catch (err) {
       console.log(err);
     }
@@ -54,17 +27,24 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-      {tasks.map((task) => (
-        <View key={task.id} style={styles.taskRow}>
-          <View style={styles.taskTitle}><Text>{task.title}</Text></View>
-          <Button onPress={() => handleComplete(task.id)} title="Complete" />
-        </View>
-      ))}
+      <ScrollView style={styles.scrollView}>
+        {dueTasks.map((task) => (
+          <View key={task.id} style={styles.taskRow}>
+            <View style={styles.taskTitle}>
+              <Text>{task.title}</Text>
+            </View>
+            <Button onPress={() => handleComplete(task.id)} title="Complete" />
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  scrollView: {
+    width: "100%",
+  },
   container: {
     flex: 1,
     alignItems: "center",

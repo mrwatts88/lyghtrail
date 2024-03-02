@@ -1,9 +1,8 @@
-import { useUser } from "~/packages/clerk";
 import React, { useState } from "react";
 import { Button, TextInput } from "react-native";
-import { useSWRConfig } from "swr";
-import { tasksApi } from "~/api/tasks";
-import { View } from "./Themed";
+import { tasksApi, useDueTasks, useTasks } from "~/api/tasks";
+import { View } from "~/components/Themed";
+import { useUser } from "~/packages/clerk";
 
 function getLocalDate(): string {
   var tzoffset = new Date().getTimezoneOffset() * 60000;
@@ -16,12 +15,8 @@ export const AddProcess = (): React.ReactElement => {
   const [frequencyUnit, setFrequencyUnit] = useState<string>("D");
   const [dueNext, setDueNext] = useState<string>(getLocalDate().split("T")[0]);
   const { user } = useUser();
-
-  const { mutate } = useSWRConfig();
-
-  let d = new Date();
-  d = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
-  const yyyymmdd = d.toISOString().slice(0, 10);
+  const { dueTasksRefresh } = useDueTasks();
+  const { tasksRefresh } = useTasks();
 
   const handleSubmit = async () => {
     if (!title || !frequencyNumber || !frequencyUnit || !dueNext || !user) {
@@ -41,20 +36,7 @@ export const AddProcess = (): React.ReactElement => {
       setFrequencyNumber("");
       setFrequencyUnit("D");
       setDueNext(getLocalDate().split("T")[0]);
-
-      await mutate(
-        `/tasks?${new URLSearchParams({
-          userId: user.id,
-        })}`
-      );
-      await mutate(
-        user
-          ? `/due-tasks?${new URLSearchParams({
-              localDate: yyyymmdd,
-              userId: user.id,
-            })}`
-          : null
-      );
+      await Promise.all([tasksRefresh(), dueTasksRefresh()]);
     } catch (err) {
       console.log(err);
     }
@@ -90,7 +72,7 @@ export const AddProcess = (): React.ReactElement => {
     <View>
       <View
         style={{
-          flex: 1,
+          // flex: 1,
         }}
       >
         <View
@@ -106,7 +88,7 @@ export const AddProcess = (): React.ReactElement => {
             value={title}
             onChangeText={handleTitleChange}
             style={{
-              flex: 1,
+              // flex: 1,
               marginRight: 5,
             }}
           />
@@ -114,7 +96,7 @@ export const AddProcess = (): React.ReactElement => {
             value={dueNext}
             onChangeText={setDueNext}
             style={{
-              flex: 1,
+              // flex: 1,
               marginLeft: 5,
             }}
           />
@@ -130,7 +112,7 @@ export const AddProcess = (): React.ReactElement => {
             onChangeText={handleFrequencyNumberChange}
             value={frequencyNumber}
             style={{
-              flex: 1,
+              // flex: 1,
               marginRight: 5,
             }}
           />

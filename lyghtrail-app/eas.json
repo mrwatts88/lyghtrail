@@ -5,7 +5,11 @@
     "appVersionSource": "remote"
   },
   "build": {
+    "common": {
+      "autoIncrement": true
+    },
     "common-dev": {
+      "extends": "common",
       "developmentClient": true,
       "distribution": "internal",
       "channel": "development"

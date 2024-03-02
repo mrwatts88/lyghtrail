@@ -62,6 +62,7 @@ export default function SignInScreen() {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: "#fff",
       }}
     >
       {!pendingVerification && (

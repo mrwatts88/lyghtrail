@@ -5,7 +5,11 @@ export const getStageEnv = () => {
     return STAGES.development;
   }
 
-  const stage = process.env.EXPO_PUBLIC_STAGE || "staging";
+  let stage = 'staging';
+
+  if (window.location.hostname.includes('lyghtrail.com') && !window.location.hostname.includes('staging')) {
+    stage = 'production';
+  }
 
   return STAGES[stage as keyof typeof STAGES];
 };  

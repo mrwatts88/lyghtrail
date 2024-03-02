@@ -1,20 +1,21 @@
 import {
-  ClerkLoaded,
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-} from "~/packages/clerk";
-import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
+import * as SecureStore from "expo-secure-store";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import SignInScreen from "~/components/SignInScreen";
 import { useColorScheme } from "~/components/useColorScheme";
+import {
+  ClerkLoaded,
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+} from "~/packages/clerk";
 import { getStageEnv } from "~/stage";
 
 export {
@@ -29,6 +30,23 @@ export const unstable_settings = {
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+
+const tokenCache = {
+  async getToken(key: string) {
+    try {
+      return SecureStore.getItemAsync(key);
+    } catch (err) {
+      return null;
+    }
+  },
+  async saveToken(key: string, value: string) {
+    try {
+      return SecureStore.setItemAsync(key, value);
+    } catch (err) {
+      return;
+    }
+  },
+};
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
@@ -57,7 +75,10 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ClerkProvider publishableKey={getStageEnv().VITE_CLERK_PUBLISHABLE_KEY}>
+    <ClerkProvider
+      tokenCache={tokenCache}
+      publishableKey={getStageEnv().VITE_CLERK_PUBLISHABLE_KEY}
+    >
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <ClerkLoaded>
           <SignedOut>

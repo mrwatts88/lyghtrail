@@ -1,18 +1,17 @@
 # TODO
 
-- [ ] get Apple Developer membership
-- [ ] persist mobile clerk token
+- [ ] implement UI design
 - [ ] fix browser warnings
 - [ ] abstract more api functions
-- [ ] implement UI design
 - [ ] add about page
 - [ ] landing page
+- [ ] get Apple Developer membership
 - [ ] change to phone code auth
 - [ ] app store set up
 - [ ] mobile app screenshots
 - [ ] terms and conditions
 - [ ] set up product hunt
-- [ ] launch
+- [ ] **launch**
 - [ ] set up stripe
 - [ ] implement 7 day trial (no CC required)
 - [ ] drag and drop
@@ -20,6 +19,7 @@
 - [ ] search
 - [ ] one time tasks
 - [ ] bump task (by x days, x weeks, x months, x years)
+- [x] persist mobile clerk token
 - [x] get mobile working with stages (expo and EAS)
 - [x] text input character limit
 - [x] rate limiting
